@@ -1,0 +1,21 @@
+.NavBar {
+    background-color: #F8FFF8;
+    box-shadow: 0px 2px 5px #dadadf;
+    padding-bottom: 0px;
+}
+
+.Navlink {
+    padding: 5px;
+}
+
+span {
+    font-size: 0.9rem
+}
+
+.Active i {
+    color: #5EA13C;
+}
+
+i:hover{
+    font-size: 40px;
+}
