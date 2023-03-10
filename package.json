@@ -1,5 +1,5 @@
 {
-  "name": "moments",
+  "name": "screenshot-organizer-frontend",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -44,5 +44,8 @@
   },
   "devDependencies": {
     "msw": "^0.35.0"
+  },
+  "engines": {
+    "node": "16.18.0"
   }
 }
