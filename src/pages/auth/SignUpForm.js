@@ -5,6 +5,7 @@ import styles from "../../styles/SignInUpForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
 import logo from "../../assets/logo.png";
+import Card from 'react-bootstrap/Card'
 
 import {
   Form,
@@ -13,7 +14,6 @@ import {
   Col,
   Row,
   Container,
-  Alert,
 } from "react-bootstrap";
 import axios from "axios";
 
@@ -50,11 +50,11 @@ const SignUpForm = () => {
 
   return (
     <Row className={styles.Row}>
-      <Col className="my-auto py-2 p-md-2" md={6}>
+      <Col md={{ span: 8, offset: 2 }} className="my-auto p-0 p-md-2">
         <Container className={`${appStyles.Content} p-4 `}>
           
           <h1 className={styles.Header}>Welcome to Screenshot Organizer</h1>
-          <p align="center"><img src={logo} alt="logo" height="90" alt="Logo"/></p>
+          <p align="center"><img src={logo} alt="logo" height="90"/></p>
           
           <Form onSubmit={handleSubmit}>
             <Form.Group controlId="username">
@@ -124,15 +124,7 @@ const SignUpForm = () => {
           </Link>
         </Container>
       </Col>
-      <Col
-        md={6}
-        className={`my-auto d-none d-md-block p-2 ${styles.SignUpCol}`}
-      >
-        <Image
-          className={`${appStyles.FillerImage}`}
-          src={"https://res.cloudinary.com/dqnhlza2r/image/upload/v1678228865/exactly_ljlmhm.png"}
-        />
-      </Col>
+
     </Row>
   );
 };

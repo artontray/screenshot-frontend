@@ -27,15 +27,42 @@ const NavBar = () => {
     }
   };
 
-  const addPostIcon = (
+
+
+
+  const addPublicScreenshotIcon = (
     <NavLink
       className={styles.NavLink}
-      activeClassName={styles.Active}
       to="/scrshot_public/create"
     >
-      <i className="far fa-plus-square"></i>Add post
+      
+
+      <OverlayTrigger placement="bottom" trigger="hover"
+              overlay={(
+                <Popover >
+                  <Popover.Title as="h3" className={styles.Popover}>
+                   Publish a Public Screenshot
+                  </Popover.Title>
+                </Popover>
+              )}
+            >
+              <i className="fa-regular fa-image fa-2x"></i>
+
+            </OverlayTrigger>
     </NavLink>
   );
+
+  const addLogoutIcon = (
+    <NavLink className={styles.NavLink} to="/" onClick={handleSignOut}>
+    <OverlayTrigger placement="bottom"
+      overlay={<Tooltip>Sign Out</Tooltip>}
+    >
+      <i className="fa-solid fa-power-off fa-2x"></i>
+
+    </OverlayTrigger>
+  </NavLink>
+  );
+
   const loggedInIcons = (
     <>
 
@@ -54,14 +81,7 @@ const NavBar = () => {
 
         </OverlayTrigger>
       </NavLink>
-      <NavLink className={styles.NavLink} to="/" onClick={handleSignOut}>
-        <OverlayTrigger placement="bottom"
-          overlay={<Tooltip>Sign Out</Tooltip>}
-        >
-          <i className="fa-solid fa-power-off fa-2x"></i>
 
-        </OverlayTrigger>
-      </NavLink>
     </>
   );
   const loggedOutIcons = (
@@ -99,8 +119,9 @@ const NavBar = () => {
   return (
     <Navbar className={styles.NavBar} fixed="top">
       <Container>
-
-
+      {currentUser && addPublicScreenshotIcon}
+      
+      
 
         <Nav className="col-md-6 ml-md-auto">
           <NavLink
@@ -116,10 +137,10 @@ const NavBar = () => {
                 </Popover>
               )}
             >
-              <i className="fas fa-home fa-2x color"></i>
+              <i className="fas fa-home fa-2x"></i>
 
             </OverlayTrigger>
-            {currentUser && addPostIcon}
+            
             {currentUser ? loggedInIcons : loggedOutIcons}
           </NavLink>
 
@@ -128,7 +149,7 @@ const NavBar = () => {
 
 
         </Nav>
-
+        {currentUser && addLogoutIcon}
       </Container>
     </Navbar>
   );
