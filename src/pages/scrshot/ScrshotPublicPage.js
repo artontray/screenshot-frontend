@@ -15,7 +15,7 @@ function ScrshotPublicPage() {
   useEffect(() => {
     const handleMount = async () => {
       try {
-        const [{ data: Scrshot }] = await Promise.all([
+        const [{ data: scrshot }] = await Promise.all([
           axiosReq.get(`/public-scrshot/${id}`),
         ]);
         setScrshot({ results: [scrshot] });

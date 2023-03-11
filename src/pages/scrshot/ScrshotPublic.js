@@ -4,6 +4,7 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { Card, Media, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Avatar from "../../components/Avatar";
+import { axiosRes } from "../../api/axiosDefaults";
 
 const ScrshotPublic = (props) => {
   const {
@@ -19,10 +20,45 @@ const ScrshotPublic = (props) => {
     image,
     updated_at,
     scrshotPage,
+    setScrshots,
   } = props;
 
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
+
+  const handleLike = async () => {
+    try {
+      /* "public_screenshot" is the name of screenshot instance provided by back-end (check serializers.py from Likes)*/
+      const { data } = await axiosRes.post("/likes/", { public_screenshot: id });
+      setScrshots((prevScrshot) => ({
+        ...prevScrshot,
+        results: prevScrshot.results.map((public_screenshot) => {
+          return public_screenshot.id === id
+            ? { ...public_screenshot, likes_count: public_screenshot.likes_count + 1, like_id: data.id }
+            : public_screenshot;
+        }),
+      }));
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleUnlike = async () => {
+    try {
+      await axiosRes.delete(`/likes/${like_id}/`);
+      setScrshots((prevScrshot) => ({
+        ...prevScrshot,
+        results: prevScrshot.results.map((scrshot) => {
+          return scrshot.id === id
+            ? { ...scrshot, likes_count: scrshot.likes_count - 1, like_id: null }
+            : scrshot;
+        }),
+      }));
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
 
   return (
     <Card className={styles.Screenshot}>
@@ -53,11 +89,11 @@ const ScrshotPublic = (props) => {
               <i className="far fa-heart" />
             </OverlayTrigger>
           ) : like_id ? (
-            <span onClick={() => {}}>
+            <span onClick={handleUnlike}>
               <i className={`fas fa-heart ${styles.Heart}`} />
             </span>
           ) : currentUser ? (
-            <span onClick={() => {}}>
+            <span onClick={handleLike}>
               <i className={`far fa-heart ${styles.HeartOutline}`} />
             </span>
           ) : (
