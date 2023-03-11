@@ -1,64 +1,76 @@
 import React from "react";
+import { useContext } from "react";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import logo from "../assets/logo.png";
 import styles from "../styles/NavBar.module.css";
 import { NavLink } from "react-router-dom";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
+import { CurrentUserContext } from "../App";
 
 const NavBar = () => {
+  const currentUser = useContext(CurrentUserContext);
+
+  const loggedInIcons = <>{currentUser?.username}</>;
+  const loggedOutIcons = (
+    <>
+      <NavLink
+        className={styles.NavLink}
+        activeClassName={styles.Active}
+        to="/signin"
+      >
+        <OverlayTrigger placement="bottom"
+          overlay={<Tooltip>Sign in</Tooltip>}
+        >
+          <i className="fa-solid fa-play fa-2x"></i>
+
+        </OverlayTrigger>
+      </NavLink>
+
+
+      <NavLink
+        className={styles.NavLink}
+        activeClassName={styles.Active}
+        to="/signup"
+      >
+        <OverlayTrigger placement="bottom"
+          overlay={<Tooltip>Sign up</Tooltip>}
+        >
+          <i className="fas fa-user-plus fa-2x"></i>
+        </OverlayTrigger>
+      </NavLink>
+    </>
+  );
+
+
+
   return (
-    <Navbar className={styles.NavBar} expand="md" fixed="top">
+    <Navbar className={styles.NavBar} fixed="top">
       <Container>
-        <NavLink to="/">
-          <Navbar.Brand>
-            <img src={logo} alt="logo" height="45" />
-          </Navbar.Brand>
-        </NavLink>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="ml-auto text-left">
-            <NavLink
-              exact
-              className={styles.NavLink}
-              activeClassName={styles.Active}
-              to="/"
+
+
+
+        <Nav className="col-md-6 ml-md-auto">
+          <NavLink
+            className={styles.NavLink}
+            activeClassName={styles.Active}
+            to="/"
+          >
+            <OverlayTrigger placement="bottom"
+              overlay={<Tooltip>Home Page</Tooltip>}
             >
-              <i className="fas fa-home"></i>Home
-            </NavLink>
-            <NavLink
-              className={styles.NavLink}
-              activeClassName={styles.Active}
-              to="/signin"
-            >
-              <i className="fas fa-sign-in-alt"></i>Sign in
-            </NavLink>
-            <NavLink
-              to="/signup"
-              className={styles.NavLink}
-              activeClassName={styles.Active}
-            >
-              <i className="fas fa-user-plus"></i>Sign up
-            </NavLink>
+              <i className="fas fa-home fa-2x"></i>
 
-
-            <NavLink
-              className={styles.NavLink}
-              activeClassName={styles.Active}
-              to="/signup"
-            >
-              <OverlayTrigger placement="bottom"
-                overlay={<Tooltip>Sign up</Tooltip>}
-              >
-                <i className="fas fa-user-plus"></i>
-              </OverlayTrigger>
-              {/* Sign up - see NavBar.test.js for explaination for why this has been left here */}
-            </NavLink>
+            </OverlayTrigger>
+            {currentUser ? loggedInIcons : loggedOutIcons}
+          </NavLink>
 
 
 
-          </Nav>
-        </Navbar.Collapse>
+
+
+        </Nav>
+
       </Container>
     </Navbar>
   );
