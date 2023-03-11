@@ -27,7 +27,15 @@ const NavBar = () => {
     }
   };
 
-
+  const addPostIcon = (
+    <NavLink
+      className={styles.NavLink}
+      activeClassName={styles.Active}
+      to="/scrshot_public/create"
+    >
+      <i className="far fa-plus-square"></i>Add post
+    </NavLink>
+  );
   const loggedInIcons = (
     <>
 
@@ -111,7 +119,7 @@ const NavBar = () => {
               <i className="fas fa-home fa-2x color"></i>
 
             </OverlayTrigger>
-           
+            {currentUser && addPostIcon}
             {currentUser ? loggedInIcons : loggedOutIcons}
           </NavLink>
 
