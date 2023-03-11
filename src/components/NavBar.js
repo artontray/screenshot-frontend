@@ -12,6 +12,7 @@ import {
   useCurrentUser,
 } from "../contexts/CurrentUserContext";
 import axios from "axios";
+import Avatar from "./Avatar";
 
 const NavBar = () => {
   const currentUser = useCurrentUser();
@@ -29,14 +30,28 @@ const NavBar = () => {
   const loggedInIcons = (
     <>
 
-      <NavLink className={styles.NavLink} to="/" onClick={handleSignOut}>
-        <i className="fas fa-sign-out-alt"></i>Sign out
-      </NavLink>
+
       <NavLink
         className={styles.NavLink}
-        to={`/profiles/${currentUser?.profile_id}`}
+
+
+
+        to="/"
       >
-        <Avatar src={currentUser?.profile_image} text="Profile" height={40} />
+        <OverlayTrigger placement="bottom"
+          overlay={<Tooltip>Dashboard</Tooltip>}
+        >
+          <i className="fa-solid fa-address-card fa-2x"></i>
+
+        </OverlayTrigger>
+      </NavLink>
+      <NavLink className={styles.NavLink} to="/" onClick={handleSignOut}>
+        <OverlayTrigger placement="bottom"
+          overlay={<Tooltip>Sign Out</Tooltip>}
+        >
+          <i className="fa-solid fa-power-off fa-2x"></i>
+
+        </OverlayTrigger>
       </NavLink>
     </>
   );
@@ -44,7 +59,7 @@ const NavBar = () => {
     <>
       <NavLink
         className={styles.NavLink}
-        activeClassName={styles.Active}
+
         to="/signin"
       >
         <OverlayTrigger placement="bottom"
@@ -58,7 +73,7 @@ const NavBar = () => {
 
       <NavLink
         className={styles.NavLink}
-        activeClassName={styles.Active}
+
         to="/signup"
       >
         <OverlayTrigger placement="bottom"
@@ -87,7 +102,7 @@ const NavBar = () => {
             <OverlayTrigger placement="bottom"
               overlay={<Tooltip>Home Page</Tooltip>}
             >
-              <i className="fas fa-home fa-2x"></i>
+              <i className="fas fa-home fa-2x color"></i>
 
             </OverlayTrigger>
             {currentUser ? loggedInIcons : loggedOutIcons}

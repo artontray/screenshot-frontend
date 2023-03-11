@@ -67,9 +67,7 @@ function SignInForm() {
                             />
                         </Form.Group>
                         {errors.username?.map((message, idx) => (
-                            <Alert key={idx} variant="warning">
-                                {message}
-                            </Alert>
+                            <div key={idx} className={styles.bgwarning}>{message}</div>
                         ))}
 
                         <Form.Group controlId="password">
@@ -84,20 +82,16 @@ function SignInForm() {
                             />
                         </Form.Group>
                         {errors.password?.map((message, idx) => (
-                            <Alert key={idx} variant="warning">
-                                {message}
-                            </Alert>
+                            <div key={idx} className={styles.bgwarning}>{message}</div>
                         ))}
-                        <Button
-                            className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright}`}
+                        <Button variant="light"
+                            className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.PurpleStyle}`}
                             type="submit"
                         >
                             Sign in
                         </Button>
                         {errors.non_field_errors?.map((message, idx) => (
-                            <Alert key={idx} variant="warning" className="mt-3">
-                                {message}
-                            </Alert>
+                            <div key={idx} className={styles.bgwarning}>{message}</div>
                         ))}
                     </Form>
                 </Container>

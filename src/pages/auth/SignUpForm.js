@@ -4,6 +4,7 @@ import Badge from "react-bootstrap/Badge";
 import styles from "../../styles/SignInUpForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
+import logo from "../../assets/logo.png";
 
 import {
   Form,
@@ -51,8 +52,10 @@ const SignUpForm = () => {
     <Row className={styles.Row}>
       <Col className="my-auto py-2 p-md-2" md={6}>
         <Container className={`${appStyles.Content} p-4 `}>
+          
           <h1 className={styles.Header}>Welcome to Screenshot Organizer</h1>
-
+          <p align="center"><img src={logo} alt="logo" height="90" alt="Logo"/></p>
+          
           <Form onSubmit={handleSubmit}>
             <Form.Group controlId="username">
               <Form.Label className="d-none">username</Form.Label>

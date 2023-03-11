@@ -2,7 +2,7 @@
 
 
     padding-bottom: 0px;
-
+    height: 5em;
 }
 
 .Navlink {
@@ -16,18 +16,18 @@ span {
 
 i {
     color : #750dfe;
-    padding-left: 15px;
+
+    padding-right: 15px;
+
 
 }
 
 
-
-
-.Active i {
-    color: #7222af;
+.color:active {
+    color:red;
 }
 
 i:hover{
-    font-size: 40px;
+    font-size: 32px;
 }
 
