@@ -8,6 +8,7 @@ import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 import { CurrentUserContext } from "../App";
 import { useSetCurrentUser } from "../contexts/CurrentUserContext";
+import Popover from 'react-bootstrap/Popover'
 import {
   useCurrentUser,
 } from "../contexts/CurrentUserContext";
@@ -96,15 +97,21 @@ const NavBar = () => {
         <Nav className="col-md-6 ml-md-auto">
           <NavLink
             className={styles.NavLink}
-            activeClassName={styles.Active}
             to="/"
           >
-            <OverlayTrigger placement="bottom"
-              overlay={<Tooltip>Home Page</Tooltip>}
+            <OverlayTrigger placement="bottom" trigger="hover"
+              overlay={(
+                <Popover >
+                  <Popover.Title as="h3" className={styles.Popover}>
+                   HOME
+                  </Popover.Title>
+                </Popover>
+              )}
             >
               <i className="fas fa-home fa-2x color"></i>
 
             </OverlayTrigger>
+           
             {currentUser ? loggedInIcons : loggedOutIcons}
           </NavLink>
 
