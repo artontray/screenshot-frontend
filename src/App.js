@@ -11,6 +11,7 @@ import ListScrshotPublicPage from "./pages/scrshot/ListScrshotPublicPage";
 import { createContext, useEffect, useState } from "react";
 import axios from "axios";
 import { useCurrentUser } from "./contexts/CurrentUserContext";
+import ScrshotPublicEditForm from "./pages/scrshot/ScrshotPublicEditForm";
 
 export const CurrentUserContext = createContext();
 export const SetCurrentUserContext = createContext();
@@ -60,6 +61,7 @@ function App() {
               <Route exact path="/signup" render={() => <SignUpForm />} />
               <Route exact path="/scrshot_public/create" render={() => <ScrshotPublicCreateForm />} />
               <Route exact path="/scrshot_public/:id" render={() => <ScrshotPublicPage />} />
+              <Route exact path="/scrshot_public/:id/edit" render={() => <ScrshotPublicEditForm />} />
               <Route render={() => <p>Put 404 error here!</p>} />
             </Switch>
           </Container>

@@ -40,10 +40,8 @@ const ScrshotPublic = (props) => {
   const history = useHistory();
 
   const handleEdit = () => {
-    history.push(`/ScrshotPublic/${id}/edit`);
+    history.push(`/scrshot_public/${id}/edit`);
   };
-
-
 
 
 
@@ -54,8 +52,8 @@ const ScrshotPublic = (props) => {
   const handleDelete = async () => {
     try {
       await axiosRes.delete(`/public-scrshot/${id}/`);
-
       history.push("/");
+      /*history.goBack();*/
 
     } catch (err) {
       console.log(err);
@@ -109,7 +107,8 @@ const ScrshotPublic = (props) => {
           </Link>
           <div className="d-flex align-items-center">
             <span>{updated_at}</span>
-            {is_owner && scrshotPage && (
+            {/*if  take out && scrshotPage , we display the icon dropdown to listing also */}
+            {is_owner  && scrshotPage && (
               <MoreDropdown
                 handleEdit={handleEdit}
                 handleDelete={handleDelete}
