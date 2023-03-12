@@ -15,9 +15,9 @@ import { Image } from "react-bootstrap";
 import Asset from "../../components/Asset";
 import { useHistory } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
-
+import { useRedirect } from "../../hooks/useRedirect";
 function ScrshotPublicCreateForm() {
-
+  useRedirect("loggedOut");
   const [errors, setErrors] = useState({});
 
   const [ScrshotPublicData, setScrshotPublicData] = useState({

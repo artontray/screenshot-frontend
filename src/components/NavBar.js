@@ -85,8 +85,9 @@ const NavBar = () => {
 
 
 
-        to="/"
+        to={`/profiles/${currentUser?.profile_id}`}
       >
+        <Avatar src={currentUser?.profile_image} text="Profile" height={40} />
         <OverlayTrigger placement="bottom"
           overlay={<Tooltip>Dashboard</Tooltip>}
         >
@@ -94,6 +95,10 @@ const NavBar = () => {
 
         </OverlayTrigger>
       </NavLink>
+
+
+
+
 
     </>
   );

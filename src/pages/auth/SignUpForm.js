@@ -6,7 +6,7 @@ import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
 import logo from "../../assets/logo.png";
 import Card from 'react-bootstrap/Card'
-
+import { useRedirect } from "../../hooks/useRedirect";
 import {
   Form,
   Button,
@@ -19,7 +19,7 @@ import axios from "axios";
 
 
 const SignUpForm = () => {
-
+  useRedirect("loggedIn");
   const [signUpData, setSignUpData] = useState({
     username: "",
     password1: "",

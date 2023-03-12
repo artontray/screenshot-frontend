@@ -12,9 +12,11 @@ import { createContext, useEffect, useState } from "react";
 import axios from "axios";
 import { useCurrentUser } from "./contexts/CurrentUserContext";
 import ScrshotPublicEditForm from "./pages/scrshot/ScrshotPublicEditForm";
+import ProfilePage from "./pages/profiles/ProfilePage";
 
-export const CurrentUserContext = createContext();
-export const SetCurrentUserContext = createContext();
+import UsernameForm from "./pages/profiles/UsernameForm";
+import UserPasswordForm from "./pages/profiles/UserPasswordForm";
+import ProfileEditForm from "./pages/profiles/ProfileEditForm";
 
 
 
@@ -25,47 +27,64 @@ function App() {
 
   return (
 
-        <div className={styles.App}>
-          <NavBar />
-          <Container className={styles.Main}>
-            <Switch>
-              <Route
-                exact
-                path="/"
-                render={() => (
-                  <ListScrshotPublicPage message="No results found. Adjust the search keyword." />
-                )}
+    <div className={styles.App}>
+      <NavBar />
+      <Container className={styles.Main}>
+        <Switch>
+          <Route
+            exact
+            path="/"
+            render={() => (
+              <ListScrshotPublicPage message="No results found. Adjust the search keyword." />
+            )}
+          />
+          <Route
+            exact
+            path="/ListFollowedUsersScrshot"
+            render={() => (
+              <ListScrshotPublicPage
+                message="No results found. Adjust the search keyword or follow a user."
+                filter={`owner__followed__owner__profile=${profile_id}&`}
               />
-              <Route
-                exact
-                path="/ListFollowedUsersScrshot"
-                render={() => (
-                  <ListScrshotPublicPage
-                    message="No results found. Adjust the search keyword or follow a user."
-                    filter={`owner__followed__owner__profile=${profile_id}&`}
-                  />
-                )}
+            )}
+          />
+          <Route
+            exact
+            path="/ListLikedPublicScrshot"
+            render={() => (
+              <ListScrshotPublicPage
+                message="No results found. Adjust the search keyword or like a post."
+                filter={`likes__owner__profile=${profile_id}&ordering=-likes__created_at&`}
               />
-              <Route
-                exact
-                path="/ListLikedPublicScrshot"
-                render={() => (
-                  <ListScrshotPublicPage
-                    message="No results found. Adjust the search keyword or like a post."
-                    filter={`likes__owner__profile=${profile_id}&ordering=-likes__created_at&`}
-                  />
-                )}
-              />
-              <Route exact path="/" render={() => <h1>Home page dsadepuis quand ES CE QUE HRRRR</h1>} />
-              <Route exact path="/signin" render={() => <SignInForm />} />
-              <Route exact path="/signup" render={() => <SignUpForm />} />
-              <Route exact path="/scrshot_public/create" render={() => <ScrshotPublicCreateForm />} />
-              <Route exact path="/scrshot_public/:id" render={() => <ScrshotPublicPage />} />
-              <Route exact path="/scrshot_public/:id/edit" render={() => <ScrshotPublicEditForm />} />
-              <Route render={() => <p>Put 404 error here!</p>} />
-            </Switch>
-          </Container>
-        </div>
+            )}
+          />
+          <Route exact path="/" render={() => <h1>Home page dsadepuis quand ES CE QUE HRRRR</h1>} />
+          <Route exact path="/signin" render={() => <SignInForm />} />
+          <Route exact path="/signup" render={() => <SignUpForm />} />
+          <Route exact path="/scrshot_public/create" render={() => <ScrshotPublicCreateForm />} />
+          <Route exact path="/scrshot_public/:id" render={() => <ScrshotPublicPage />} />
+          <Route exact path="/scrshot_public/:id/edit" render={() => <ScrshotPublicEditForm />} />
+          <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
+          <Route
+            exact
+            path="/profiles/:id/edit/username"
+            render={() => <UsernameForm />}
+          />
+          <Route
+            exact
+            path="/profiles/:id/edit/password"
+            render={() => <UserPasswordForm />}
+          />
+          <Route
+            exact
+            path="/profiles/:id/edit"
+            render={() => <ProfileEditForm />}
+          />
+
+          <Route render={() => <p>Page not found!</p>} />
+        </Switch>
+      </Container>
+    </div>
   );
 }
 
