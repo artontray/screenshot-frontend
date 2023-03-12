@@ -35,37 +35,50 @@ const NavBar = () => {
       className={styles.NavLink}
       to="/scrshot_public/create"
     >
-      
+
 
       <OverlayTrigger placement="bottom" trigger="hover"
-              overlay={(
-                <Popover >
-                  <Popover.Title as="h3" className={styles.Popover}>
-                   Publish a Public Screenshot
-                  </Popover.Title>
-                </Popover>
-              )}
-            >
-              <i className="fa-regular fa-image fa-2x"></i>
+        overlay={(
+          <Popover >
+            <Popover.Title as="h3" className={styles.Popover}>
+              Publish a Public Screenshot
+            </Popover.Title>
+          </Popover>
+        )}
+      >
+        <i className="fa-regular fa-image fa-2x"></i>
 
-            </OverlayTrigger>
+      </OverlayTrigger>
     </NavLink>
   );
 
   const addLogoutIcon = (
     <NavLink className={styles.NavLink} to="/" onClick={handleSignOut}>
-    <OverlayTrigger placement="bottom"
-      overlay={<Tooltip>Sign Out</Tooltip>}
-    >
-      <i className="fa-solid fa-power-off fa-2x"></i>
+      <OverlayTrigger placement="bottom"
+        overlay={<Tooltip>Sign Out</Tooltip>}
+      >
+        <i className="fa-solid fa-power-off fa-2x"></i>
 
-    </OverlayTrigger>
-  </NavLink>
+      </OverlayTrigger>
+    </NavLink>
   );
 
   const loggedInIcons = (
     <>
-
+      <NavLink
+        className={styles.NavLink}
+        activeClassName={styles.Active}
+        to="/ListFollowedUsersScrshot"
+      >
+        <i className="fas fa-stream"></i>Feed
+      </NavLink>
+      <NavLink
+        className={styles.NavLink}
+        activeClassName={styles.Active}
+        to="/ListLikedPublicScrshot"
+      >
+        <i className="fas fa-heart"></i>Liked
+      </NavLink>
 
       <NavLink
         className={styles.NavLink}
@@ -119,9 +132,9 @@ const NavBar = () => {
   return (
     <Navbar className={styles.NavBar} fixed="top">
       <Container>
-      {currentUser && addPublicScreenshotIcon}
-      
-      
+        {currentUser && addPublicScreenshotIcon}
+
+
 
         <Nav className="col-md-6 ml-md-auto">
           <NavLink
@@ -132,7 +145,7 @@ const NavBar = () => {
               overlay={(
                 <Popover >
                   <Popover.Title as="h3" className={styles.Popover}>
-                   HOME
+                    HOME
                   </Popover.Title>
                 </Popover>
               )}
@@ -140,7 +153,7 @@ const NavBar = () => {
               <i className="fas fa-home fa-2x"></i>
 
             </OverlayTrigger>
-            
+
             {currentUser ? loggedInIcons : loggedOutIcons}
           </NavLink>
 

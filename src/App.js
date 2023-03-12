@@ -7,35 +7,52 @@ import SignUpForm from "./pages/auth/SignUpForm";
 import SignInForm from "./pages/auth/SignInForm";
 import ScrshotPublicCreateForm from "./pages/scrshot/ScrshotPublicCreateForm";
 import ScrshotPublicPage from "./pages/scrshot/ScrshotPublicPage";
+import ListScrshotPublicPage from "./pages/scrshot/ListScrshotPublicPage";
 import { createContext, useEffect, useState } from "react";
 import axios from "axios";
+import { useCurrentUser } from "./contexts/CurrentUserContext";
 
 export const CurrentUserContext = createContext();
 export const SetCurrentUserContext = createContext();
 
 function App() {
-  const [currentUser, setCurrentUser] = useState(null);
 
-  const handleMount = async () => {
-    try {
-      const { data } = await axios.get("dj-rest-auth/user/");
-      setCurrentUser(data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  useEffect(() => {
-    handleMount();
-  }, []);
+  const currentUser = useCurrentUser();
+  const profile_id = currentUser?.profile_id || "";
 
   return (
-    <CurrentUserContext.Provider value={currentUser}>
-      <SetCurrentUserContext.Provider value={setCurrentUser}>
+
         <div className={styles.App}>
           <NavBar />
           <Container className={styles.Main}>
             <Switch>
+              <Route
+                exact
+                path="/"
+                render={() => (
+                  <ListScrshotPublicPage message="No results found. Adjust the search keyword." />
+                )}
+              />
+              <Route
+                exact
+                path="/ListFollowedUsersScrshot"
+                render={() => (
+                  <ListScrshotPublicPage
+                    message="No results found. Adjust the search keyword or follow a user."
+                    filter={`owner__followed__owner__profile=${profile_id}&`}
+                  />
+                )}
+              />
+              <Route
+                exact
+                path="/ListLikedPublicScrshot"
+                render={() => (
+                  <ListScrshotPublicPage
+                    message="No results found. Adjust the search keyword or like a post."
+                    filter={`likes__owner__profile=${profile_id}&ordering=-likes__created_at&`}
+                  />
+                )}
+              />
               <Route exact path="/" render={() => <h1>Home page dsadepuis quand ES CE QUE HRRRR</h1>} />
               <Route exact path="/signin" render={() => <SignInForm />} />
               <Route exact path="/signup" render={() => <SignUpForm />} />
@@ -45,8 +62,6 @@ function App() {
             </Switch>
           </Container>
         </div>
-      </SetCurrentUserContext.Provider>
-    </CurrentUserContext.Provider>
   );
 }
 
