@@ -148,7 +148,7 @@ const ScrshotPublic = (props) => {
             </OverlayTrigger>
           )}
           {likes_count}
-          <Link to={`/public-scrshot/${id}`}>
+          <Link to={`/scrshot_public/${id}`}>
             <i className="far fa-comments" />
           </Link>
           {comments_count}
