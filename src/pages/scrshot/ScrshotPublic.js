@@ -5,8 +5,19 @@ import { Card, Media, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Avatar from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefaults";
+import { useHistory } from "react-router-dom";
+import { MoreDropdown } from "../../components/MoreDropdown";
+import Alert from 'react-bootstrap/Alert'
+import { useState } from "react";
+import Button from "react-bootstrap/Button";
+import { render } from "@testing-library/react";
+import AlertMessage from "../../styles/AlertMessage.module.css";
+
+
+
 
 const ScrshotPublic = (props) => {
+
   const {
     id,
     owner,
@@ -25,6 +36,31 @@ const ScrshotPublic = (props) => {
 
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
+
+  const history = useHistory();
+
+  const handleEdit = () => {
+    history.push(`/ScrshotPublic/${id}/edit`);
+  };
+
+
+
+
+
+
+
+
+
+  const handleDelete = async () => {
+    try {
+      await axiosRes.delete(`/public-scrshot/${id}/`);
+
+      history.push("/");
+
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const handleLike = async () => {
     try {
@@ -61,7 +97,10 @@ const ScrshotPublic = (props) => {
 
 
   return (
+
+
     <Card className={styles.Screenshot}>
+      
       <Card.Body>
         <Media className="align-items-center justify-content-between">
           <Link to={`/profiles/${profile_id}`}>
@@ -70,7 +109,12 @@ const ScrshotPublic = (props) => {
           </Link>
           <div className="d-flex align-items-center">
             <span>{updated_at}</span>
-            {is_owner && scrshotPage && "..."}
+            {is_owner && scrshotPage && (
+              <MoreDropdown
+                handleEdit={handleEdit}
+                handleDelete={handleDelete}
+              />
+            )}
           </div>
         </Media>
       </Card.Body>

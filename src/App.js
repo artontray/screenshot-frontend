@@ -15,6 +15,8 @@ import { useCurrentUser } from "./contexts/CurrentUserContext";
 export const CurrentUserContext = createContext();
 export const SetCurrentUserContext = createContext();
 
+
+
 function App() {
 
   const currentUser = useCurrentUser();

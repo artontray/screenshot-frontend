@@ -15,7 +15,10 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
 import NoResults from "../../assets/no-results.png";
 
+
 function ListScrshotPublicPage({ message, filter = "" }) {
+
+
     const [scrshots, setScrshots] = useState({ results: [] });
     const [hasLoaded, setHasLoaded] = useState(false);
     const { pathname } = useLocation();

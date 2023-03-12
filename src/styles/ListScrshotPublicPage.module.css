@@ -1,9 +1,12 @@
 .SearchBar input {
-    border-radius: 20px;
+    border: 1px solid #5100ff;
     color: #7847ff;
     padding-left: 40px;
     margin-bottom: 16px;
-    
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
   }
   
   .SearchBar input:focus {
