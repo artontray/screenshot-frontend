@@ -75,7 +75,11 @@ function ProfilePage() {
           <Row className="justify-content-center no-gutters">
             <Col xs={3} className="my-2">
               <div>{profile?.nb_screenshots_public}</div>
-              <div>posts</div>
+              <div>Public</div>
+            </Col>
+            <Col xs={3} className="my-2">
+              <div>{profile?.nb_screenshots_private}</div>
+              <div>Private</div>
             </Col>
             <Col xs={3} className="my-2">
               <div>{profile?.followers_count}</div>
@@ -86,6 +90,7 @@ function ProfilePage() {
               <div>following</div>
             </Col>
           </Row>
+
         </Col>
         <Col lg={3} className="text-lg-right">
           {currentUser &&
