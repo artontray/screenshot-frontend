@@ -69,7 +69,7 @@ function ScrshotPrivateCreateForm() {
 
     formData.append("title", title);
     formData.append("content", content);
-    formData.append("category", category);
+    formData.append("category", event.target[3].value);
     formData.append("image", imageInput.current.files[0]);
 
 

@@ -10,7 +10,7 @@ function SelectCategory(props) {
   const [results] = useState([]);
   const { ScrshotPrivateData, setScrshotPrivateData } = props;
   useEffect(() => {
-    async function fetchData() {
+    const fetchData = async () => {
       // Fetch data
       const data  = await axiosReq.get(`/category/`);
 
@@ -28,14 +28,15 @@ function SelectCategory(props) {
 
 
 
-
-
       
     }
 
     // Trigger the fetch
     fetchData();
   }, []);
+
+
+
 
   const handleChangeCategory = (event) => {
     setScrshotPrivateData((prevData) => ({
