@@ -18,12 +18,12 @@ function SelectCategory(props) {
 
       
       // Store results in the results array
-      data.data.results.map((value) => {
+      data.data.results.map((value) => (
         results.push({
         key: value.title,
          value: value.id,
-        });
-      });
+        })
+  ));
 
 
 
@@ -33,7 +33,7 @@ function SelectCategory(props) {
 
     // Trigger the fetch
     fetchData();
-  }, []);
+  }, [results]);
 
 
 

@@ -1,14 +1,13 @@
 .NavBar {
+    background-color: #dab3ff;
 
 
-    padding-bottom: 0px;
-    height: 5em;
+
 }
 
 .Navlink {
     padding: 5px;
 }
-
 
 
 span {
@@ -19,22 +18,5 @@ span {
     color: rgb(118, 21, 255);
 
 }
-i {
-    color : #750dfe;
 
-    padding-right: 15px;
-
-
-}
-
-.color{
-    color:red;
-}
-.color:active {
-    color:red;
-}
-
-i:hover{
-    font-size: 32px;
-}
 
