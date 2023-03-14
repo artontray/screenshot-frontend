@@ -6,13 +6,19 @@ import "./api/axiosDefaults";
 import SignUpForm from "./pages/auth/SignUpForm";
 import SignInForm from "./pages/auth/SignInForm";
 import ScrshotPublicCreateForm from "./pages/scrshot/ScrshotPublicCreateForm";
+import ScrshotPrivateCreateForm from "./pages/scrshot/ScrshotPrivateCreateForm";
+import CategoryCreateForm from "./pages/category/CategoryCreateForm";
+
 import ScrshotPublicPage from "./pages/scrshot/ScrshotPublicPage";
 import ListScrshotPublicPage from "./pages/scrshot/ListScrshotPublicPage";
-import { createContext, useEffect, useState } from "react";
-import axios from "axios";
+import ListScrshotPrivatePage from "./pages/scrshot/ListScrshotPrivatePage";
+
+
 import { useCurrentUser } from "./contexts/CurrentUserContext";
 import ScrshotPublicEditForm from "./pages/scrshot/ScrshotPublicEditForm";
 import ProfilePage from "./pages/profiles/ProfilePage";
+
+
 
 import UsernameForm from "./pages/profiles/UsernameForm";
 import UserPasswordForm from "./pages/profiles/UserPasswordForm";
@@ -65,6 +71,11 @@ function App() {
           <Route exact path="/scrshot_public/:id" render={() => <ScrshotPublicPage />} />
           <Route exact path="/scrshot_public/:id/edit" render={() => <ScrshotPublicEditForm />} />
           <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
+
+          
+          <Route exact path="/category/create" render={() => <CategoryCreateForm />} />
+          <Route exact path="/ListScrshotPrivatePage" render={() => <ListScrshotPrivatePage />} />
+          <Route exact path="/scrshot_private/create" render={() => <ScrshotPrivateCreateForm />} />
           <Route
             exact
             path="/profiles/:id/edit/username"

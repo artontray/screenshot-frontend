@@ -12,7 +12,7 @@ import { MoreDropdown } from "../../components/MoreDropdown";
 
 
 
-const ScrshotPublic = (props) => {
+const ScrshotPrivate = (props) => {
 
   const {
     id,
@@ -143,7 +143,7 @@ const ScrshotPublic = (props) => {
               <i className="far fa-heart" />
             </OverlayTrigger>
           )}
-          <span className={styles.LikeResult}>{likes_count}</span>
+          {likes_count}
           <Link to={`/scrshot_public/${id}`}>
             <i className="far fa-comments" />
           </Link>
@@ -154,4 +154,4 @@ const ScrshotPublic = (props) => {
   );
 };
 
-export default ScrshotPublic;
+export default ScrshotPrivate;

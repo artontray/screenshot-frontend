@@ -16,16 +16,19 @@
   }
   
   .Heart {
-    color: #f85032;
+    color: #8864ff;
   }
   
   .Heart:hover {
-    color: #2142b2;
+    color: #d7a2ff;
   }
   
   .HeartOutline:hover {
-    color: #f85032;
+    color: #623fff;
   }
   .ScreenshotBar{
-    color: red;
+    color: rgb(82, 73, 255);
+  }
+  LikeResult{
+    color: rgb(82, 73, 255);
   }

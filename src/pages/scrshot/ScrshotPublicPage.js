@@ -13,7 +13,6 @@ import CommentCreateForm from "../comments/CommentCreateForm";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import Asset from "../../components/Asset";
 import { fetchMoreData } from "../../utils/utils";
-import PopularProfiles from "../profiles/PopularProfiles";
 function ScrshotPublicPage() {
   const { id } = useParams();
   const [scrshot, setScrshot] = useState({ results: [] });

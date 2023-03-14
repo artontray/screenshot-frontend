@@ -1,14 +1,12 @@
 import React from "react";
-import { useContext } from "react";
+
 import { Navbar, Container, Nav } from "react-bootstrap";
-import logo from "../assets/logo.png";
+
 import styles from "../styles/NavBar.module.css";
 import { NavLink } from "react-router-dom";
-import OverlayTrigger from "react-bootstrap/OverlayTrigger";
-import Tooltip from "react-bootstrap/Tooltip";
-import { CurrentUserContext } from "../App";
+
+
 import { useSetCurrentUser } from "../contexts/CurrentUserContext";
-import Popover from 'react-bootstrap/Popover'
 import {
   useCurrentUser,
 } from "../contexts/CurrentUserContext";
@@ -28,7 +26,53 @@ const NavBar = () => {
   };
 
 
+  const addCategoryIcon = (
+    <NavLink
+      className={styles.NavLink}
+      to="/category/create"
+    >
 
+
+
+        <i className="fa-regular fa-image fa-2x"></i>
+      
+      ADD CAT
+    </NavLink>
+  );
+
+  const addNewPrivateScrshotIcon = (
+    <NavLink
+      className={styles.NavLink}
+      to="/scrshot_private/create"
+    >
+
+
+
+        <i className="fa-regular fa-image fa-2x"></i>
+
+
+      ADD P. SCR
+    </NavLink>
+  );
+
+  
+
+  const ListAllPrivateScrshotIcon = (
+    <NavLink
+      className={styles.NavLink}
+      to="/ListScrshotPrivatePage"
+    >
+
+
+
+        <i className="fa-regular fa-image fa-2x"></i>
+
+
+      LISTALL
+    </NavLink>
+  );
+
+  
 
   const addPublicScreenshotIcon = (
     <NavLink
@@ -37,29 +81,21 @@ const NavBar = () => {
     >
 
 
-      <OverlayTrigger placement="bottom" trigger="hover"
-        overlay={(
-          <Popover >
-            <Popover.Title as="h3" className={styles.Popover}>
-              Publish a Public Screenshot
-            </Popover.Title>
-          </Popover>
-        )}
-      >
+
         <i className="fa-regular fa-image fa-2x"></i>
 
-      </OverlayTrigger>
+
+      fds
     </NavLink>
   );
 
   const addLogoutIcon = (
     <NavLink className={styles.NavLink} to="/" onClick={handleSignOut}>
-      <OverlayTrigger placement="bottom"
-        overlay={<Tooltip>Sign Out</Tooltip>}
-      >
+
         <i className="fa-solid fa-power-off fa-2x"></i>
 
-      </OverlayTrigger>
+
+      fds
     </NavLink>
   );
 
@@ -88,12 +124,10 @@ const NavBar = () => {
         to={`/profiles/${currentUser?.profile_id}`}
       >
         <Avatar src={currentUser?.profile_image} text="Profile" height={40} />
-        <OverlayTrigger placement="bottom"
-          overlay={<Tooltip>Dashboard</Tooltip>}
-        >
+
           <i className="fa-solid fa-address-card fa-2x"></i>
 
-        </OverlayTrigger>
+        fds
       </NavLink>
 
 
@@ -109,12 +143,11 @@ const NavBar = () => {
 
         to="/signin"
       >
-        <OverlayTrigger placement="bottom"
-          overlay={<Tooltip>Sign in</Tooltip>}
-        >
+
           <i className="fa-solid fa-play fa-2x"></i>
 
-        </OverlayTrigger>
+
+        fds
       </NavLink>
 
 
@@ -123,11 +156,10 @@ const NavBar = () => {
 
         to="/signup"
       >
-        <OverlayTrigger placement="bottom"
-          overlay={<Tooltip>Sign up</Tooltip>}
-        >
+
           <i className="fas fa-user-plus fa-2x"></i>
-        </OverlayTrigger>
+
+        fds
       </NavLink>
     </>
   );
@@ -137,32 +169,26 @@ const NavBar = () => {
   return (
     <Navbar className={styles.NavBar} fixed="top">
       <Container>
-        {currentUser && addPublicScreenshotIcon}
-
+      {currentUser && addPublicScreenshotIcon}
+        {currentUser && addCategoryIcon}
+        {currentUser && ListAllPrivateScrshotIcon}
+        {currentUser && addNewPrivateScrshotIcon}
+        
 
 
         <Nav className="col-md-6 ml-md-auto">
-          <NavLink
+        <NavLink
             className={styles.NavLink}
             to="/"
           >
-            <OverlayTrigger placement="bottom" trigger="hover"
-              overlay={(
-                <Popover >
-                  <Popover.Title as="h3" className={styles.Popover}>
-                    HOME
-                  </Popover.Title>
-                </Popover>
-              )}
-            >
+
               <i className="fas fa-home fa-2x"></i>
 
-            </OverlayTrigger>
-
-            {currentUser ? loggedInIcons : loggedOutIcons}
+           
+            fds
+           
           </NavLink>
-
-
+          {currentUser ? loggedInIcons : loggedOutIcons}
 
 
 

@@ -1,16 +1,17 @@
-.ProfileImage {
+.CategoryImage {
     object-fit: cover;
     height: 120px;
     width: 120px;
     margin: 4px;
   }
-
   .Labels {
     color: #7e00fb;
 }
-  @media screen and (max-width: 991px) {
-    .ProfileImage {
+
+@media screen and (max-width: 991px) {
+    .CategoryImage {
       width: 250px;
       height: 250px;
     }
   }
+

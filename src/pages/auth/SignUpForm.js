@@ -5,12 +5,11 @@ import styles from "../../styles/SignInUpForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
 import logo from "../../assets/logo.png";
-import Card from 'react-bootstrap/Card'
+
 import { useRedirect } from "../../hooks/useRedirect";
 import {
   Form,
   Button,
-  Image,
   Col,
   Row,
   Container,
