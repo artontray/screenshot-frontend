@@ -104,7 +104,7 @@ const ScrshotPublic = (props) => {
           <div className="d-flex align-items-center">
             <span>{updated_at}</span>
             {/*if  take out && scrshotPage , we display the icon dropdown to listing also */}
-            {is_owner  && scrshotPage && (
+            {is_owner   && (
               <MoreDropdown
                 handleEdit={handleEdit}
                 handleDelete={handleDelete}

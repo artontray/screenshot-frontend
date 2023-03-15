@@ -36,7 +36,7 @@ const ScrshotPrivate = (props) => {
   const history = useHistory();
 
   const handleEdit = () => {
-    history.push(`/scrshot_public/${id}/edit`);
+    history.push(`/scrshot_private/${id}/edit`);
   };
 
 
@@ -47,47 +47,16 @@ const ScrshotPrivate = (props) => {
 
   const handleDelete = async () => {
     try {
-      await axiosRes.delete(`/public-scrshot/${id}/`);
-      history.push("/");
-      /*history.goBack();*/
+      await axiosRes.delete(`/private-scrshot/${id}/`);
+      /*history.push("/");*/
+      history.goBack();
 
     } catch (err) {
       console.log(err);
     }
   };
 
-  const handleLike = async () => {
-    try {
-      /* "public_screenshot" is the name of screenshot instance provided by back-end (check serializers.py from Likes)*/
-      const { data } = await axiosRes.post("/likes/", { public_screenshot: id });
-      setScrshots((prevScrshot) => ({
-        ...prevScrshot,
-        results: prevScrshot.results.map((public_screenshot) => {
-          return public_screenshot.id === id
-            ? { ...public_screenshot, likes_count: public_screenshot.likes_count + 1, like_id: data.id }
-            : public_screenshot;
-        }),
-      }));
-    } catch (err) {
-      console.log(err);
-    }
-  };
 
-  const handleUnlike = async () => {
-    try {
-      await axiosRes.delete(`/likes/${like_id}/`);
-      setScrshots((prevScrshot) => ({
-        ...prevScrshot,
-        results: prevScrshot.results.map((scrshot) => {
-          return scrshot.id === id
-            ? { ...scrshot, likes_count: scrshot.likes_count - 1, like_id: null }
-            : scrshot;
-        }),
-      }));
-    } catch (err) {
-      console.log(err);
-    }
-  };
 
 
   return (
@@ -103,8 +72,8 @@ const ScrshotPrivate = (props) => {
           </Link>
           <div className="d-flex align-items-center">
             <span>{updated_at}</span>
-            {/*if  take out && scrshotPage , we display the icon dropdown to listing also */}
-            {is_owner  && scrshotPage && (
+  
+            {is_owner   && (
               <MoreDropdown
                 handleEdit={handleEdit}
                 handleDelete={handleDelete}
@@ -113,42 +82,13 @@ const ScrshotPrivate = (props) => {
           </div>
         </Media>
       </Card.Body>
-      <Link to={`/scrshot_public/${id}`}>
+      <Link to={`/scrshot_private/${id}`}>
         <Card.Img src={image} alt={title} />
       </Link>
       <Card.Body>
         {title && <Card.Title className="text-center">{title}</Card.Title>}
         {content && <Card.Text>{content}</Card.Text>}
-        <div className={styles.ScreenshotBar}>
-          {is_owner ? (
-            <OverlayTrigger
-              placement="top"
-              overlay={<Tooltip>You can't like your own post!</Tooltip>}
-            >
-              <i className="far fa-heart" />
-            </OverlayTrigger>
-          ) : like_id ? (
-            <span onClick={handleUnlike}>
-              <i className={`fas fa-heart ${styles.Heart}`} />
-            </span>
-          ) : currentUser ? (
-            <span onClick={handleLike}>
-              <i className={`far fa-heart ${styles.HeartOutline}`} />
-            </span>
-          ) : (
-            <OverlayTrigger
-              placement="top"
-              overlay={<Tooltip>Log in to like posts!</Tooltip>}
-            >
-              <i className="far fa-heart" />
-            </OverlayTrigger>
-          )}
-          {likes_count}
-          <Link to={`/scrshot_public/${id}`}>
-            <i className="far fa-comments" />
-          </Link>
-          {comments_count}
-        </div>
+ 
       </Card.Body>
     </Card>
   );

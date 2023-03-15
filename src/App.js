@@ -13,7 +13,7 @@ import ScrshotPublicPage from "./pages/scrshot/ScrshotPublicPage";
 import ListScrshotPublicPage from "./pages/scrshot/ListScrshotPublicPage";
 import ListScrshotPrivatePage from "./pages/scrshot/ListScrshotPrivatePage";
 
-
+import ScrshotPrivateEditForm from "./pages/scrshot/ScrshotPrivateEditForm";
 import { useCurrentUser } from "./contexts/CurrentUserContext";
 import ScrshotPublicEditForm from "./pages/scrshot/ScrshotPublicEditForm";
 import ProfilePage from "./pages/profiles/ProfilePage";
@@ -72,7 +72,7 @@ function App() {
           <Route exact path="/scrshot_public/:id/edit" render={() => <ScrshotPublicEditForm />} />
           <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
 
-          
+          <Route exact path="/scrshot_private/:id/edit" render={() => <ScrshotPrivateEditForm />} />
           <Route exact path="/category/create" render={() => <CategoryCreateForm />} />
           <Route exact path="/ListScrshotPrivatePage" render={() => <ListScrshotPrivatePage />} />
           <Route exact path="/scrshot_private/create" render={() => <ScrshotPrivateCreateForm />} />

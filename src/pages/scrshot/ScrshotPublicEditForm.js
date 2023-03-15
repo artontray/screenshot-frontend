@@ -155,10 +155,8 @@ function ScrshotPublicEditForm() {
               />
             </Form.Group>
             {errors?.image?.map((message, idx) => (
-              <Alert variant="warning" key={idx}>
-                {message}
-              </Alert>
-            ))}
+                <div key={idx} className={styles.bgwarning}>{message}</div>
+              ))}
 
             <div className="d-md-none">{textFields}</div>
           </Container>
