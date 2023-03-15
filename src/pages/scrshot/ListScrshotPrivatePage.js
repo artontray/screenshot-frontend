@@ -16,7 +16,7 @@ import { fetchMoreData } from "../../utils/utils";
 import NoResults from "../../assets/no-results.png";
 import PopularProfiles from "../profiles/PopularProfiles";
 
-function ListScrshotPrivatePage({ message, filter = "" }) {
+function ListScrshotPrivatePage({ message = "", filter = "" }) {
 
 
     const [scrshots, setScrshots] = useState({ results: [] });

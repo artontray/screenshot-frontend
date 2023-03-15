@@ -69,7 +69,7 @@ function ScrshotPrivateCreateForm() {
 
     formData.append("title", title);
     formData.append("content", content);
-    formData.append("category", event.target[3].value);
+    formData.append("category", category);
     formData.append("image", imageInput.current.files[0]);
 
 
@@ -116,6 +116,7 @@ function ScrshotPrivateCreateForm() {
           name="content"
           value={content}
           onChange={handleChange}
+          
         />
       </Form.Group>
       {errors?.content?.map((message, idx) => (

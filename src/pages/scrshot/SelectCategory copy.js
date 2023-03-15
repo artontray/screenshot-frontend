@@ -8,7 +8,7 @@ import styles from "../../styles/ScrShotCreateEditForm.module.css";
 
 function SelectCategory(props) {
   const [results] = useState([]);
-  const { ScrshotPrivateData, setScrshotPrivateData, category_id, category_title } = props;
+  const { ScrshotPrivateData, setScrshotPrivateData, category_id } = props;
   useEffect(() => {
     const fetchData = async () => {
       // Fetch data
@@ -54,7 +54,7 @@ function SelectCategory(props) {
         <Form.Label><Badge variant="light"><span className={styles.Labels}>Category : </span></Badge></Form.Label>
        
      
-        <div className={styles.bgwarning}>{category_id && `Current : ${category_title}`}</div>
+        <div className={styles.bgwarning}>Edit name or description before selecting category</div>
         <Form.Control as="select" id="category" name="category"
         onChange={handleChangeCategory}
         onClick={handleChangeCategory}
@@ -62,13 +62,12 @@ function SelectCategory(props) {
         >
           <>
           {console.log(results)}
-
         {results && results.map((option) => {
           return (
-            <option key={option.value} value={option.value} selected={category_id == option.value}>
+            <option key={option.value} value={option.value}>
               {option.key}
             </option>
-          
+             
           );
         })}</>
         </Form.Control>

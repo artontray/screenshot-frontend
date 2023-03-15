@@ -7,7 +7,7 @@ import Avatar from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefaults";
 import { useHistory } from "react-router-dom";
 import { MoreDropdown } from "../../components/MoreDropdown";
-
+import Badge from "react-bootstrap/Badge";
 
 
 
@@ -19,11 +19,10 @@ const ScrshotPrivate = (props) => {
     owner,
     profile_id,
     profile_image,
-    comments_count,
-    likes_count,
-    like_id,
     title,
     content,
+    category_title,
+    category,
     image,
     updated_at,
     scrshotPage,
@@ -48,8 +47,8 @@ const ScrshotPrivate = (props) => {
   const handleDelete = async () => {
     try {
       await axiosRes.delete(`/private-scrshot/${id}/`);
-      /*history.push("/");*/
-      history.goBack();
+      history.push("/");
+      /*history.goBack();*/
 
     } catch (err) {
       console.log(err);
@@ -69,6 +68,10 @@ const ScrshotPrivate = (props) => {
           <Link to={`/profiles/${profile_id}`}>
             <Avatar src={profile_image} height={55} />
             {owner}
+          </Link>
+          <Link to={`/category/${category}`}>
+          <Badge variant="light"><span className={styles.Labels}>Category</span></Badge> <h1>{category_title}</h1>
+            
           </Link>
           <div className="d-flex align-items-center">
             <span>{updated_at}</span>

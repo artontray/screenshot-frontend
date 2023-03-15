@@ -32,8 +32,9 @@ function ScrshotPrivateCreateForm() {
     content: "",
     category: "",
     image: "",
+    category_title: "",
   });
-  const { title, content, category, image } = ScrshotPrivateData;
+  const { title, content, category, image, category_title } = ScrshotPrivateData;
 
 
 
@@ -47,9 +48,9 @@ function ScrshotPrivateCreateForm() {
     const handleMount = async () => {
       try {
         const { data } = await axiosReq.get(`/private-scrshot/${id}/`);
-        const { title, content, image, category, is_owner } = data;
+        const { title, content, image, category, is_owner, category_title } = data;
 
-        is_owner ? setScrshotPrivateData({ title, content, image, category }) : history.push("/");
+        is_owner ? setScrshotPrivateData({ title, content, image, category, category_title }) : history.push("/");
       } catch (err) {
         console.log(err);
       }
@@ -86,7 +87,7 @@ function ScrshotPrivateCreateForm() {
 
     formData.append("title", title);
     formData.append("content", content);
-    formData.append("category", event.target[3].value);
+    formData.append("category", category);
     if (imageInput?.current?.files[0]) {
         formData.append("image", imageInput.current.files[0]);
       }
@@ -147,7 +148,7 @@ function ScrshotPrivateCreateForm() {
 
 
 
-<SelectCategory ScrshotPrivateData={ScrshotPrivateData} setScrshotPrivateData={setScrshotPrivateData} />
+<SelectCategory ScrshotPrivateData={ScrshotPrivateData} setScrshotPrivateData={setScrshotPrivateData} category_id={category} category_title={category_title}  />
 
       <Button variant="light"
         className={`${btnStyles.Button} ${btnStyles.PurpleStyle}`}
@@ -169,7 +170,7 @@ function ScrshotPrivateCreateForm() {
           <Container
             className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
           >
-            <Badge variant="light"><span className={styles.Labels}>Private Screenshot Area</span></Badge>
+            <Badge variant="light"><span className={styles.Labels}>Private Screenshot Area</span></Badge><hr />
             <Form.Group className="text-center">
               
                   <figure>
