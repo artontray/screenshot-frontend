@@ -49,8 +49,8 @@ const NavBar = () => {
 
 
 
-  const addPublicScreenshotIcon = (
-    <NavLink className={styles.NavLink} to="/scrshot_public/create">
+  const addNewIcon = (
+    <NavLink className={styles.NavLink} to="/SelectNewWhat">
       <i className="fa-solid fa-plus fa-2x"></i>
       New
     </NavLink>
@@ -138,7 +138,7 @@ const NavBar = () => {
   />
   <Navbar.Collapse id="basic-navbar-nav" >
     <Nav className="mr-auto text-left">
-      {currentUser && addPublicScreenshotIcon}
+      {currentUser && addNewIcon}
       {currentUser && addLikedIcon}
       {/*currentUser && addInspirationIcon*/}
       </Nav>

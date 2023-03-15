@@ -86,7 +86,7 @@ function SignInForm() {
                         {errors.password?.map((message, idx) => (
                             <div key={idx} className={styles.bgwarning}>{message}</div>
                         ))}
-                        <Button variant="light"
+                        <Button
                             className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.PurpleStyle}`}
                             type="submit"
                         >

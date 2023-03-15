@@ -18,7 +18,7 @@ import { useCurrentUser } from "./contexts/CurrentUserContext";
 import ScrshotPublicEditForm from "./pages/scrshot/ScrshotPublicEditForm";
 import ProfilePage from "./pages/profiles/ProfilePage";
 
-
+import SelectNewWhat from "./pages/selections/SelectNewWhat";
 
 import UsernameForm from "./pages/profiles/UsernameForm";
 import UserPasswordForm from "./pages/profiles/UserPasswordForm";
@@ -76,6 +76,9 @@ function App() {
           <Route exact path="/category/create" render={() => <CategoryCreateForm />} />
           <Route exact path="/ListScrshotPrivatePage" render={() => <ListScrshotPrivatePage />} />
           <Route exact path="/scrshot_private/create" render={() => <ScrshotPrivateCreateForm />} />
+          <Route exact path="/SelectNewWhat" render={() => <SelectNewWhat />} />
+          
+
           <Route
             exact
             path="/profiles/:id/edit/username"

@@ -56,7 +56,9 @@ i {
   vertical-align: middle;
 }
 
-
+.AlignCenter{
+  text-align: center;
+}
 
 figure {
   text-align: center;

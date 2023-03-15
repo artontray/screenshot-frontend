@@ -9,6 +9,8 @@
     min-width: 75px;
   }
   
+
+
   .Button:hover {
     opacity: 0.8;
     border-color: transparent;
@@ -16,6 +18,8 @@
     background-color: #7e1bff !important;
   }
   
+
+
   .Button:hover:active {
     background-color: #a480ff !important;
     
@@ -23,7 +27,7 @@
   
   .Button:active {
     background-color: #6f00ff !important;
-    
+
     
   }
   
@@ -44,3 +48,8 @@
     background-color: #713dff;
     color: #ffffff;
   }
+
+
+
+
+ 
