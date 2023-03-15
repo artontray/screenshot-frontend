@@ -1,53 +1,100 @@
 import React from "react";
-import styles from "../../styles/Profile.module.css";
-import btnStyles from "../../styles/Button.module.css";
+import styles from "../../styles/ScrshotPublic.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import { Card, Media, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import Avatar from "../../components/Avatar";
-import { Button } from "react-bootstrap";
-import { useSetProfileData } from "../../contexts/ProfileDataContext";
+import AvatarCategory from "../../components/AvatarCategory";
+import { axiosRes } from "../../api/axiosDefaults";
+import { useHistory } from "react-router-dom";
+import { MoreDropdown } from "../../components/MoreDropdown";
+import Badge from "react-bootstrap/Badge";
+import StylesAvatar from "../../styles/AvatarCategory.module.css";
+
+
+
 const Category = (props) => {
-  const { profile, mobile, imageSize = 55 } = props;
-  const { id, following_id, image, owner } = profile;
+
+  const {
+    id,
+    owner,
+    title,
+    description,
+    image,
+    created_at,
+    updated_at,
+    private_screenshots_count,
+  } = props;
 
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
+  var ShortTitle
+  if (title.length > 21){
+    ShortTitle = title.toString().replace(/^(.{20}[^\s]*).*/, "$1") + "...";
+  }else{
+    ShortTitle = title.toString();
+  }
+    
 
-  const { handleFollow, handleUnfollow } = useSetProfileData();
+  const history = useHistory();
+
+  const handleEdit = () => {
+    history.push(`/`);
+  };
+
+
+
+
+
+
+
+  const handleDelete = async () => {
+    try {
+      await axiosRes.delete(`/category/${id}/`);
+      history.push("/ListScrshotPrivatePage");
+      /*history.goBack();*/
+
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+
+
 
   return (
-    <div
-      className={`my-3 d-flex align-items-center ${mobile && "flex-column"}`}
-    >
-      <div>
-        <Link className="align-self-center" to={`/profiles/${id}`}>
-          <Avatar src={image} height={imageSize} />
-        </Link>
-      </div>
-      <div className={`mx-2 ${styles.WordBreak}`}>
-        <strong>{owner}</strong>
-      </div>
-      <div className={`text-right ${!mobile && "ml-auto"}`}>
-        {!mobile &&
-          currentUser &&
-          !is_owner &&
-          (following_id ? (
-            <Button
-              className={`${btnStyles.Button} ${btnStyles.BlackOutline}`}
-              onClick={() => handleUnfollow(profile)}
-            >
-              unfollow
-            </Button>
-          ) : (
-            <Button
-              className={`${btnStyles.Button} ${btnStyles.Black}`}
-              onClick={() => handleFollow(profile)}
-            >
-              follow
-            </Button>
-          ))}
-      </div>
-    </div>
+
+
+    <Card className={styles.Screenshot}>
+      
+      <Card.Body>
+        <Media className="align-items-center justify-content-between">
+        <div className={StylesAvatar.CategoryPhotoDesign}>
+          <Link to={`/category/${id}`}>
+            <AvatarCategory src={image} />
+
+          </Link>
+          </div>
+          <Link to={`/category/${id}`}>
+          <i class="fa-solid fa-camera fa-3x"></i>
+          <h1>{private_screenshots_count} </h1>
+          <h4>{ShortTitle}</h4>
+            
+          </Link>
+          <div className="d-flex align-items-center">
+            
+  
+            {is_owner   && (
+              <MoreDropdown
+                handleEdit={handleEdit}
+                handleDelete={handleDelete}
+              />
+            )}
+          </div>
+        </Media>
+      </Card.Body>
+
+
+    </Card>
   );
 };
 

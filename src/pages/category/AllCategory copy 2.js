@@ -3,11 +3,8 @@ import { Container } from "react-bootstrap";
 import { axiosReq } from "../../api/axiosDefaults";
 import appStyles from "../../App.module.css";
 import Asset from "../../components/Asset";
-import { useHistory } from "react-router-dom";
-import { SeeAllCategoryDropdown } from "../../components/MoreDropdown";
-
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import { Card, Media, OverlayTrigger, Tooltip } from "react-bootstrap";
+
 const AllCategory = ({ mobile }) =>{
   const [categoryData, setCategoryData] = useState({
  
@@ -16,10 +13,7 @@ const AllCategory = ({ mobile }) =>{
   });
   const { popularCategory } = categoryData;
   const currentUser = useCurrentUser();
-  const history = useHistory();
-  const handleSeeAll = () => {
-    history.push(`/ListAllCategoryPage`);
-  };
+
   useEffect(() => {
     const handleMount = async () => {
       try {
@@ -47,28 +41,7 @@ const AllCategory = ({ mobile }) =>{
     >	
       {popularCategory.results.length ? (	
         <>	
-          
-
-
-
-          <Media className="align-items-center justify-content-between">
           <p>Most followed profiles.</p>	
-          <p className="d-flex align-items-center">
-            
-  
-            {
-              <SeeAllCategoryDropdown
-                handleSeeAll={handleSeeAll}
-              />
-            }
-          </p>
-        </Media>
-
-
-
-
-
-
           {mobile ? (	
             <div className="d-flex justify-content-around">	
               {popularCategory.results.map((category) => (	

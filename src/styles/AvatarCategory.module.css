@@ -1,0 +1,13 @@
+.Avatar {
+
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+.CategoryPhotoDesign {
+
+  width:200px;
+  height:200px;
+  border: 10px solid rgb(200, 104, 238);
+  border-radius: 50%;
+  }

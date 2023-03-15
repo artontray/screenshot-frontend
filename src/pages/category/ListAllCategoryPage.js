@@ -5,7 +5,7 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 
-import ScrshotPrivate from "./ScrshotPrivate";
+import Category from "./Category";
 import Asset from "../../components/Asset";
 import appStyles from "../../App.module.css";
 import styles from "../../styles/ListScrshotPublicPage.module.css";
@@ -16,20 +16,20 @@ import { fetchMoreData } from "../../utils/utils";
 import NoResults from "../../assets/no-results.png";
 import AllCategory  from "../category/AllCategory";
 
-function ListScrshotPrivatePage({ message = "", filter = "" }) {
+function ListAllCategoryPage({ message = "", filter = "" }) {
 
 
-    const [scrshots, setScrshots] = useState({ results: [] });
+    const [category, setCategory] = useState({ results: [] });
     const [hasLoaded, setHasLoaded] = useState(false);
     const { pathname } = useLocation();
   
     const [query, setQuery] = useState("");
     
     useEffect(() => {
-      const fetchScrshots = async () => {
+      const fetchCategory = async () => {
         try {
-          const { data } = await axiosReq.get(`/private-scrshot/?${filter}search=${query}`);
-          setScrshots(data);
+          const { data } = await axiosReq.get(`/category/?search=${query}`);
+          setCategory(data);
           setHasLoaded(true);
         } catch (err) {
           console.log(err);
@@ -37,7 +37,7 @@ function ListScrshotPrivatePage({ message = "", filter = "" }) {
       };
       setHasLoaded(false);
       const timer = setTimeout(() => {
-        fetchScrshots();
+        fetchCategory();
       }, 1000);
       return () => {
         clearTimeout(timer);
@@ -65,15 +65,15 @@ function ListScrshotPrivatePage({ message = "", filter = "" }) {
   
           {hasLoaded ? (
             <>
-              {scrshots.results.length ? (
+              {category.results.length ? (
                 <InfiniteScroll
-                  children={scrshots.results.map((scrshot) => (
-                    <ScrshotPrivate key={scrshot.id} {...scrshot} setScrshots={setScrshots} />
+                  children={category.results.map((cat) => (
+                    <Category key={cat.id} {...cat} setCategory={setCategory} />
                   ))}
-                  dataLength={scrshots.results.length}
+                  dataLength={category.results.length}
                   loader={<Asset spinner />}
-                  hasMore={!!scrshots.next}
-                  next={() => fetchMoreData(scrshots, setScrshots)}
+                  hasMore={!!category.next}
+                  next={() => fetchMoreData(category, setCategory)}
                 />
               ) : (
                 <Container className={appStyles.Content}>
@@ -94,4 +94,4 @@ function ListScrshotPrivatePage({ message = "", filter = "" }) {
     );
 }
 
-export default ListScrshotPrivatePage;
+export default ListAllCategoryPage;

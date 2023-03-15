@@ -16,9 +16,23 @@ const ThreeDots = React.forwardRef(({ onClick }, ref) => (
   />
 ));
 
+
+const ThreeDotsVersion2 = React.forwardRef(({ onClick }, ref) => (
+  <i
+    className="fa-solid fa-ellipsis fa-2x"
+
+    ref={ref}
+    onClick={(e) => {
+      e.preventDefault();
+      onClick(e);
+    }}
+  />
+));
+
+
 export const MoreDropdown = ({ handleEdit, handleDelete }) => {
   return (
-    <Dropdown className="ml-auto" drop="down">
+    <Dropdown className="ml-auto" drop="left">
       <Dropdown.Toggle as={ThreeDots} />
 
       <Dropdown.Menu
@@ -43,7 +57,27 @@ export const MoreDropdown = ({ handleEdit, handleDelete }) => {
     </Dropdown>
   );
 };
+export const SeeAllCategoryDropdown = ({handleSeeAll}) => {
+  return (
+    <Dropdown className="ml-auto" drop="left">
+      <Dropdown.Toggle as={ThreeDotsVersion2} />
 
+      <Dropdown.Menu
+        className="text-center"
+        popperConfig={{ strategy: "fixed" }}
+      >
+        <Dropdown.Item
+          className={styles.DropdownItem}
+          onClick={handleSeeAll}
+          aria-label="seeall"
+        >
+          See All
+        </Dropdown.Item>
+
+      </Dropdown.Menu>
+    </Dropdown>
+  );
+};
 
 export const CategoryEditDropdown = ({ id }) => {
   const history = useHistory();
