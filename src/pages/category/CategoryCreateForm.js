@@ -75,6 +75,7 @@ function CategoryCreateForm() {
           className={`${styles.Input} ${styles.InputText}`}
           type="text"
           name="title"
+          maxLength={12}
           value={title}
           onChange={handleChange}
         />

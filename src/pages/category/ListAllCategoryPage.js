@@ -28,7 +28,7 @@ function ListAllCategoryPage({ message = "", filter = "" }) {
     useEffect(() => {
       const fetchCategory = async () => {
         try {
-          const { data } = await axiosReq.get(`/category/?search=${query}`);
+          const { data } = await axiosReq.get(`/category/?search=${query}&ordering=-private_screenshots_count&`);
           setCategory(data);
           setHasLoaded(true);
         } catch (err) {

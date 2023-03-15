@@ -16,6 +16,12 @@
 
 }
 
+.ContentProfile {
+  background-color: transparent;
+  padding: 10px;
+
+}
+
 .FillerImage {
   /*object-fit: cover;*/
   /*border-radius: 50%;*/

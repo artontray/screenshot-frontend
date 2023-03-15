@@ -9,8 +9,6 @@ import { Link } from "react-router-dom";
 import Avatar from "../../components/Avatar";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { Card, Media, OverlayTrigger, Tooltip } from "react-bootstrap";
-import stylesIcon from "../../styles/MoreDropdown.module.css";
-import Badge from "react-bootstrap/Badge";
 const AllCategory = ({ mobile }) => {
   const [categoryData, setCategoryData] = useState({
 
@@ -27,7 +25,7 @@ const AllCategory = ({ mobile }) => {
     const handleMount = async () => {
       try {
         const { data } = await axiosReq.get(
-          `/category/?ordering=-private_screenshots_count&`
+          `/category/`
         );
 
         setCategoryData((prevState) => ({
@@ -74,11 +72,9 @@ const AllCategory = ({ mobile }) => {
           {mobile ? (
             popularCategory.results.slice(0, 5).map((category) => (
               <>
-                <Link className="align-self-center" to={`/category/${category.id}`}>{'  '}
-                  
-                  <Badge variant="light" className="text-center"><span>{category.title.toString().slice(0, 15)} ({category.private_screenshots_count})  </span></Badge>{'  '}
+                <Link className="align-self-center" to={`/category/${category.id}`}>
+                  <Avatar src={category.image} height="55" />
                 </Link>
-                
               </>
             ))
           ) : (
@@ -86,54 +82,47 @@ const AllCategory = ({ mobile }) => {
 
 
 
-
-            popularCategory.results.map((category) => (
-
-
+            <div className="align-self-center">
+              {popularCategory.results.map((category) => (
 
 
-              <>
+
+
+                <>
+                  <div key={category.id}>
+                    <Link className="align-self-left" to={`/category/${category.id}`}>
+                      <Avatar src={category.image} height="55" />
+                      
+                    </Link>
+                    </div>
+                    <div>
+                    <Link className="align-self-center" to={`/category/${category.id}`}>
+                      
+                    <h6>{category.title.toString().slice(0,15)}</h6>
+                    </Link>
+                    </div>
+
+         
+            
+                  
+                	<div className={`text-right ${!mobile && "ml-auto"}`}>
+                    <i class="fa-solid fa-camera fa-3x"></i>
+                  </div>
               
-                  
-                    
-          <Media className="align-items-center justify-content-between">
-          <Link to={`/category/${category.id}`}>
-            <Avatar src={category.image} height={45} />
-            
-            <Badge variant="light" className="text-center"><span>{category.title.toString().slice(0, 15)}</span></Badge>
-          </Link>
-          <div className={stylesIcon.DropdownItem}>
-          <h3>{category.private_screenshots_count}
-          <i class="fa-solid fa-camera fa-1x"></i></h3>
-            
-          </div>
-        </Media>
-                    
-                 
-                  
-                 
-             
-
-
-
-
-
-
-
               </>
 
 
 
 
 
-            ))
-
-          )}
-        </>
-      ) : (
-        <Asset spinner />
-      )
-      }
+          ))}
+        </div>
+      )}
+    </>
+  ) : (
+    <Asset spinner />
+  )
+}	
     </Container >
   );
 };

@@ -10,7 +10,6 @@ import Avatar from "../../components/Avatar";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { Card, Media, OverlayTrigger, Tooltip } from "react-bootstrap";
 import stylesIcon from "../../styles/MoreDropdown.module.css";
-import Badge from "react-bootstrap/Badge";
 const AllCategory = ({ mobile }) => {
   const [categoryData, setCategoryData] = useState({
 
@@ -27,7 +26,7 @@ const AllCategory = ({ mobile }) => {
     const handleMount = async () => {
       try {
         const { data } = await axiosReq.get(
-          `/category/?ordering=-private_screenshots_count&`
+          `/category/?owner=${currentUser?.pk}&ordering_fields=-private_screenshots_count&`
         );
 
         setCategoryData((prevState) => ({
@@ -74,11 +73,9 @@ const AllCategory = ({ mobile }) => {
           {mobile ? (
             popularCategory.results.slice(0, 5).map((category) => (
               <>
-                <Link className="align-self-center" to={`/category/${category.id}`}>{'  '}
-                  
-                  <Badge variant="light" className="text-center"><span>{category.title.toString().slice(0, 15)} ({category.private_screenshots_count})  </span></Badge>{'  '}
+                <Link className="align-self-center" to={`/category/${category.id}`}>
+                  <Avatar src={category.image} height="55" />
                 </Link>
-                
               </>
             ))
           ) : (
@@ -98,13 +95,12 @@ const AllCategory = ({ mobile }) => {
                     
           <Media className="align-items-center justify-content-between">
           <Link to={`/category/${category.id}`}>
-            <Avatar src={category.image} height={45} />
-            
-            <Badge variant="light" className="text-center"><span>{category.title.toString().slice(0, 15)}</span></Badge>
+            <Avatar src={category.image} height={55} />
+            {category.title.toString().slice(0, 15)}
           </Link>
           <div className={stylesIcon.DropdownItem}>
-          <h3>{category.private_screenshots_count}
-          <i class="fa-solid fa-camera fa-1x"></i></h3>
+          {category.private_screenshots_count}
+          <i class="fa-solid fa-camera fa-2x"></i>
             
           </div>
         </Media>

@@ -148,22 +148,16 @@ function ProfilePage() {
     <Row>
       <Col className="py-2 p-0 p-lg-2" lg={8}>
         <PopularProfiles mobile />
-        
+        <Container className={appStyles.ContentProfile}>
           {hasLoaded ? (
             <>
-            <Container className={appStyles.Content}>
               {mainProfile}
-              </Container>
-              <Container className={appStyles.ContentProfile}>
               {mainprofileScrshots}
-              </Container>
             </>
           ) : (
-            <Container className={appStyles.Content}>
             <Asset spinner />
-            </Container>
           )}
-
+        </Container>
       </Col>
       <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
         <PopularProfiles />
