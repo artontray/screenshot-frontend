@@ -22,6 +22,7 @@ const Category = (props) => {
     image,
     created_at,
     updated_at,
+    scrshotPage,
     private_screenshots_count,
   } = props;
 

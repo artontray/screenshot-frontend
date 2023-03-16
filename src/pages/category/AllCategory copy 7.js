@@ -60,7 +60,7 @@ const AllCategory = ({ mobile }) => {
 
           <Media className="align-items-center justify-content-between">
 <p>Dashboard</p>
-            
+            <p className="d-flex align-items-center">
 
 
               {
@@ -69,7 +69,7 @@ const AllCategory = ({ mobile }) => {
                   handleSeeLastPrivateScrshot={handleSeeLastPrivateScrshot}
                 />
               }
-           
+            </p>
           </Media>
 
 
@@ -79,13 +79,13 @@ const AllCategory = ({ mobile }) => {
 
           {mobile ? (
             popularCategory.results.slice(0, 5).map((category, i) => (
-              
+              <>
                 <Link key={category.id} className="align-self-center" to={`/category/${category.id}`}>{'  '}
                   
                   <Badge   variant="light" className="text-center"><span >{category.title.toString().slice(0, 15)} ({category.private_screenshots_count})  </span></Badge>{'  '}
                 </Link>
                 
-              
+              </>
             ))
           ) : (
 
@@ -98,7 +98,7 @@ const AllCategory = ({ mobile }) => {
 
 
 
-              
+              <>
               
                   
                     
@@ -110,7 +110,7 @@ const AllCategory = ({ mobile }) => {
           </Link>
           <div className={stylesIcon.DropdownItem}>
           <h3>{category.private_screenshots_count}
-          <i className="fa-solid fa-camera fa-1x"></i></h3>
+          <i class="fa-solid fa-camera fa-1x"></i></h3>
             
           </div>
         </Media>
@@ -126,7 +126,7 @@ const AllCategory = ({ mobile }) => {
 
 
 
-           
+              </>
 
 
 

@@ -20,10 +20,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import CommentCreateForm from "../comments/CommentCreateForm";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import Asset from "../../components/Asset";
-import {
-    useCategoryData,
-    useSetCategoryData,
-  } from "../../contexts/CategoryDataContext";
+
 import { fetchMoreData } from "../../utils/utils";
 import PopularProfiles from "../profiles/PopularProfiles";
 import { MoreDropdown } from "../../components/MoreDropdown";
@@ -43,10 +40,7 @@ function CategoryPage() {
           axiosReq.get(`/private-scrshot/?category=${id}`),
         ]);
         setCategory({ results: [category] });
-        
         setScrshots(scrshots);
-        
-        console.log(category);
         setHasLoaded(true);
       } catch (err) {
         console.log(err);
@@ -96,11 +90,8 @@ function CategoryPage() {
           <h3 className="m-2">{category?.title}</h3>
           <Row className="justify-content-center no-gutters">
             <Col xs={3} className="my-2">
-            <i className="fa-solid fa-camera fa-3x"></i>
-          <h1>{
-            
-            category.results[0]?.private_screenshots_count
-          } {console.log(category.results[0]?.private_screenshots_count)}</h1>
+            <i class="fa-solid fa-camera fa-3x"></i>
+          <h1>{category?.private_screenshots_count} </h1>
             </Col>
             
           </Row>

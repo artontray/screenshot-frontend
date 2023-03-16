@@ -3,58 +3,41 @@ import React, { useEffect, useState } from "react";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
-import Comment from "../comments/Comment";
-import Badge from "react-bootstrap/Badge";
-import appStyles from "../../App.module.css";
+
+import Asset from "../../components/Asset";
+import { axiosRes } from "../../api/axiosDefaults";
 import { useHistory } from "react-router-dom";
 import styles from "../../styles/CategoryPage.module.css";
+import appStyles from "../../App.module.css";
+import btnStyles from "../../styles/Button.module.css";
+import Badge from "react-bootstrap/Badge";
+import { MoreDropdown } from "../../components/MoreDropdown";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
-import Category from "./Category";
-import NoResults from "../../assets/no-results.png";
-import ScrshotPrivate from "../scrshot/ScrshotPrivate";
-import { axiosRes } from "../../api/axiosDefaults";
 import AllCategory from "../category/AllCategory";
+import {
+  useCategoryData,
+  useSetCategoryData,
+} from "../../contexts/CategoryDataContext";
 import { Button, Image } from "react-bootstrap";
 import InfiniteScroll from "react-infinite-scroll-component";
-import CommentCreateForm from "../comments/CommentCreateForm";
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import Asset from "../../components/Asset";
-import {
-    useCategoryData,
-    useSetCategoryData,
-  } from "../../contexts/CategoryDataContext";
+import ScrshotPrivate from "../scrshot/ScrshotPrivate";
 import { fetchMoreData } from "../../utils/utils";
-import PopularProfiles from "../profiles/PopularProfiles";
-import { MoreDropdown } from "../../components/MoreDropdown";
+import NoResults from "../../assets/no-results.png";
+import { CategoryEditDropdown } from "../../components/MoreDropdown";
+
 function CategoryPage() {
-  const { id } = useParams();
-  const [category, setCategory] = useState({ results: [] });
-  const history = useHistory();
-  const currentUser = useCurrentUser();
   const [hasLoaded, setHasLoaded] = useState(false);
-  const [scrshots, setScrshots] = useState({ results: [] });
+  const [categoryScrshots, setScrshots] = useState({ results: [] });
 
-  useEffect(() => {
-    const handleMount = async () => {
-      try {
-        const [{ data: category }, { data: scrshots }] = await Promise.all([
-          axiosReq.get(`/category/${id}`),
-          axiosReq.get(`/private-scrshot/?category=${id}`),
-        ]);
-        setCategory({ results: [category] });
-        
-        setScrshots(scrshots);
-        
-        console.log(category);
-        setHasLoaded(true);
-      } catch (err) {
-        console.log(err);
-      }
-    };
+  const currentUser = useCurrentUser();
+  const { id } = useParams();
 
-    handleMount();
-  }, [id]);
+  const { setCategoryData, handleFollow, handleUnfollow } = useSetCategoryData();
+  const { pageCategory } = useCategoryData();
+  const history = useHistory();
+  const [category] = pageCategory.results;
   const handleEdit = () => {
     history.push(`/`);
   };
@@ -77,19 +60,38 @@ function CategoryPage() {
   };
 
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [{ data: pageCategory }, { data: categoryScrshots }] =
+          await Promise.all([
+            axiosReq.get(`/category/${id}/`),
+            axiosReq.get(`/private-scrshot/?category=${id}`),
+          ]);
+        setCategoryData((prevState) => ({
+          ...prevState,
+          pageCategory: { results: [pageCategory] },
+        }));
+        setScrshots(categoryScrshots);
+        setHasLoaded(true);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchData();
+  }, [id, setCategoryData]);
 
   const mainCategory = (
     <>
-      {currentUser && <MoreDropdown
-                handleEdit={handleEdit}
-                handleDelete={handleDelete}
-              />}
+      
       <Row noGutters className="px-3 text-center">
+
         <Col lg={3} className="text-lg-left">
+        
           <Image
             className={styles.CategoryImage}
             roundedCircle
-            src={scrshots?.image}
+            src={category?.image}
           />
         </Col>
         <Col lg={6}>
@@ -97,16 +99,20 @@ function CategoryPage() {
           <Row className="justify-content-center no-gutters">
             <Col xs={3} className="my-2">
             <i className="fa-solid fa-camera fa-3x"></i>
-          <h1>{
-            
-            category.results[0]?.private_screenshots_count
-          } {console.log(category.results[0]?.private_screenshots_count)}</h1>
+          <h1>{category?.private_screenshots_count} </h1>
             </Col>
             
           </Row>
 
         </Col>
-
+        <Col lg={3} className=" no-gutters ml-auto">
+        <div className="d-flex align-items-center">
+        {currentUser && <MoreDropdown
+                handleEdit={handleEdit}
+                handleDelete={handleDelete}
+              />}
+              </div>
+</Col>
         {category?.description && <Col className="p-3">{category.description}</Col>}
       </Row>
     </>
@@ -115,17 +121,17 @@ function CategoryPage() {
   const maincategoryScrshots = (
     <>
       <hr />
-      <p className="text-center">Screenshot(s) From <Badge variant="light" className="text-center"><span className={styles.Labels}>{category?.title}</span></Badge></p>
+      <p className="text-center">Screenshot(s) from category :  <Badge variant="light" className="text-center"><span className={styles.Labels}>{category?.title}</span></Badge></p>
       <hr />
-      {scrshots.results.length ? (
+      {categoryScrshots.results.length ? (
         <InfiniteScroll
-          children={scrshots.results.map((scrshot) => (
-            <ScrshotPrivate key={scrshot.id} {...scrshot} setScrshots={setScrshots} setCategory={setCategory} />
+          children={categoryScrshots.results.map((scrshot) => (
+            <ScrshotPrivate key={scrshot.id} {...scrshot} setScrshots={setCategoryData} />
           ))}
-          dataLength={scrshots.results.length}
+          dataLength={categoryScrshots.results.length}
           loader={<Asset spinner />}
-          hasMore={!!scrshots.next}
-          next={() => fetchMoreData(scrshots, setScrshots)}
+          hasMore={!!categoryScrshots.next}
+          next={() => fetchMoreData(categoryScrshots, setScrshots)}
         />
       ) : (
         <Asset
@@ -140,9 +146,6 @@ function CategoryPage() {
 
     </>
   );
-
-
-
 
   return (
     <Row>

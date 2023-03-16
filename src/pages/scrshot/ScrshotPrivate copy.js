@@ -9,7 +9,12 @@ import { useHistory } from "react-router-dom";
 import { MoreDropdown } from "../../components/MoreDropdown";
 import Badge from "react-bootstrap/Badge";
 import stylesIcon from "../../styles/MoreDropdown.module.css";
-
+import {
+  useCategoryData,
+  useSetCategoryData,
+} from "../../contexts/CategoryDataContext";
+import { useEffect, useState } from "react";
+import { axiosReq } from "../../api/axiosDefaults";
 
 
 const ScrshotPrivate = (props) => {
@@ -25,7 +30,7 @@ const ScrshotPrivate = (props) => {
     category,
     image,
     updated_at,
-    setCategory,
+    CategoryData,
     setScrshots,
   } = props;
 
@@ -38,28 +43,41 @@ const ScrshotPrivate = (props) => {
     history.push(`/scrshot_private/${id}/edit`);
   };
 
+  const { pageProfile } = useCategoryData();
+  const { setCategoryData } = useSetCategoryData();
 
-
-
-
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [{ data: pageProfile }, { data: profileScrshots }] =
+          await Promise.all([
+            axiosReq.get(`/profiles/${id}/`),
+            axiosReq.get(`/public-scrshot/?owner__profile=${id}`),
+          ]);
+          setCategoryData((prevState) => ({
+          ...prevState,
+          pageProfile: { results: [pageProfile] },
+        }));
+        setCategoryData(profileScrshots);
+        setHasLoaded(true);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchData();
+  }, [id, setProfileData]);
 
 
   const handleDelete = async () => {
     try {
       await axiosRes.delete(`/private-scrshot/${id}/`);
-      setCategory((prevScrshot) => ({
-        results: [
-          {
-            ...prevScrshot.results[0],
-            private_screenshots_count: prevScrshot.results[0].private_screenshots_count - 1,
-          },
-        ],
+
+  
+      setCategoryData((prevscrshot) => ({
+        ...prevscrshot,
+        results: prevscrshot.results.filter((scrshot) => scrshot.id !== id),
       }));
-      setScrshots((prevScrshot) => ({
-        ...prevScrshot,
-        results: prevScrshot.results.filter((scrshotprivate) => scrshotprivate.id !== id),
-      }));
-      /*history.push("/");*/
+      /*history.push("/ListAllCategoryPage");*/
       /*history.goBack();*/
 
     } catch (err) {

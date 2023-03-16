@@ -99,8 +99,8 @@ function CategoryPage() {
             <i className="fa-solid fa-camera fa-3x"></i>
           <h1>{
             
-            category.results[0]?.private_screenshots_count
-          } {console.log(category.results[0]?.private_screenshots_count)}</h1>
+          category.results.private_screenshots_count
+          } {console.log(category.results[0])}</h1>
             </Col>
             
           </Row>

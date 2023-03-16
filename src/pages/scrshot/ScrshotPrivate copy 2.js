@@ -77,7 +77,7 @@ const ScrshotPrivate = (props) => {
       
       <Card.Body>
         <Media className="align-items-center justify-content-between">
-        <p className={stylesIcon.DropdownItem}><i className="fa-solid fa-lock fa-2x"></i></p>
+        <p className={stylesIcon.DropdownItem}><i class="fa-solid fa-lock fa-2x"></i></p>
           <Link to={`/category/${category}`}>
           <Badge variant="light"><span className={styles.Labels}>Category</span></Badge> <h1>{category_title}</h1>
             
