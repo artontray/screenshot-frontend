@@ -12,8 +12,8 @@ function SelectCategory(props) {
   useEffect(() => {
     const fetchData = async () => {
       // Fetch data
-      const data  = await axiosReq.get(`/category/`);
-      //const {data : category}  = await axiosReq.get(`/category/`);
+      //const data  = await axiosReq.get(`/category/`);
+      const {data : category}  = await axiosReq.get(`/category/`);
       console.log(data.length)
 
       
@@ -58,16 +58,14 @@ function SelectCategory(props) {
         <Form.Control as="select" id="category" name="category"
         onChange={handleChangeCategory}
         onClick={handleChangeCategory}
-        defaultValue = {category_id}
+
         >
           <>
-          
-          <option key="0" value="none">
-          Select Category
-            </option>
+          {console.log(results)}
+
         {results && results.map((option) => {
           return (
-            <option key={option.value} value={option.value}>
+            <option key={option.value} value={option.value} selected={category_id == option.value}>
               {option.key}
             </option>
           

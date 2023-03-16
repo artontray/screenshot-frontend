@@ -74,20 +74,20 @@ function ProfilePage() {
           <h3 className="m-2">{profile?.owner}</h3>
           <Row className="justify-content-center no-gutters">
             <Col xs={3} className="my-2">
-              <div>{profile?.nb_screenshots_public}</div>
-              <div>Public</div>
+              <div><span className={styles.Labels}><h3>{profile?.nb_screenshots_public}</h3></span></div>
+              <div><Badge variant="light"><span className={styles.Labels}>Public</span></Badge></div>
             </Col>
             <Col xs={3} className="my-2">
-              <div>{profile?.nb_screenshots_private}</div>
-              <div>Private</div>
+            <div><span className={styles.Labels}><h3>{profile?.nb_screenshots_private}</h3></span></div>
+              <div><Badge variant="light"><span className={styles.Labels}>Private</span></Badge></div>
             </Col>
             <Col xs={3} className="my-2">
-              <div>{profile?.followers_count}</div>
-              <div>followers</div>
+            <div><span className={styles.Labels}><h3>{profile?.followers_count}</h3></span></div>
+              <div><Badge variant="light"><span className={styles.Labels}>Followers</span></Badge></div>
             </Col>
             <Col xs={3} className="my-2">
-              <div>{profile?.following_count}</div>
-              <div>following</div>
+            <div><span className={styles.Labels}><h3>{profile?.following_count}</h3></span></div>
+              <div><Badge variant="light"><span className={styles.Labels}>Following</span></Badge></div>
             </Col>
           </Row>
 

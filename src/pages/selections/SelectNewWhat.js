@@ -57,8 +57,9 @@ function SelectNewWhat() {
                 <Col md={{ span: 8, offset: 2 }} className="my-auto p-0 p-md-2">
                     <Container className={`${appStyles.Content} p-4 `}>
                         <h1 className={styles.Header}>Welcome to Creation Area</h1>
-                        <p align="center"><img src={logo} alt="logo" height="90" /><hr />
-                        <Badge variant="light"><span className={styles.Labels}>Screenshots</span></Badge> are a fascinating phenomenon in the digital age.
+                        <p align="center"><img src={logo} alt="logo" height="90" align="center" /></p>
+                        <hr />
+                        <p align="center"><Badge variant="light"><span className={styles.Labels}>Screenshots</span></Badge> are a fascinating phenomenon in the digital age.
                          They capture a stolen moment in time that only you can see 
                          on your computer screen, making it a <Badge variant="light"><span className={styles.Labels}>unique piece</span></Badge> of digital
                           art. The ability to <Badge variant="light"><span className={styles.Labels}>share this image</span></Badge> with the rest of the

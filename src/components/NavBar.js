@@ -104,7 +104,7 @@ const NavBar = () => {
     </NavLink>
   );
   const addSearchingIcon = (
-    <NavLink className={styles.NavLink} to="/ListAllCategoryPage">
+    <NavLink className={styles.NavLink} to="/ListScrshotPrivatePage">
       <i className="fa-solid fa-magnifying-glass fa-2x"></i>
 
     </NavLink>

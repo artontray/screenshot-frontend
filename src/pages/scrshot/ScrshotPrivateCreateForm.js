@@ -152,7 +152,7 @@ function ScrshotPrivateCreateForm() {
           <Container
             className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
           >
-            <Badge variant="light"><span className={styles.Labels}>Private Screenshot Area</span></Badge>
+            
             <Form.Group className="text-center">
               {image ? (
                 <>

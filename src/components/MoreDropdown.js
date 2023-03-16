@@ -31,7 +31,7 @@ const ThreeDotsVersion2 = React.forwardRef(({ onClick }, ref) => (
 
 export const MoreDropdownCategory = ({ handleEdit, handleDelete }) => {
   return (
-    <Dropdown className="mr-auto" drop="left">
+    <Dropdown className="mr-auto" drop="right">
       <Dropdown.Toggle as={ThreeDots} />
 
       <Dropdown.Menu
@@ -83,7 +83,7 @@ export const MoreDropdown = ({ handleEdit, handleDelete }) => {
     </Dropdown>
   );
 };
-export const SeeAllDropdown = ({handleSeeAllCategory, handleSeeLastPrivateScrshot}) => {
+export const SeeAllDropdown = ({handleSeeAllCategory, handleSeeLastPrivateScrshot, SearchCategory}) => {
   return (
     <Dropdown className="ml-auto" drop="left">
       <Dropdown.Toggle as={ThreeDotsVersion2} />
@@ -105,6 +105,13 @@ export const SeeAllDropdown = ({handleSeeAllCategory, handleSeeLastPrivateScrsho
           aria-label="SeeAllPrivScrShot"
         >
            - All Private 
+        </Dropdown.Item>
+        <Dropdown.Item
+          className={styles.DropdownItemOnList}
+          onClick={SearchCategory}
+          aria-label="SearchCategory"
+        >
+           - Search Category 
         </Dropdown.Item>
 
       </Dropdown.Menu>

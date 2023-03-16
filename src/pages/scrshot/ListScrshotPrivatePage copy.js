@@ -18,7 +18,7 @@ import AllCategory  from "../category/AllCategory";
 
 function ListScrshotPrivatePage({ message = "", filter = "" }) {
 
-  const [category, setCategory] = useState({ results: [] });
+
     const [scrshots, setScrshots] = useState({ results: [] });
     const [hasLoaded, setHasLoaded] = useState(false);
     const { pathname } = useLocation();
@@ -28,13 +28,8 @@ function ListScrshotPrivatePage({ message = "", filter = "" }) {
     useEffect(() => {
       const fetchScrshots = async () => {
         try {
-          const [{ data: category }, { data: scrshots }] = await Promise.all([
-            axiosReq.get(`/category/`),
-            axiosReq.get(`/private-scrshot/?${filter}search=${query}`)
-          ]);
-          /*const { data } = await axiosReq.get(`/private-scrshot/?${filter}search=${query}`);*/
-          setScrshots(scrshots);
-          setCategory({ results: [category] });
+          const { data } = await axiosReq.get(`/private-scrshot/?${filter}search=${query}`);
+          setScrshots(data);
           setHasLoaded(true);
         } catch (err) {
           console.log(err);
@@ -93,7 +88,7 @@ function ListScrshotPrivatePage({ message = "", filter = "" }) {
           )}
         </Col>
         <Col md={4} className="d-none d-lg-block p-0 p-lg-2">
-        <AllCategory setScrshots={setScrshots} setCategory={setCategory}/>
+        <AllCategory />
         </Col>
       </Row>
     );

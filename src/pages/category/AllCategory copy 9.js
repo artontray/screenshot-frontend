@@ -29,10 +29,7 @@ const AllCategory = ({ mobile }) => {
   const handleSeeLastPrivateScrshot = () => {
     history.push(`/ListScrshotPrivatePage`);
   };
-  const SearchCategory = () => {
-    history.push(`/ListAllCategoryPage`);
-  };
-  
+
   useEffect(() => {
     const handleMount = async () => {
       try {
@@ -72,7 +69,6 @@ const AllCategory = ({ mobile }) => {
                 <SeeAllDropdown
                 handleSeeAllCategory={handleSeeAllCategory}
                   handleSeeLastPrivateScrshot={handleSeeLastPrivateScrshot}
-                  SearchCategory={SearchCategory}
                 />
               }
            

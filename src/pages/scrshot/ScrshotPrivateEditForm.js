@@ -19,7 +19,7 @@ import { axiosReq } from "../../api/axiosDefaults";
 import { useRedirect } from "../../hooks/useRedirect";
 import SelectCategory from "./SelectCategory";
 import { useEffect } from "react";
-
+import stylesIcon from "../../styles/MoreDropdown.module.css";
 function ScrshotPrivateCreateForm() {
   useRedirect("loggedOut");
   const [errors, setErrors] = useState({});
@@ -170,8 +170,8 @@ function ScrshotPrivateCreateForm() {
           <Container
             className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
           >
-            <Badge variant="light"><span className={styles.Labels}>Private Screenshot Area</span></Badge><hr />
-            <Form.Group className="text-center">
+            <p className={stylesIcon.DropdownItem}><i className="fa-solid fa-lock fa-2x"></i></p>
+            <Form.Group className="text-center justify-content-center">
               
                   <figure>
                     <Image className={appStyles.Image} src={image} rounded />

@@ -18,8 +18,6 @@ const AllCategory = ({ mobile }) => {
     popularCategory: { results: [] },
   });
   const { popularCategory } = categoryData;
-  const [category, setCategory] = useState({ results: [] });
-  const [scrshots, setScrshots] = useState({ results: [] });
   const currentUser = useCurrentUser();
   const history = useHistory();
   const handleSeeAllCategory = () => {
@@ -29,10 +27,7 @@ const AllCategory = ({ mobile }) => {
   const handleSeeLastPrivateScrshot = () => {
     history.push(`/ListScrshotPrivatePage`);
   };
-  const SearchCategory = () => {
-    history.push(`/ListAllCategoryPage`);
-  };
-  
+
   useEffect(() => {
     const handleMount = async () => {
       try {
@@ -72,7 +67,6 @@ const AllCategory = ({ mobile }) => {
                 <SeeAllDropdown
                 handleSeeAllCategory={handleSeeAllCategory}
                   handleSeeLastPrivateScrshot={handleSeeLastPrivateScrshot}
-                  SearchCategory={SearchCategory}
                 />
               }
            
