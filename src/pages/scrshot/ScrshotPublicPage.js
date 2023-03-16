@@ -13,6 +13,7 @@ import CommentCreateForm from "../comments/CommentCreateForm";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import Asset from "../../components/Asset";
 import { fetchMoreData } from "../../utils/utils";
+import PopularProfiles from "../profiles/PopularProfiles";
 function ScrshotPublicPage() {
   const { id } = useParams();
   const [scrshot, setScrshot] = useState({ results: [] });
@@ -41,10 +42,10 @@ function ScrshotPublicPage() {
   return (
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={8}>
-        <p>Popular profiles for mobile</p>
+
         
         <ScrshotPublic {...scrshot.results[0]} setScrshots={setScrshot} scrshotPage />
-        <Container className={appStyles.Content}>
+        <Container className={appStyles.ContentComment}>
           {currentUser ? (
             <CommentCreateForm
               profile_id={currentUser.profile_id}
@@ -72,15 +73,16 @@ function ScrshotPublicPage() {
                   next={() => fetchMoreData(comments, setComments)}
                 />
               ) : currentUser ? (
-                <span>No comments yet, be the first to comment!</span>
+                
+                <div className={appStyles.MessagesInfo}>No comments yet, be the first to comment!</div>
               ) : (
                 <span>No comments... yet</span>
               )}
             </Container>
       </Col>
-      <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
-      
-      </Col>
+      <Col md={4} className="d-none d-lg-block p-0 p-lg-2">
+        <PopularProfiles />
+        </Col>
     </Row>
   );
 }

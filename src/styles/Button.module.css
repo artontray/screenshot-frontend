@@ -9,7 +9,15 @@
     min-width: 75px;
   }
   
+  .Follow{
+    
+    background-color: #ba89fb !important;
+    color : #000;
+  }
 
+  .UnFollow{
+    background-color: #6f00ff !important;
+  }
 
   .Button:hover {
     opacity: 0.8;

@@ -6,7 +6,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
-
+import styles from "../../styles/UsernameForm.module.css";
 import { useHistory, useParams } from "react-router-dom";
 import { axiosRes } from "../../api/axiosDefaults";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
@@ -60,10 +60,10 @@ const UserPasswordForm = () => {
             <Form.Group>
               <Form.Label>New password</Form.Label>
               <Form.Control
-                placeholder="new password"
                 type="password"
                 value={new_password1}
                 onChange={handleChange}
+                className={styles.Input}
                 name="new_password1"
               />
             </Form.Group>
@@ -75,9 +75,9 @@ const UserPasswordForm = () => {
             <Form.Group>
               <Form.Label>Confirm password</Form.Label>
               <Form.Control
-                placeholder="confirm new password"
                 type="password"
                 value={new_password2}
+                className={styles.Input}
                 onChange={handleChange}
                 name="new_password2"
               />

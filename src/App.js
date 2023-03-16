@@ -49,7 +49,7 @@ function App() {
             path="/ListFollowedUsersScrshot"
             render={() => (
               <ListScrshotPublicPage
-                message="No results found. Adjust the search keyword or follow a user."
+                message="No results found. Adjust the search keyword or follow a ScreenShooter"
                 filter={`owner__followed__owner__profile=${profile_id}&`}
               />
             )}
@@ -59,7 +59,7 @@ function App() {
             path="/ListLikedPublicScrshot"
             render={() => (
               <ListScrshotPublicPage
-                message="No results found. Adjust the search keyword or like a post."
+                message="No results found. Adjust the search keyword or like a ScreenShot"
                 filter={`likes__owner__profile=${profile_id}&ordering=-likes__created_at&`}
               />
             )}

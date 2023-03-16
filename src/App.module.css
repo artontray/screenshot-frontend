@@ -16,7 +16,23 @@
 
 }
 
+.MessagesInfo{
+
+    background: transparent;
+    color: #5a1eff;
+    text-align: center;
+
+    padding-bottom: 15px;
+  
+}
+
 .ContentProfile {
+  background-color: transparent;
+  padding: 10px;
+
+}
+
+.ContentComment {
   background-color: transparent;
   padding: 10px;
 

@@ -6,7 +6,7 @@ import styles from "../styles/NavBar.module.css";
 import { NavLink } from "react-router-dom";
 import Dropdown from 'react-bootstrap/Navbar'
 import NavDropdown from "react-bootstrap/Navbar";
-
+import logo from "../assets/logo.png";
 import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
 import { useSetCurrentUser } from "../contexts/CurrentUserContext";
 import {
@@ -140,17 +140,18 @@ const NavBar = () => {
     <Nav className="mr-auto text-left">
       {currentUser && addNewIcon}
       {currentUser && addLikedIcon}
-      {/*currentUser && addInspirationIcon*/}
+      {currentUser && addInspirationIcon}
+      {addHomeIcon}
       </Nav>
      
-      {addHomeIcon}
 
+    
 
 
       <Nav className="ml-auto text-left">
-      {currentUser && addPrivateDashboard}
-      {currentUser && addCategoryIcon}
-      {currentUser && addPrivateScrshotIcon}
+
+
+
       {currentUser ? addLogoutIcon : loggedInIcons}
     </Nav>
   </Navbar.Collapse>

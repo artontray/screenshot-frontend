@@ -1,6 +1,6 @@
 .Form {
     border: none;
-    border-bottom: 2px #00d1ff solid;
+
   }
   
   .Button {
@@ -18,3 +18,21 @@
     background-color: aliceblue;
     color: #242a3d;
   }
+
+  .Input {
+    background: #ffffff;
+    border: 1px solid hsl(281, 84%, 80%);
+
+    color: #000000;
+    text-align: center;
+    border-top-left-radius : 20px;
+    border-bottom-left-radius : 20px;
+    border-bottom-right-radius : 20px;
+    border-top-right-radius : 20px;
+    
+  }
+
+  .InputTextarea {
+    text-align: center;
+    resize: none;
+}

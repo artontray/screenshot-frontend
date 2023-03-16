@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../../styles/ScrshotPublic.module.css";
+import styles from "../../styles/ScrshotPrivate.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { Card, Media, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -8,7 +8,7 @@ import { axiosRes } from "../../api/axiosDefaults";
 import { useHistory } from "react-router-dom";
 import { MoreDropdown } from "../../components/MoreDropdown";
 import Badge from "react-bootstrap/Badge";
-
+import stylesIcon from "../../styles/MoreDropdown.module.css";
 
 
 
@@ -65,10 +65,7 @@ const ScrshotPrivate = (props) => {
       
       <Card.Body>
         <Media className="align-items-center justify-content-between">
-          <Link to={`/profiles/${profile_id}`}>
-            <Avatar src={profile_image} height={55} />
-            {owner}
-          </Link>
+        <p className={stylesIcon.DropdownItem}><i class="fa-solid fa-lock fa-2x"></i></p>
           <Link to={`/category/${category}`}>
           <Badge variant="light"><span className={styles.Labels}>Category</span></Badge> <h1>{category_title}</h1>
             
@@ -89,6 +86,7 @@ const ScrshotPrivate = (props) => {
         <Card.Img src={image} alt={title} />
       </Link>
       <Card.Body>
+        
         {title && <Card.Title className="text-center">{title}</Card.Title>}
         {content && <Card.Text>{content}</Card.Text>}
  
