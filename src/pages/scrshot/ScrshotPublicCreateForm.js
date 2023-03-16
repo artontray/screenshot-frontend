@@ -76,6 +76,7 @@ function ScrshotPublicCreateForm() {
           type="text"
           name="title"
           value={title}
+          maxLength={20}
           onChange={handleChange}
         />
       </Form.Group>

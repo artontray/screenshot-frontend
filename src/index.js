@@ -6,7 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter as Router } from "react-router-dom";
 import { CurrentUserProvider } from "./contexts/CurrentUserContext";
 import { ProfileDataProvider } from "./contexts/ProfileDataContext";
-
+import { CategoryDataProvider } from "./contexts/CategoryDataContext";
 
 ReactDOM.render(
 
@@ -14,9 +14,9 @@ ReactDOM.render(
       <CurrentUserProvider>
 
         <ProfileDataProvider>
-        
+        <CategoryDataProvider>
           <App />
-          
+          </CategoryDataProvider>
         </ProfileDataProvider>
 
       </CurrentUserProvider>

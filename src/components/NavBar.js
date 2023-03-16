@@ -77,7 +77,8 @@ const NavBar = () => {
   );
   const addInspirationIcon = (
     <NavLink className={styles.NavLink} to="/ListFollowedUsersScrshot">
-      <i className="fa-solid fa-camera fa-2x"></i>
+      <i className="fa-solid fa-people-group fa-2x"></i>
+  
 
     </NavLink>
   );
@@ -95,13 +96,16 @@ const NavBar = () => {
       </Navbar.Brand>
     </NavLink>
 
-
-
-
   );
   const addHomeIcon = (
     <NavLink className={styles.NavLink} to="/">
       <i className="fas fa-home fa-2x"></i>
+
+    </NavLink>
+  );
+  const addSearchingIcon = (
+    <NavLink className={styles.NavLink} to="/ListAllCategoryPage">
+      <i className="fa-solid fa-magnifying-glass fa-2x"></i>
 
     </NavLink>
   );
@@ -141,9 +145,10 @@ const NavBar = () => {
       {currentUser && addNewIcon}
       {currentUser && addLikedIcon}
       {currentUser && addInspirationIcon}
+      {currentUser && addSearchingIcon}
       {addHomeIcon}
       </Nav>
-     
+      
 
     
 

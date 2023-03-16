@@ -6,7 +6,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
-import styles from "../../styles/UsernameForm.module.css";
+import styles from "../../styles/UserPasswordForm.module.css";
 import { useHistory, useParams } from "react-router-dom";
 import { axiosRes } from "../../api/axiosDefaults";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
@@ -67,11 +67,10 @@ const UserPasswordForm = () => {
                 name="new_password1"
               />
             </Form.Group>
-            {errors?.new_password1?.map((message, idx) => (
-              <Alert key={idx} variant="warning">
-                {message}
-              </Alert>
-            ))}
+
+             {errors.new_password1?.map((message, idx) => (
+                            <div key={idx} className={styles.bgwarning}>{message}</div>
+                        ))}
             <Form.Group>
               <Form.Label>Confirm password</Form.Label>
               <Form.Control
@@ -82,11 +81,10 @@ const UserPasswordForm = () => {
                 name="new_password2"
               />
             </Form.Group>
-            {errors?.new_password2?.map((message, idx) => (
-              <Alert key={idx} variant="warning">
-                {message}
-              </Alert>
-            ))}
+
+             {errors.new_password2?.map((message, idx) => (
+                            <div key={idx} className={styles.bgwarning}>{message}</div>
+                        ))}
             <Button
               className={`${btnStyles.Button} ${btnStyles.Blue}`}
               onClick={() => history.goBack()}

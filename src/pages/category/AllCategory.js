@@ -4,7 +4,7 @@ import { axiosReq } from "../../api/axiosDefaults";
 import appStyles from "../../App.module.css";
 import Asset from "../../components/Asset";
 import { useHistory } from "react-router-dom";
-import { SeeAllCategoryDropdown } from "../../components/MoreDropdown";
+import { SeeAllDropdown } from "../../components/MoreDropdown";
 import { Link } from "react-router-dom";
 import Avatar from "../../components/Avatar";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
@@ -20,9 +20,14 @@ const AllCategory = ({ mobile }) => {
   const { popularCategory } = categoryData;
   const currentUser = useCurrentUser();
   const history = useHistory();
-  const handleSeeAll = () => {
+  const handleSeeAllCategory = () => {
     history.push(`/ListAllCategoryPage`);
   };
+
+  const handleSeeLastPrivateScrshot = () => {
+    history.push(`/ListScrshotPrivatePage`);
+  };
+
   useEffect(() => {
     const handleMount = async () => {
       try {
@@ -54,13 +59,14 @@ const AllCategory = ({ mobile }) => {
 
 
           <Media className="align-items-center justify-content-between">
-            <p>Favorites Categories: </p>
+<p>Dashboard</p>
             <p className="d-flex align-items-center">
 
 
               {
-                <SeeAllCategoryDropdown
-                  handleSeeAll={handleSeeAll}
+                <SeeAllDropdown
+                handleSeeAllCategory={handleSeeAllCategory}
+                  handleSeeLastPrivateScrshot={handleSeeLastPrivateScrshot}
                 />
               }
             </p>

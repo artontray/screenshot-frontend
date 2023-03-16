@@ -59,7 +59,7 @@ function SelectNewWhat() {
                         <h1 className={styles.Header}>Welcome to Creation Area</h1>
                         <p align="center"><img src={logo} alt="logo" height="90" /><hr />
                         <Badge variant="light"><span className={styles.Labels}>Screenshots</span></Badge> are a fascinating phenomenon in the digital age.
-                         They capture a <Badge variant="light"><span className={styles.Labels}>stolen moment</span></Badge> in time that <Badge variant="light"><span className={styles.Labels}>only you</span></Badge> can see 
+                         They capture a stolen moment in time that only you can see 
                          on your computer screen, making it a <Badge variant="light"><span className={styles.Labels}>unique piece</span></Badge> of digital
                           art. The ability to <Badge variant="light"><span className={styles.Labels}>share this image</span></Badge> with the rest of the
                           world is a powerful concept that has the potential to <Badge variant="light"><span className={styles.Labels}>inspire</span></Badge>
@@ -87,7 +87,7 @@ function SelectNewWhat() {
                         <Badge variant="light"><span className={styles.Labels}>Category</span></Badge>
                         </NavLink>
                         </div>
-                        <Button href="/ListFollowedUsersScrshot"
+                        <Button href="/"
                             className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.PurpleStyle}`}
                             
                         >

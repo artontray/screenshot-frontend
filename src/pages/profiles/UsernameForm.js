@@ -64,15 +64,15 @@ const UsernameForm = () => {
                 placeholder="username"
                 type="text"
                 value={username}
+                maxLength={12}
                 className={styles.Input}
                 onChange={(event) => setUsername(event.target.value)}
               />
             </Form.Group>
-            {errors?.username?.map((message, idx) => (
-              <Alert key={idx} variant="warning">
-                {message}
-              </Alert>
-            ))}
+
+            {errors.username?.map((message, idx) => (
+                            <div key={idx} className={styles.bgwarning}>{message}</div>
+                        ))}
             <Button
               className={`${btnStyles.Button} ${btnStyles.Blue}`}
               onClick={() => history.goBack()}

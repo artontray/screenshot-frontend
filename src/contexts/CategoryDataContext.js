@@ -19,53 +19,8 @@ export const CategoryDataProvider = ({ children }) => {
   const currentUser = useCurrentUser();
 
 
-  const handleFollow = async (clickedProfile) => {
-    try {
-      const { data } = await axiosRes.post("/followers/", {
-        followed: clickedProfile.id,
-      });
 
-      setCategoryData((prevState) => ({
-        ...prevState,
-        pageProfile: {
-          results: prevState.pageProfile.results.map((profile) =>
-            followHelper(profile, clickedProfile, data.id)
-          ),
-        },
-        popularProfiles: {
-          ...prevState.popularProfiles,
-          results: prevState.popularProfiles.results.map((profile) =>
-            followHelper(profile, clickedProfile, data.id)
-          ),
-        },
-      }));
-    } catch (err) {
-      console.log(err);
-    }
-  };
 
-  const handleUnfollow = async (clickedProfile) => {
-    try {
-      await axiosRes.delete(`/followers/${clickedProfile.following_id}/`);
-
-      setCategoryData((prevState) => ({
-        ...prevState,
-        pageProfile: {
-          results: prevState.pageProfile.results.map((profile) =>
-            unfollowHelper(profile, clickedProfile)
-          ),
-        },
-        popularProfiles: {
-          ...prevState.popularProfiles,
-          results: prevState.popularProfiles.results.map((profile) =>
-            unfollowHelper(profile, clickedProfile)
-          ),
-        },
-      }));
-    } catch (err) {
-      console.log(err);
-    }
-  };
 
 
   useEffect(() => {
@@ -89,7 +44,7 @@ export const CategoryDataProvider = ({ children }) => {
   return (
     <CategoryDataContext.Provider value={CategoryData}>
       <SetCategoryDataContext.Provider
-        value={{ setCategoryData, handleFollow, handleUnfollow  }}
+        value={{ setCategoryData }}
       >
         {children}
       </SetCategoryDataContext.Provider>

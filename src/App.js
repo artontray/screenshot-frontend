@@ -24,7 +24,7 @@ import UsernameForm from "./pages/profiles/UsernameForm";
 import UserPasswordForm from "./pages/profiles/UserPasswordForm";
 import ProfileEditForm from "./pages/profiles/ProfileEditForm";
 import ListAllCategoryPage from "./pages/category/ListAllCategoryPage";
-
+import CategoryPage from "./pages/category/CategoryPage";
 
 function App() {
 
@@ -78,7 +78,7 @@ function App() {
           <Route exact path="/scrshot_private/create" render={() => <ScrshotPrivateCreateForm />} />
           <Route exact path="/SelectNewWhat" render={() => <SelectNewWhat />} />
           <Route exact path="/ListAllCategoryPage" render={() => <ListAllCategoryPage />} />
-          
+          <Route exact path="/category/:id" render={() => <CategoryPage />} />
 
           <Route
             exact

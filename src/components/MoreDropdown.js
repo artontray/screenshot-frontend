@@ -57,7 +57,7 @@ export const MoreDropdown = ({ handleEdit, handleDelete }) => {
     </Dropdown>
   );
 };
-export const SeeAllCategoryDropdown = ({handleSeeAll}) => {
+export const SeeAllDropdown = ({handleSeeAllCategory, handleSeeLastPrivateScrshot}) => {
   return (
     <Dropdown className="ml-auto" drop="left">
       <Dropdown.Toggle as={ThreeDotsVersion2} />
@@ -67,11 +67,18 @@ export const SeeAllCategoryDropdown = ({handleSeeAll}) => {
         popperConfig={{ strategy: "fixed" }}
       >
         <Dropdown.Item
-          className={styles.DropdownItem}
-          onClick={handleSeeAll}
-          aria-label="seeall"
+          className={styles.DropdownItemOnList}
+          onClick={handleSeeAllCategory}
+          aria-label="SeeAllCategory"
         >
-          See All
+          - All Category
+        </Dropdown.Item>
+        <Dropdown.Item
+          className={styles.DropdownItemOnList}
+          onClick={handleSeeLastPrivateScrshot}
+          aria-label="SeeAllPrivScrShot"
+        >
+           - All Private 
         </Dropdown.Item>
 
       </Dropdown.Menu>
