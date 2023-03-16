@@ -26,7 +26,7 @@ import {
   } from "../../contexts/CategoryDataContext";
 import { fetchMoreData } from "../../utils/utils";
 import PopularProfiles from "../profiles/PopularProfiles";
-import { MoreDropdownCategory } from "../../components/MoreDropdown";
+import { MoreDropdown } from "../../components/MoreDropdown";
 function CategoryPage() {
   const { id } = useParams();
   const [category, setCategory] = useState({ results: [] });
@@ -82,15 +82,6 @@ function CategoryPage() {
     <>
       
       <Row noGutters className="px-3 text-center">
-      <Col lg={3} className=" no-gutters ml-auto">
-        
-      <div className="d-flex align-items-center">
-        {currentUser && <MoreDropdownCategory
-                handleEdit={handleEdit}
-                handleDelete={handleDelete}
-              />}
-           </div> 
-</Col>
         <Col lg={3} className="text-lg-left">
           <Image
             className={styles.CategoryImage}
@@ -112,7 +103,14 @@ function CategoryPage() {
           </Row>
 
         </Col>
-        
+        <Col lg={3} className=" no-gutters ml-auto">
+        <div className="d-flex align-items-center">
+        {currentUser && <MoreDropdown
+                handleEdit={handleEdit}
+                handleDelete={handleDelete}
+              />}
+              </div>
+</Col>
         {category.results[0]?.description && <Col className="p-3">{category.results[0]?.description}</Col>}
       </Row>
     </>
