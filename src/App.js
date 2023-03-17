@@ -76,7 +76,7 @@ function App() {
 
           <Route exact path="/scrshot_private/:id/edit" render={() => <ScrshotPrivateEditForm />} />
           <Route exact path="/category/create" render={() => <CategoryCreateForm />} />
-          <Route exact path="/ListScrshotPrivatePage" render={() => <ListScrshotPrivatePage />} />
+          <Route exact path="/ListScrshotPrivatePage" render={() => <ListScrshotPrivatePage message="No results found. Adjust the search keyword!"/>} />
           <Route exact path="/scrshot_private/create" render={() => <ScrshotPrivateCreateForm />} />
           <Route exact path="/SelectNewWhat" render={() => <SelectNewWhat />} />
           <Route exact path="/ListAllCategoryPage" render={() => <ListAllCategoryPage />} />

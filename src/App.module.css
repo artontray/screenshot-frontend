@@ -82,10 +82,18 @@ i {
   text-align: center;
 }
 
-figure {
+.figure {
   text-align: center;
   display: inline-block;
 }
+
+
+
+.AbortedAlert{
+color : #ff0000;
+}
+
+
 
 /* scrollbar */
 *::-webkit-scrollbar {

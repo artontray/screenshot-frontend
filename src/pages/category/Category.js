@@ -10,10 +10,12 @@ import { MoreDropdownCategory } from "../../components/MoreDropdown";
 import Badge from "react-bootstrap/Badge";
 import StylesAvatar from "../../styles/AvatarCategory.module.css";
 import { NavLink } from "react-router-dom";
-
-
+import appStyles from "../../App.module.css";
+import  { useRef, useState } from "react";
+import Alert from 'react-bootstrap/Alert'
 
 const Category = (props) => {
+
 
   const {
     id,
@@ -28,7 +30,7 @@ const Category = (props) => {
     setCategory,
     category,
   } = props;
-
+  const [errors, setErrors] = useState({});
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
   var ShortTitle
@@ -62,9 +64,14 @@ const Category = (props) => {
       }));
       /*history.push("/");*/
       /*history.goBack();*/
-
+      setErrors(null);
     } catch (err) {
       console.log(err);
+      if (err.response?.status == 403) {
+        //alert('Keep at least one category, deleted aborted');
+        setErrors(err.response?.data);
+
+      }
     }
   };
 
@@ -108,12 +115,13 @@ const Category = (props) => {
               <i className="fa-solid fa-pen-to-square fa-2x"></i>
 
             </NavLink>
-
+            
 
           </div>
         </Media>
       </Card.Body>
-
+      
+      {!errors && <Alert className={appStyles.AbortedAlert} severity="error">Keep at least one Category, delete aborted!</Alert>}
 
     </Card>
   );

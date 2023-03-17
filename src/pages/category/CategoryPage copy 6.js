@@ -194,7 +194,7 @@ function CategoryPage(filter = "") {
         </Col>
         <Col lg={3}><Button
         className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Basic}`}
-        onClick={() => setQuery("")}
+        onClick={() => history.push(`/category/${id}/`)}
       >
         CLEAR
       </Button></Col>

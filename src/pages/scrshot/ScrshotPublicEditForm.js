@@ -14,8 +14,10 @@ import btnStyles from "../../styles/Button.module.css";
 import Badge from "react-bootstrap/Badge";
 import { useHistory, useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
+import { useRedirect } from "../../hooks/useRedirect";
 
 function ScrshotPublicEditForm() {
+  useRedirect("loggedOut");
   const [errors, setErrors] = useState({});
 
   const [ScrshotPublicData, setScrshotPublicData] = useState({

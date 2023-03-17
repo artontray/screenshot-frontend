@@ -15,9 +15,10 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
 import NoResults from "../../assets/no-results.png";
 import AllCategory  from "../category/AllCategory";
+import { useRedirect } from "../../hooks/useRedirect";
 
 function ListScrshotPrivatePage({ message = "", filter = "" }) {
-
+  useRedirect("loggedOut");
   const [category, setCategory] = useState({ results: [] });
     const [scrshots, setScrshots] = useState({ results: [] });
     const [hasLoaded, setHasLoaded] = useState(false);
@@ -51,7 +52,7 @@ function ListScrshotPrivatePage({ message = "", filter = "" }) {
   
     return (
         <Row className="h-100">
-        <Col className="py-2 p-0 p-lg-2" lg={10}>
+        <Col className="py-2 p-0 p-lg-2" lg={9}>
 
           <AllCategory mobile />
           <i className={`fas fa-search ${styles.SearchIcon}`} />
@@ -92,7 +93,7 @@ function ListScrshotPrivatePage({ message = "", filter = "" }) {
             </Container>
           )}
         </Col>
-        <Col md={4} className="d-none d-lg-block p-0 " lg={2}>
+        <Col md={4} className="d-none d-lg-block p-0 " lg={3}>
         <AllCategory setScrshots={setScrshots} setCategory={setCategory}/>
         </Col>
 

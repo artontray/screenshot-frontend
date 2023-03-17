@@ -18,6 +18,9 @@
   .UnFollow{
     background-color: #6f00ff !important;
   }
+  .Basic{
+    background-color: #6f00ff !important;
+  }
 
   .Button:hover {
     opacity: 0.8;

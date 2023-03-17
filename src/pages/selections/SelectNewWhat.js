@@ -18,8 +18,10 @@ import appStyles from "../../App.module.css";
 import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 import { useRedirect } from "../../hooks/useRedirect";
 import { setTokenTimestamp } from "../../utils/utils";
-function SelectNewWhat() {
 
+
+function SelectNewWhat() {
+    useRedirect("loggedOut");
     const setCurrentUser = useSetCurrentUser();
 
     const [signInData, setSignInData] = useState({
