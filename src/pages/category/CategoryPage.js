@@ -107,6 +107,11 @@ function CategoryPage(filter = "") {
               <i className="fa-solid fa-pen-to-square fa-2x"></i>
 
             </NavLink>
+            <NavLink className={styles.NavLink} to={`/scrshot_private/create`} >
+
+              <i className="fa-solid fa-circle-plus fa-2x"></i>
+
+            </NavLink>
               </div>
 </Col>
         <Col lg={3} className="text-lg-left">
@@ -173,7 +178,7 @@ function CategoryPage(filter = "") {
       <Col className="py-2 p-0 p-lg-2" lg={9}>
       <AllCategory mobile  />
       <Row>
-        <Col lg={9}>
+        <Col sm={6} xs={8} lg={9}>
       <i className={`fas fa-search ${appStyles.SearchIcon}`} />
         <Form
           className={appStyles.SearchBar}
@@ -192,7 +197,7 @@ function CategoryPage(filter = "") {
 
         </Form>
         </Col>
-        <Col lg={3}><Button
+        <Col lg={3} sm={6} xs={4} className="sm-py-2 d-lg-block"><Button
         className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Basic}`}
         onClick={() => setQuery("")}
       >

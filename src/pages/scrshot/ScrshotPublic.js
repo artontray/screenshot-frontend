@@ -48,9 +48,12 @@ const ScrshotPublic = (props) => {
   const handleDelete = async () => {
     try {
       await axiosRes.delete(`/public-scrshot/${id}/`);
-      history.push("/");
+      /*history.push("/");*/
       /*history.goBack();*/
-
+      setScrshots((prevScrshot) => ({
+        ...prevScrshot,
+        results: prevScrshot.results.filter((scrshotpublic) => scrshotpublic.id !== id),
+      }));
     } catch (err) {
       console.log(err);
     }

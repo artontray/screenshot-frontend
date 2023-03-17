@@ -21,14 +21,12 @@ const Category = (props) => {
     id,
     owner,
     title,
-    description,
+   
     image,
-    created_at,
-    updated_at,
-    scrshotPage,
+
     private_screenshots_count,
     setCategory,
-    category,
+ 
   } = props;
   const [errors, setErrors] = useState({});
   const currentUser = useCurrentUser();
@@ -64,7 +62,7 @@ const Category = (props) => {
       }));
       /*history.push("/");*/
       /*history.goBack();*/
-      setErrors(null);
+      
     } catch (err) {
       console.log(err);
       if (err.response?.status == 403) {
@@ -72,6 +70,7 @@ const Category = (props) => {
         setErrors(err.response?.data);
 
       }
+      
     }
   };
 
@@ -90,12 +89,14 @@ const Category = (props) => {
 
             </Link>
           </div>
+          <div>
           <Link to={`/category/${id}`}>
             <i className="fa-solid fa-camera fa-3x"></i>
             <h1>{private_screenshots_count} </h1>
             <h4>{ShortTitle}</h4>
 
           </Link>
+          </div>
           <div className="d-flex ">
 
 

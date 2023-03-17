@@ -45,25 +45,38 @@ function ListAllCategoryPage({ message = "", filter = "" }) {
     };
   }, [filter, query, pathname]);
 
+ 
+
   return (
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={12}>
-
-        
-        <i className={`fas fa-search ${styles.SearchIcon}`} />
+      <Row>
+        <Col sm={6} xs={8} lg={9}>
+      <i className={`fas fa-search ${appStyles.SearchIcon}`} />
         <Form
-          className={styles.SearchBar}
+          className={appStyles.SearchBar}
           onSubmit={(event) => event.preventDefault()}
         >
+          
           <Form.Control
             value={query}
             onChange={(event) => setQuery(event.target.value)}
             type="text"
+            name="searchbar"
+            id="searchbar"
             className="mr-sm-2"
-            placeholder="Search a Category"
+            placeholder="Search a Screenshot in this Category"
           />
 
         </Form>
+        </Col>
+        <Col lg={3} sm={6} xs={4} className="sm-py-2 d-lg-block"><Button
+        className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Basic}`}
+        onClick={() => setQuery("")}
+      >
+        Clear
+      </Button></Col>
+        </Row>
 
 
         {hasLoaded ? (

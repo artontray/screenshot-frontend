@@ -56,7 +56,7 @@ function ListScrshotPrivatePage({ message = "", filter = "" }) {
 
           <AllCategory mobile />
           <Row>
-        <Col lg={9}>
+        <Col sm={6} xs={8} lg={9}>
       <i className={`fas fa-search ${appStyles.SearchIcon}`} />
         <Form
           className={appStyles.SearchBar}
@@ -75,11 +75,11 @@ function ListScrshotPrivatePage({ message = "", filter = "" }) {
 
         </Form>
         </Col>
-        <Col lg={3}><Button
+        <Col lg={3} sm={6} xs={4} className="sm-py-2 d-lg-block"><Button
         className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Basic}`}
         onClick={() => setQuery("")}
       >
-        CLEAR
+        Clear
       </Button></Col>
         </Row>
 
