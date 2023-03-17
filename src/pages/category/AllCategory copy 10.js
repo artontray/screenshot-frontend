@@ -12,8 +12,6 @@ import { Card, Media, OverlayTrigger, Tooltip } from "react-bootstrap";
 import stylesIcon from "../../styles/MoreDropdown.module.css";
 import Badge from "react-bootstrap/Badge";
 import {  useParams } from "react-router-dom";
-import CategoryItem from "./CategoryItem";
-import Col from "react-bootstrap/Col";
 const AllCategory = ({ mobile }) => {
 
   const [categoryData, setCategoryData] = useState({
@@ -39,7 +37,7 @@ const AllCategory = ({ mobile }) => {
   };
   const { id } = useParams();
   useEffect(() => {
-    console.log(id);
+    
     const handleMount = async () => {
       try {
         const { data } = await axiosReq.get(
@@ -91,21 +89,22 @@ const AllCategory = ({ mobile }) => {
 
 
           {mobile ? (
-            <div className="d-flex justify-content-around">
-            {popularCategory.results.slice(0, 5).map((category) => (
+            popularCategory.results.slice(0, 5).map((category, i) => (
               
-              <CategoryItem key={category.id} category={category} mobile />
+                <Link key={category.id} className="align-self-center" to={`/category/${category.id}`}>{'  '}
+                  
+                  <Badge   variant="light" className="text-center"><span >{category.title.toString().slice(0, 15)} ({category.private_screenshots_count})  </span></Badge>{'  '}
+                </Link>
                 
               
-              ))}
-             </div>
+            ))
           ) : (
 
 
 
 
-<Col md={4} className="d-none d-lg-block p-0 " lg={2}>
-            {popularCategory.results.map((category) => (
+
+            popularCategory.results.map((category) => (
 
 
 
@@ -113,13 +112,30 @@ const AllCategory = ({ mobile }) => {
               
               
                   
-                 
-              
-              <CategoryItem key={category.id} category={category} />
+                    
+              <Media key={category.id} className="align-items-center justify-content-between">
+          <Link to={`/category/${category.id}`}>
+            <Avatar   src={category.image} height={45} />
             
-             
+            <Badge variant="light" className="text-center"><span>{category.title.toString().slice(0, 15)}</span></Badge>
+          </Link>
+          <div className={stylesIcon.DropdownItem}>
+          <h3>{category.private_screenshots_count}
+          <i className="fa-solid fa-camera fa-1x"></i></h3>
+            
+          </div>
+        </Media>
+                    
+                 
+                  
                  
              
+
+
+
+
+
+
 
            
 
@@ -127,7 +143,7 @@ const AllCategory = ({ mobile }) => {
 
 
 
-            ))}  </Col>
+            ))
 
           )}
         </>

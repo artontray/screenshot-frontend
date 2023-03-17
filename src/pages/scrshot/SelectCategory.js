@@ -12,7 +12,7 @@ function SelectCategory(props) {
   useEffect(() => {
     const fetchData = async () => {
       // Fetch data
-      const data  = await axiosReq.get(`/category/`);
+      const data  = await axiosReq.get(`/category/?limit=100&offset=0`);
       //const {data : category}  = await axiosReq.get(`/category/`);
       console.log(data.length)
 

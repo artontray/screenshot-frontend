@@ -25,8 +25,6 @@ import UserPasswordForm from "./pages/profiles/UserPasswordForm";
 import ProfileEditForm from "./pages/profiles/ProfileEditForm";
 import ListAllCategoryPage from "./pages/category/ListAllCategoryPage";
 import CategoryPage from "./pages/category/CategoryPage";
-import PopularProfiles from "./pages/profiles/PopularProfiles";
-import CategoryEditForm from "./pages/category/CategoryEditForm";
 
 function App() {
 
@@ -81,7 +79,7 @@ function App() {
           <Route exact path="/SelectNewWhat" render={() => <SelectNewWhat />} />
           <Route exact path="/ListAllCategoryPage" render={() => <ListAllCategoryPage />} />
           <Route exact path="/category/:id" render={() => <CategoryPage />} />
-          <Route exact path="/category/:id/edit" render={() => <CategoryEditForm />} />
+
           <Route
             exact
             path="/profiles/:id/edit/username"
@@ -101,7 +99,6 @@ function App() {
           <Route render={() => <p>Page not found!</p>} />
         </Switch>
       </Container>
-      
     </div>
   );
 }

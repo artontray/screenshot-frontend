@@ -5,7 +5,7 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 
-import ScrshotPrivate from "./ScrshotPrivate";
+import ScrshotPublic from "./ScrshotPublic";
 import Asset from "../../components/Asset";
 import appStyles from "../../App.module.css";
 import styles from "../../styles/ListScrshotPublicPage.module.css";
@@ -14,11 +14,11 @@ import { axiosReq } from "../../api/axiosDefaults";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
 import NoResults from "../../assets/no-results.png";
-import AllCategory  from "../category/AllCategory";
+import PopularProfiles from "../profiles/PopularProfiles";
 
-function ListScrshotPrivatePage({ message = "", filter = "" }) {
+function ListScrshotPublicPage({ message, filter = "" }) {
 
-  const [category, setCategory] = useState({ results: [] });
+
     const [scrshots, setScrshots] = useState({ results: [] });
     const [hasLoaded, setHasLoaded] = useState(false);
     const { pathname } = useLocation();
@@ -28,13 +28,8 @@ function ListScrshotPrivatePage({ message = "", filter = "" }) {
     useEffect(() => {
       const fetchScrshots = async () => {
         try {
-          const [{ data: category }, { data: scrshots }] = await Promise.all([
-            axiosReq.get(`/category/`),
-            axiosReq.get(`/private-scrshot/?${filter}search=${query}`)
-          ]);
-          /*const { data } = await axiosReq.get(`/private-scrshot/?${filter}search=${query}`);*/
-          setScrshots(scrshots);
-          setCategory({ results: [category] });
+          const { data } = await axiosReq.get(`/public-scrshot/?${filter}search=${query}`);
+          setScrshots(data);
           setHasLoaded(true);
         } catch (err) {
           console.log(err);
@@ -51,9 +46,9 @@ function ListScrshotPrivatePage({ message = "", filter = "" }) {
   
     return (
         <Row className="h-100">
-        <Col className="py-2 p-0 p-lg-2" lg={10}>
+        <Col className="py-2 p-0 p-lg-2" lg={8}>
 
-          <AllCategory mobile />
+          <PopularProfiles mobile />
           <i className={`fas fa-search ${styles.SearchIcon}`} />
           <Form
             className={styles.SearchBar}
@@ -64,7 +59,7 @@ function ListScrshotPrivatePage({ message = "", filter = "" }) {
               onChange={(event) => setQuery(event.target.value)}
               type="text"
               className="mr-sm-2"
-              placeholder="Search Screenshots"
+              placeholder="Search Public Screenshots"
             />
           </Form>
   
@@ -73,7 +68,7 @@ function ListScrshotPrivatePage({ message = "", filter = "" }) {
               {scrshots.results.length ? (
                 <InfiniteScroll
                   children={scrshots.results.map((scrshot) => (
-                    <ScrshotPrivate key={scrshot.id} {...scrshot} setScrshots={setScrshots} setCategory={setCategory} />
+                    <ScrshotPublic key={scrshot.id} {...scrshot} setScrshots={setScrshots} />
                   ))}
                   dataLength={scrshots.results.length}
                   loader={<Asset spinner />}
@@ -92,15 +87,11 @@ function ListScrshotPrivatePage({ message = "", filter = "" }) {
             </Container>
           )}
         </Col>
-        <Col md={4} className="d-none d-lg-block p-0 " lg={2}>
-        <AllCategory setScrshots={setScrshots} setCategory={setCategory}/>
+        <Col md={4} className="d-none d-lg-block p-0 p-lg-2">
+        <PopularProfiles />
         </Col>
-
       </Row>
-      
     );
+}
 
-
-          }
-
-export default ListScrshotPrivatePage;
+export default ListScrshotPublicPage;

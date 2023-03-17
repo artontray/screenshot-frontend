@@ -29,9 +29,58 @@ const ThreeDotsVersion2 = React.forwardRef(({ onClick }, ref) => (
   />
 ));
 
-export const MoreDropdownCategory = ({ handleEdit, handleDelete }) => {
+export const MoreDropdownCategory = ({ handleEdit, handleDeleteCategory }) => {
   return (
     <Dropdown className="mr-auto" drop="right">
+      <Dropdown.Toggle as={ThreeDots} />
+
+      <Dropdown.Menu
+        className="text-center"
+        popperConfig={{ strategy: "fixed" }}
+      >
+        <Dropdown.Item
+          className={styles.DropdownItem}
+          onClick={handleEdit}
+          aria-label="edit"
+        >
+          <i className="fas fa-edit" />
+        </Dropdown.Item>
+        <Dropdown.Item
+          className={styles.DropdownItem}
+          onClick={handleDeleteCategory}
+          aria-label="delete"
+        >
+          <i className="fas fa-trash-alt" />
+        </Dropdown.Item>
+      </Dropdown.Menu>
+    </Dropdown>
+  );
+};
+export const MoreDropdownEditCategory = ({ handleEdit }) => {
+  return (
+    <Dropdown className="mr-auto" drop="left">
+      <Dropdown.Toggle as={ThreeDots} />
+
+      <Dropdown.Menu
+        className="text-center"
+        popperConfig={{ strategy: "fixed" }}
+      >
+        <Dropdown.Item
+          className={styles.DropdownItem}
+          onClick={handleEdit}
+          aria-label="edit"
+        >
+          <i className="fas fa-edit" />
+        </Dropdown.Item>
+
+      </Dropdown.Menu>
+    </Dropdown>
+  );
+};
+
+export const MoreDropdown = ({ handleEdit, handleDelete }) => {
+  return (
+    <Dropdown className="ml-auto" drop="left">
       <Dropdown.Toggle as={ThreeDots} />
 
       <Dropdown.Menu
@@ -56,7 +105,7 @@ export const MoreDropdownCategory = ({ handleEdit, handleDelete }) => {
     </Dropdown>
   );
 };
-export const MoreDropdown = ({ handleEdit, handleDelete }) => {
+export const MoreDropdownPrivateScrshot = ({ handleDelete }) => {
   return (
     <Dropdown className="ml-auto" drop="left">
       <Dropdown.Toggle as={ThreeDots} />
@@ -65,13 +114,7 @@ export const MoreDropdown = ({ handleEdit, handleDelete }) => {
         className="text-center"
         popperConfig={{ strategy: "fixed" }}
       >
-        <Dropdown.Item
-          className={styles.DropdownItem}
-          onClick={handleEdit}
-          aria-label="edit"
-        >
-          <i className="fas fa-edit" />
-        </Dropdown.Item>
+
         <Dropdown.Item
           className={styles.DropdownItem}
           onClick={handleDelete}

@@ -47,9 +47,9 @@ function ListAllCategoryPage({ message = "", filter = "" }) {
 
   return (
     <Row className="h-100">
-      <Col className="py-2 p-0 p-lg-2" lg={12}>
+      <Col className="py-2 p-0 p-lg-2" lg={8}>
 
-        
+        <AllCategory mobile />
         <i className={`fas fa-search ${styles.SearchIcon}`} />
         <Form
           className={styles.SearchBar}
@@ -71,7 +71,7 @@ function ListAllCategoryPage({ message = "", filter = "" }) {
             {category.results.length ? (
               <InfiniteScroll
                 children={category.results.map((cat) => (
-                  <Category key={cat.id} {...cat} setCategory={setCategory} category={category} />
+                  <Category key={cat.id} {...cat} setCategory={setCategory} />
                 ))}
                 dataLength={category.results.length}
                 loader={<Asset spinner />}
@@ -90,7 +90,9 @@ function ListAllCategoryPage({ message = "", filter = "" }) {
           </Container>
         )}
       </Col>
-
+      <Col md={4} className="d-none d-lg-block p-0 p-lg-2">
+        <AllCategory />
+      </Col>
     </Row>
   );
 }

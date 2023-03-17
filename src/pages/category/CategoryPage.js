@@ -6,11 +6,15 @@ import Container from "react-bootstrap/Container";
 import Comment from "../comments/Comment";
 import Badge from "react-bootstrap/Badge";
 import appStyles from "../../App.module.css";
+import { useLocation } from "react-router";
 import { useHistory } from "react-router-dom";
 import styles from "../../styles/CategoryPage.module.css";
 import { useParams } from "react-router";
+import stylesSearch from "../../styles/ListScrshotPublicPage.module.css";
 import { axiosReq } from "../../api/axiosDefaults";
 import Category from "./Category";
+import { NavLink } from "react-router-dom";
+import Form from "react-bootstrap/Form";
 import NoResults from "../../assets/no-results.png";
 import ScrshotPrivate from "../scrshot/ScrshotPrivate";
 import { axiosRes } from "../../api/axiosDefaults";
@@ -26,35 +30,42 @@ import {
   } from "../../contexts/CategoryDataContext";
 import { fetchMoreData } from "../../utils/utils";
 import PopularProfiles from "../profiles/PopularProfiles";
-import { MoreDropdownCategory } from "../../components/MoreDropdown";
-function CategoryPage() {
+import { MoreDropdownEditCategory } from "../../components/MoreDropdown";
+function CategoryPage(filter = "") {
   const { id } = useParams();
   const [category, setCategory] = useState({ results: [] });
   const history = useHistory();
   const currentUser = useCurrentUser();
   const [hasLoaded, setHasLoaded] = useState(false);
   const [scrshots, setScrshots] = useState({ results: [] });
-
+  const [query, setQuery] = useState("");
+  const { pathname } = useLocation();
   useEffect(() => {
     const handleMount = async () => {
       try {
         const [{ data: category }, { data: scrshots }] = await Promise.all([
           axiosReq.get(`/category/${id}`),
-          axiosReq.get(`/private-scrshot/?category=${id}`),
+          axiosReq.get(`/private-scrshot/?category=${id}&search=${query}&`),
         ]);
         setCategory({ results: [category] });
         
         setScrshots(scrshots);
         
-        console.log(category);
+        console.log(query);
         setHasLoaded(true);
       } catch (err) {
         console.log(err);
       }
     };
-
-    handleMount();
-  }, [id]);
+    setHasLoaded(false);
+    const timer = setTimeout(() => {
+      handleMount();
+    }, 1000);
+    return () => {
+      clearTimeout(timer);
+    };
+    
+  }, [id,filter, query, pathname]);
   const handleEdit = () => {
     history.push(`/`);
   };
@@ -83,13 +94,13 @@ function CategoryPage() {
       
       <Row noGutters className="px-3 text-center">
       <Col lg={3} className=" no-gutters ml-auto">
-        
-      <div className="d-flex align-items-center">
-        {currentUser && <MoreDropdownCategory
-                handleEdit={handleEdit}
-                handleDelete={handleDelete}
-              />}
-           </div> 
+        <div className="d-flex align-items-center">
+        <NavLink className={styles.NavLink} to={`/category/${id}/edit`} >
+
+              <i className="fa-solid fa-pen-to-square fa-2x"></i>
+
+            </NavLink>
+              </div>
 </Col>
         <Col lg={3} className="text-lg-left">
           <Image
@@ -152,9 +163,22 @@ function CategoryPage() {
 
   return (
     <Row>
-      <Col className="py-2 p-0 p-lg-2" lg={8}>
+      <Col className="py-2 p-0 p-lg-2" lg={10}>
       <AllCategory mobile  />
-        
+      <i className={`fas fa-search ${stylesSearch.SearchIcon}`} />
+        <Form
+          className={stylesSearch.SearchBar}
+          onSubmit={(event) => event.preventDefault()}
+        >
+          <Form.Control
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            type="text"
+            className="mr-sm-2"
+            placeholder="Search a Category"
+          />
+
+        </Form>
           {hasLoaded ? (
             <>
             <Container className={appStyles.Content}>
@@ -171,9 +195,9 @@ function CategoryPage() {
           )}
 
       </Col>
-      <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
-        <AllCategory />
-      </Col>
+      <Col md={4} className="d-none d-lg-block p-0 " lg={2}>
+        <AllCategory setScrshots={setScrshots} setCategory={setCategory}/>
+        </Col>
     </Row>
   );
 }
