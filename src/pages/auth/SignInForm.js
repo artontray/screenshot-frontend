@@ -6,7 +6,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-
+import logo from "../../assets/logo.png";
 import Container from "react-bootstrap/Container";
 
 import { Link, useHistory } from "react-router-dom";
@@ -52,10 +52,12 @@ function SignInForm() {
     };
 
     return (
+       
         <Row className={styles.Row}>
             <Col md={{ span: 8, offset: 2 }} className="my-auto p-0 p-md-2"> 
                 <Container className={`${appStyles.Content} p-4 `}>
-                    <h1 className={styles.Header}>sign in</h1>
+                <h1 className={styles.Header}>Welcome to Screenshot Organizer</h1>
+          <p align="center"><img src={logo} alt="logo" height="90"/></p>
                     <Form onSubmit={handleSubmit}>
                         <Form.Group controlId="username">
                             <Form.Label className="d-none">Username</Form.Label>
@@ -86,7 +88,7 @@ function SignInForm() {
                         {errors.password?.map((message, idx) => (
                             <div key={idx} className={styles.bgwarning}>{message}</div>
                         ))}
-                        <Button
+                        <Button 
                             className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.PurpleStyle}`}
                             type="submit"
                         >

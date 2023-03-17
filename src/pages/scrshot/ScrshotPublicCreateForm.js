@@ -118,7 +118,7 @@ function ScrshotPublicCreateForm() {
           <Container
             className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
           >
-            <Badge variant="light"><span className={styles.Labels}>Public Screenshot Area</span></Badge>
+            <Badge variant="light"><span className={styles.Labels}>Public Screenshot Area</span></Badge><hr />
             <Form.Group className="text-center">
               {image ? (
                 <>

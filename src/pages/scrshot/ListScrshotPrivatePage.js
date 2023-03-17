@@ -78,6 +78,7 @@ function ListScrshotPrivatePage({ message = "", filter = "" }) {
         <Col lg={3} sm={6} xs={4} className="sm-py-2 d-lg-block"><Button
         className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Basic}`}
         onClick={() => setQuery("")}
+        
       >
         Clear
       </Button></Col>

@@ -119,6 +119,7 @@ function CategoryCreateForm() {
             className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
           >
             <Badge variant="light"><span className={styles.Labels}>New Category Area</span></Badge>
+            <hr />
             <Form.Group className="text-center">
               {image ? (
                 <>

@@ -78,14 +78,14 @@ const NavBar = () => {
   const addInspirationIcon = (
     <NavLink className={styles.NavLink} to="/ListFollowedUsersScrshot">
       <i className="fa-solid fa-people-group fa-2x"></i>
-  
+  Community
 
     </NavLink>
   );
   const addLikedIcon = (
     <NavLink className={styles.NavLink} to="/ListLikedPublicScrshot">
       <i className="fa-solid fa-heart fa-2x"></i>
-
+Favorites
     </NavLink>
   );
   const ProfileIcons = (
@@ -100,13 +100,21 @@ const NavBar = () => {
   const addHomeIcon = (
     <NavLink className={styles.NavLink} to="/">
       <i className="fas fa-home fa-2x"></i>
-
+Home
     </NavLink>
   );
+  const addNewsIcon = (
+    <NavLink className={styles.NavLink} to="/">
+      <i className="fa-solid fa-camera fa-2x"></i>
+      News
+    </NavLink>
+  );
+  
   const addSearchingIcon = (
     <NavLink className={styles.NavLink} to="/ListScrshotPrivatePage">
-      <i className="fa-solid fa-magnifying-glass fa-2x"></i>
+      <i className="fa-solid fa-screwdriver-wrench fa-2x"></i>
 
+Dashboard
     </NavLink>
   );
 
@@ -116,11 +124,12 @@ const NavBar = () => {
       <NavLink
         className={styles.NavLink} to="/signin">
         <i className="fa-solid fa-arrow-right-to-bracket fa-2x"></i>
-
+Sign In
       </NavLink>
       <NavLink
         className={styles.NavLink} to="/signup">
         <i className="fas fa-user-plus fa-2x"></i>
+        Sign Up
       </NavLink>
     </>
   );
@@ -146,6 +155,7 @@ const NavBar = () => {
       {currentUser && addLikedIcon}
       {currentUser && addInspirationIcon}
       {currentUser && addSearchingIcon}
+      {addNewsIcon}
       {addHomeIcon}
       </Nav>
       
