@@ -12,44 +12,18 @@ function SelectCategory(props) {
   useEffect(() => {
     const fetchData = async () => {
       // Fetch data
-      //const data  = await axiosReq.get(`/category/?page=2`);
       const data  = await axiosReq.get(`/category/`);
       //const {data : category}  = await axiosReq.get(`/category/`);
-      console.log(data.data.count);
-      console.log(data.data.results.length);
-      if (data.data.count > data.data.results.length){
-        console.log("True");
-          var categoryTotal = data.data.count;
-          var TotalDisplayed = data.data.results.length
-          var page = 1;
-          data.data.results.map((value) => (
-            results.push({
-            key: value.title,
-             value: value.id,
-            })
-      ));
-          while(TotalDisplayed < categoryTotal){
-            page++;
-            const requete  = await axiosReq.get(`/category/?page=${page}`);
-            TotalDisplayed = TotalDisplayed + requete.data.results.length
-            console.log(TotalDisplayed)
-            console.log(categoryTotal)
-            requete.data.results.map((value) => (
-              results.push({
-              key: value.title,
-               value: value.id,
-              })
-        ));
-          }
-      }else{
+      console.log(data.length)
 
-      }
-      const totalCat = data.data.count;
-
-      console.log(data.data);
-
-      // Store results in the results array
       
+      // Store results in the results array
+      data.data.results.map((value) => (
+        results.push({
+        key: value.title,
+         value: value.id,
+        })
+  ));
 
 
 

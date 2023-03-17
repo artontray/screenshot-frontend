@@ -4,7 +4,7 @@ import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
-
+import { Button, Image } from "react-bootstrap";
 import ScrshotPublic from "./ScrshotPublic";
 import Asset from "../../components/Asset";
 import appStyles from "../../App.module.css";
@@ -15,7 +15,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
 import NoResults from "../../assets/no-results.png";
 import PopularProfiles from "../profiles/PopularProfiles";
-
+import btnStyles from "../../styles/Button.module.css";
 function ListScrshotPublicPage({ message, filter = "" }) {
 
 
@@ -49,19 +49,34 @@ function ListScrshotPublicPage({ message, filter = "" }) {
         <Col className="py-2 p-0 p-lg-2" lg={8}>
 
           <PopularProfiles mobile />
-          <i className={`fas fa-search ${styles.SearchIcon}`} />
-          <Form
-            className={styles.SearchBar}
-            onSubmit={(event) => event.preventDefault()}
-          >
-            <Form.Control
-              value={query}
-              onChange={(event) => setQuery(event.target.value)}
-              type="text"
-              className="mr-sm-2"
-              placeholder="Search Public Screenshots"
-            />
-          </Form>
+          <Row>
+        <Col lg={9}>
+      <i className={`fas fa-search ${appStyles.SearchIcon}`} />
+        <Form
+          className={appStyles.SearchBar}
+          onSubmit={(event) => event.preventDefault()}
+        >
+          
+          <Form.Control
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            type="text"
+            name="searchbar"
+            id="searchbar"
+            className="mr-sm-2"
+            placeholder="Search a Screenshot"
+          />
+
+        </Form>
+        </Col>
+        <Col lg={3}><Button
+        className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Basic}`}
+        onClick={() => setQuery("")}
+      >
+        Clear
+      </Button></Col>
+        </Row>
+
   
           {hasLoaded ? (
             <>

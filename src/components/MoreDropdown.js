@@ -126,7 +126,7 @@ export const MoreDropdownPrivateScrshot = ({ handleDelete }) => {
     </Dropdown>
   );
 };
-export const SeeAllDropdown = ({handleSeeAllCategory, handleSeeLastPrivateScrshot, SearchCategory}) => {
+export const SeeAllDropdown = ({handleSeeAllCategory, handleSeeLastPrivateScrshot, SearchCategory, handleDeleteCategory}) => {
   return (
     <Dropdown className="ml-auto" drop="left">
       <Dropdown.Toggle as={ThreeDotsVersion2} />
@@ -155,6 +155,13 @@ export const SeeAllDropdown = ({handleSeeAllCategory, handleSeeLastPrivateScrsho
           aria-label="SearchCategory"
         >
            - Search Category 
+        </Dropdown.Item>
+        <Dropdown.Item
+          className={styles.DropdownItemOnList}
+          onClick={SearchCategory}
+          aria-label="DeleteCategory"
+        >
+           - Delete Category 
         </Dropdown.Item>
 
       </Dropdown.Menu>

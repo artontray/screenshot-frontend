@@ -80,6 +80,7 @@ const AllCategory = ({ mobile }) => {
                 handleSeeAllCategory={handleSeeAllCategory}
                   handleSeeLastPrivateScrshot={handleSeeLastPrivateScrshot}
                   SearchCategory={SearchCategory}
+                  DeleteCategory={SearchCategory}
                 />
               }
            

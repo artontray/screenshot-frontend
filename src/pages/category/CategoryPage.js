@@ -174,9 +174,9 @@ function CategoryPage(filter = "") {
       <AllCategory mobile  />
       <Row>
         <Col lg={9}>
-      <i className={`fas fa-search ${stylesSearch.SearchIcon}`} />
+      <i className={`fas fa-search ${appStyles.SearchIcon}`} />
         <Form
-          className={stylesSearch.SearchBar}
+          className={appStyles.SearchBar}
           onSubmit={(event) => event.preventDefault()}
         >
           
@@ -196,7 +196,7 @@ function CategoryPage(filter = "") {
         className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Basic}`}
         onClick={() => setQuery("")}
       >
-        CLEAR
+        Clear
       </Button></Col>
         </Row>
 
