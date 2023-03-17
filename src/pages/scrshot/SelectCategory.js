@@ -11,12 +11,14 @@ function SelectCategory(props) {
   const { ScrshotPrivateData, setScrshotPrivateData, category_id, category_title } = props;
   useEffect(() => {
     const fetchData = async () => {
-      // Fetch data
-      //const data  = await axiosReq.get(`/category/?page=2`);
+
       const data  = await axiosReq.get(`/category/`);
-      //const {data : category}  = await axiosReq.get(`/category/`);
-      console.log(data.data.count);
-      console.log(data.data.results.length);
+      /*
+      Because of the REST pagination, only 10 results will appears
+      on the SELECT tag
+      need to go within the pagination and push results into a tab
+      */ 
+
       if (data.data.count > data.data.results.length){
         console.log("True");
           var categoryTotal = data.data.count;
@@ -32,8 +34,6 @@ function SelectCategory(props) {
             page++;
             const requete  = await axiosReq.get(`/category/?page=${page}`);
             TotalDisplayed = TotalDisplayed + requete.data.results.length
-            console.log(TotalDisplayed)
-            console.log(categoryTotal)
             requete.data.results.map((value) => (
               results.push({
               key: value.title,
@@ -42,9 +42,14 @@ function SelectCategory(props) {
         ));
           }
       }else{
-
+        data.data.results.map((value) => (
+          results.push({
+          key: value.title,
+           value: value.id,
+          })
+    ));
       }
-      const totalCat = data.data.count;
+
 
       console.log(data.data);
 

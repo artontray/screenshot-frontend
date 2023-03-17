@@ -99,7 +99,7 @@ const ScrshotPrivate = (props) => {
       </Link>
       <Card.Body>
         
-        {title && <Card.Title className="text-center">{title}</Card.Title>}
+        {title && <Card.Title className="text-center">{title} {id}</Card.Title>}
         {content && <Card.Text>{content}</Card.Text>}
  
       </Card.Body>

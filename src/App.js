@@ -19,7 +19,7 @@ import ScrshotPublicEditForm from "./pages/scrshot/ScrshotPublicEditForm";
 import ProfilePage from "./pages/profiles/ProfilePage";
 
 import SelectNewWhat from "./pages/selections/SelectNewWhat";
-
+import DisplayPrivateScrtshot from "./pages/scrshot/DisplayPrivateScrtshot";
 import UsernameForm from "./pages/profiles/UsernameForm";
 import UserPasswordForm from "./pages/profiles/UserPasswordForm";
 import ProfileEditForm from "./pages/profiles/ProfileEditForm";
@@ -81,6 +81,7 @@ function App() {
           <Route exact path="/SelectNewWhat" render={() => <SelectNewWhat />} />
           <Route exact path="/ListAllCategoryPage" render={() => <ListAllCategoryPage />} />
           <Route exact path="/category/:id" render={() => <CategoryPage />} />
+          <Route exact path="/scrshot_private/:id" render={() => <DisplayPrivateScrtshot />} />
           <Route exact path="/category/:id/edit" render={() => <CategoryEditForm />} />
           <Route
             exact
