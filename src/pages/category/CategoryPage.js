@@ -149,7 +149,7 @@ function CategoryPage(filter = "") {
           src={NoResults}
           message={
 
-            `No results found, ${category?.title} is empty.`
+            `No results found in this Category :  ${category.results[0]?.title}`
         }
 
         />

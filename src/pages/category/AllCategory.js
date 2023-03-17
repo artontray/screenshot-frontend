@@ -57,7 +57,7 @@ const AllCategory = ({ mobile }) => {
     };
 
     handleMount();
-  }, [currentUser]);
+  }, [currentUser, id]);
 
   return (
     <Container

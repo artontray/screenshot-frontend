@@ -88,6 +88,9 @@ function ScrshotPrivateCreateForm() {
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
       }
+      if (err.response?.status == 400) {
+        setErrors(err.response?.data);
+      }
     }
   };
 
@@ -131,7 +134,9 @@ function ScrshotPrivateCreateForm() {
 
 
 <SelectCategory ScrshotPrivateData={ScrshotPrivateData} setScrshotPrivateData={setScrshotPrivateData} />
-
+{errors?.category?.map((message, idx) => (
+        <div key={idx} className={styles.bgwarning}>{message}</div>
+      ))}
       <Button variant="light"
         className={`${btnStyles.Button} ${btnStyles.PurpleStyle}`}
         onClick={() => history.goBack()}
