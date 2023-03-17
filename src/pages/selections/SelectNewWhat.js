@@ -90,13 +90,14 @@ function SelectNewWhat() {
                         <Badge variant="light"><span className={styles.Labels}>Category</span></Badge>
                         </NavLink>
                         </div>
+                        <div style={{display: 'flex',justifyContent:'center', alignItems:'center'}}>
                         <Button href="/"
                             className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.PurpleStyle}`}
                             
                         >
                             I DON'T KNOW, I WANT SOME INSPIRATION
                         </Button>
-                       
+                        </div>
                     </Container>
                 </Col>
             </Row>

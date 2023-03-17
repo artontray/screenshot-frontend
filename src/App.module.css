@@ -4,6 +4,10 @@
   min-height: 100vh;
 }
 
+body {
+  background-color: #dab3ff;
+}
+
 .Main {
   padding-top: 81px;
 }

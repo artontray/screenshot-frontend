@@ -103,13 +103,14 @@ const SignUpForm = () => {
                 <div key={idx} className={styles.bgwarning}>{message}</div>
               
             ))}
-
+<div style={{display: 'flex',justifyContent:'center', alignItems:'center'}}>
             <Button variant="light"
               className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.PurpleStyle}`}
               type="submit"
             >
               Sign up
             </Button>
+            </div>
             {errors.non_field_errors?.map((message, idx) => (
               <div key={idx} className={styles.bgwarning}>{message}</div>
             ))}

@@ -98,7 +98,7 @@ Favorites
 
   );
   const addHomeIcon = (
-    <NavLink className={styles.NavLink} to="/">
+    <NavLink className={styles.NavLink} to="/home">
       <i className="fas fa-home fa-2x"></i>
 Home
     </NavLink>

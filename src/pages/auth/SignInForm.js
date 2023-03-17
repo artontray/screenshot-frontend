@@ -88,12 +88,14 @@ function SignInForm() {
                         {errors.password?.map((message, idx) => (
                             <div key={idx} className={styles.bgwarning}>{message}</div>
                         ))}
+                        <div style={{display: 'flex',justifyContent:'center', alignItems:'center'}}>
                         <Button 
                             className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.PurpleStyle}`}
                             type="submit"
                         >
                             Sign in
                         </Button>
+                        </div>
                         {errors.non_field_errors?.map((message, idx) => (
                             <div key={idx} className={styles.bgwarning}>{message}</div>
                         ))}

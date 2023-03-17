@@ -27,7 +27,7 @@ import ListAllCategoryPage from "./pages/category/ListAllCategoryPage";
 import CategoryPage from "./pages/category/CategoryPage";
 import PopularProfiles from "./pages/profiles/PopularProfiles";
 import CategoryEditForm from "./pages/category/CategoryEditForm";
-
+import HomePage from "./pages/home/HomePage";
 function App() {
 
   const currentUser = useCurrentUser();
@@ -66,7 +66,7 @@ function App() {
               />
             )}
           />
-          <Route exact path="/" render={() => <h1>Home page dsadepuis quand ES CE QUE HRRRR</h1>} />
+          <Route exact path="/home" render={() => <HomePage />} />
           <Route exact path="/signin" render={() => <SignInForm />} />
           <Route exact path="/signup" render={() => <SignUpForm />} />
           <Route exact path="/scrshot_public/create" render={() => <ScrshotPublicCreateForm />} />
