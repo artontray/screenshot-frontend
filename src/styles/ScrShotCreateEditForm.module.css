@@ -32,13 +32,6 @@
     resize: none;
 }
 
-.bgwarning {
-    background: transparent;
-    color: #5a1eff;
-    text-align: center;
-
-    padding-bottom: 15px;
-}
 
 .Labels {
     color: #7e00fb;

@@ -2,9 +2,9 @@ import React, { useState } from "react";
 
 import Form from "react-bootstrap/Form";
 import { axiosRes } from "../../api/axiosDefaults";
-
+import Button from "react-bootstrap/Button";
 import styles from "../../styles/CommentCreateEditForm.module.css";
-
+import btnStyles from "../../styles/Button.module.css";
 function CommentEditForm(props) {
   const { 
     id, 
@@ -49,7 +49,7 @@ function CommentEditForm(props) {
       <Form.Group className="pr-1" controlId="comment">
       <Form.Label className="d-none">comment</Form.Label>
         <Form.Control
-          className={styles.Form}
+          className={`${styles.Input} ${styles.InputTextarea}`}
           as="textarea"
           name="comment"
           value={formContent}
@@ -62,28 +62,22 @@ function CommentEditForm(props) {
               <div key={idx} className={styles.bgwarning}>{message}</div>
             ))}
       <div className="text-right">
-        <button
-          className={styles.Button}
+        <Button
+          className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.PurpleStyle}`}
           onClick={() => setShowEditForm(false)}
           type="button"
         >
           Cancel
-        </button>
-        <button
-          className={styles.Button}
+        </Button>
+        <Button
+          className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.PurpleStyle}`}
           disabled={!content.trim()}
           type="submit"
         >
-          SAVE
-        </button>
+          Save
+        </Button>
 
-        <button
-          className={styles.Button}
-          onClick={() => setShowEditForm(false)}
-          type="button"
-        >
-          Try
-        </button>
+
 
       </div>
     </Form>
