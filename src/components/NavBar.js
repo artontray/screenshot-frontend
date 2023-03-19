@@ -92,7 +92,7 @@ Favorites
     <NavLink
       className={styles.NavLink} to={`/profiles/${currentUser?.profile_id}`} >
       <Navbar.Brand >
-      <Avatar src={currentUser?.profile_image} height={40} />
+      <Avatar src={currentUser?.profile_image} height={50} />
       </Navbar.Brand>
     </NavLink>
 

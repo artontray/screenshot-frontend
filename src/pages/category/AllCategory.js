@@ -73,11 +73,17 @@ const AllCategory = ({ mobile }) => {
 
 
           <Media className="align-items-center justify-content-between">
-<p>Dashboard</p>
+
             
+<p><NavLink className={styles.NavLink} to={`/category/create`} >
+
+<i className="fa-solid fa-circle-plus fa-2x"></i>
+
+</NavLink></p>
 
 
               {
+                
                 <SeeAllDropdown
                 handleSeeAllCategory={handleSeeAllCategory}
                   handleSeeLastPrivateScrshot={handleSeeLastPrivateScrshot}
@@ -85,11 +91,7 @@ const AllCategory = ({ mobile }) => {
                   DeleteCategory={SearchCategory}
                 />
               }
-           <NavLink className={styles.NavLink} to={`/category/create`} >
-
-<i className="fa-solid fa-circle-plus fa-2x"></i>
-
-</NavLink>
+           
           </Media>
 
 

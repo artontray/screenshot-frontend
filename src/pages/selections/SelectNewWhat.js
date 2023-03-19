@@ -95,7 +95,7 @@ function SelectNewWhat() {
                             className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.PurpleStyle}`}
                             
                         >
-                            I DON'T KNOW, I WANT SOME INSPIRATION
+                            I don't know, Need some inspiration!
                         </Button>
                         </div>
                     </Container>

@@ -67,7 +67,7 @@ function CommentEditForm(props) {
           onClick={() => setShowEditForm(false)}
           type="button"
         >
-          CANCEL
+          Cancel
         </button>
         <button
           className={styles.Button}
@@ -76,6 +76,15 @@ function CommentEditForm(props) {
         >
           SAVE
         </button>
+
+        <button
+          className={styles.Button}
+          onClick={() => setShowEditForm(false)}
+          type="button"
+        >
+          Try
+        </button>
+
       </div>
     </Form>
   );
