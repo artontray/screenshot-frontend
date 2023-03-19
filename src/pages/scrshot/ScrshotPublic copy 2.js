@@ -28,7 +28,6 @@ const ScrshotPublic = (props) => {
     updated_at,
     setProfileData,
     setScrshots,
-    setProfileInfo,
   } = props;
 
   const currentUser = useCurrentUser();
@@ -53,13 +52,16 @@ const ScrshotPublic = (props) => {
       /*history.push("/");*/
       /*history.goBack();*/
 
-      /*console.log(setProfileData.results.results);*/
+      setProfileData((prevScrshot) => ({
+        results: [
+          {
+            ...prevScrshot.results[0],
+            nb_screenshots_public: prevScrshot.results[0]?.nb_screenshots_public - 1,
+          },
+        ],
+      }));
 
-      setProfileInfo((prevCat) => ({
-        
-            ...prevCat,
-            nb_screenshots_public: prevCat.nb_screenshots_public - 1,
-              }));
+
       setScrshots((prevScrshot) => ({
         ...prevScrshot,
         results: prevScrshot.results.filter((scrshotpublic) => scrshotpublic.id !== id),

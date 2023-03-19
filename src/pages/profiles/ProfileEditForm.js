@@ -91,6 +91,7 @@ const ProfileEditForm = () => {
           as="textarea"
           value={description}
           onChange={handleChange}
+          maxLength={2048}
           name="description"
           rows={7}
         />

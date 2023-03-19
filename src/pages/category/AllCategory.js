@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import { axiosReq } from "../../api/axiosDefaults";
 import appStyles from "../../App.module.css";
+import styles from "../../styles/CategoryPage.module.css";
 import Asset from "../../components/Asset";
 import { useHistory } from "react-router-dom";
 import { SeeAllDropdown } from "../../components/MoreDropdown";
@@ -14,6 +15,7 @@ import Badge from "react-bootstrap/Badge";
 import {  useParams } from "react-router-dom";
 import CategoryItem from "./CategoryItem";
 import Col from "react-bootstrap/Col";
+import { NavLink } from "react-router-dom";
 const AllCategory = ({ mobile }) => {
 
   const [categoryData, setCategoryData] = useState({
@@ -83,7 +85,11 @@ const AllCategory = ({ mobile }) => {
                   DeleteCategory={SearchCategory}
                 />
               }
-           
+           <NavLink className={styles.NavLink} to={`/category/create`} >
+
+<i className="fa-solid fa-circle-plus fa-2x"></i>
+
+</NavLink>
           </Media>
 
 
@@ -93,7 +99,7 @@ const AllCategory = ({ mobile }) => {
 
           {mobile ? (
             <div className="d-flex justify-content-around">
-            {popularCategory.results.slice(0, 5).map((category) => (
+            {popularCategory.results.slice(0, 3).map((category) => (
               
               <CategoryItem key={category.id} category={category} mobile />
                 

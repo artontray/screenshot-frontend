@@ -16,6 +16,7 @@ import { fetchMoreData } from "../../utils/utils";
 import NoResults from "../../assets/no-results.png";
 import AllCategory from "../category/AllCategory";
 import btnStyles from "../../styles/Button.module.css";
+import { NavLink } from "react-router-dom";
 
 function ListAllCategoryPage({ message = "", filter = "" }) {
 
@@ -51,7 +52,7 @@ function ListAllCategoryPage({ message = "", filter = "" }) {
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={12}>
       <Row>
-        <Col sm={6} xs={8} lg={9}>
+        <Col sm={6} xs={6} lg={9}>
       <i className={`fas fa-search ${appStyles.SearchIcon}`} />
         <Form
           className={appStyles.SearchBar}
@@ -65,17 +66,26 @@ function ListAllCategoryPage({ message = "", filter = "" }) {
             name="searchbar"
             id="searchbar"
             className="mr-sm-2"
-            placeholder="Search a Screenshot in this Category"
+            placeholder="Category"
           />
 
         </Form>
         </Col>
-        <Col lg={3} sm={6} xs={4} className="sm-py-2 d-lg-block"><Button
+        
+      <Col lg={1} sm={3} xs={3} className="sm-py-2 d-lg-block"><Button
         className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Basic}`}
         onClick={() => setQuery("")}
       >
         Clear
-      </Button></Col>
+      </Button></Col>{  }
+        <Col lg={2} sm={3} xs={3} className="xs-py-2 d-lg-block">
+        
+        <NavLink className="align-items-center justify-content-between" to={`/category/create`} >
+
+        <i className="fa-solid fa-circle-plus fa-2x"></i>
+
+</NavLink>
+</Col>
         </Row>
 
 

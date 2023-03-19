@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -8,7 +8,7 @@ import Container from "react-bootstrap/Container";
 import Badge from "react-bootstrap/Badge";
 import Upload from "../../assets/upload.png";
 
-import styles from "../../styles/ScrShotCreateEditForm.module.css";
+import styles from "../../styles/CategoryCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import { Image } from "react-bootstrap";
@@ -16,23 +16,42 @@ import Asset from "../../components/Asset";
 import { useHistory } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 import { useRedirect } from "../../hooks/useRedirect";
-function ScrshotPublicCreateForm() {
+import {  useParams } from "react-router";
+
+function CategoryEditForm() {
   useRedirect("loggedOut");
   const [errors, setErrors] = useState({});
 
-  const [ScrshotPublicData, setScrshotPublicData] = useState({
+  const [CategoryData, setCategoryData] = useState({
     title: "",
-    content: "",
+    description: "",
     image: "",
   });
-  const { title, content, image } = ScrshotPublicData;
+  const { title, description, image } = CategoryData;
 
   const imageInput = useRef(null);
   const history = useHistory();
+  const { id } = useParams();
+  useEffect(() => {
+    const handleMount = async () => {
+      try {
+        const { data } = await axiosReq.get(`/category/${id}/`);
+        const { title, description, image, is_owner } = data;
+
+        is_owner ? setCategoryData({ title, description, image }) : history.push("/");
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    handleMount();
+  }, [history, id]);
+
+
 
   const handleChange = (event) => {
-    setScrshotPublicData({
-      ...ScrshotPublicData,
+    setCategoryData({
+      ...CategoryData,
       [event.target.name]: event.target.value,
     });
   };
@@ -40,8 +59,8 @@ function ScrshotPublicCreateForm() {
   const handleChangeImage = (event) => {
     if (event.target.files.length) {
       URL.revokeObjectURL(image);
-      setScrshotPublicData({
-        ...ScrshotPublicData,
+      setCategoryData({
+        ...CategoryData,
         image: URL.createObjectURL(event.target.files[0]),
       });
     }
@@ -52,12 +71,19 @@ function ScrshotPublicCreateForm() {
     const formData = new FormData();
 
     formData.append("title", title);
-    formData.append("content", content);
-    formData.append("image", imageInput.current.files[0]);
+    formData.append("description", description);
+    if (imageInput?.current?.files[0]) {
+      //not existing image selection
+      formData.append("image", imageInput.current.files[0]);
+    }else{
+      
 
+
+    }
     try {
-      const { data } = await axiosReq.post("public-scrshot/", formData);
-      history.push(`/scrshot_public/${data.id}`);
+
+      await axiosReq.put(`/category/${id}/`, formData);
+      history.push(`/category/${id}`);
     } catch (err) {
       console.log(err);
       if (err.response?.status !== 401) {
@@ -69,14 +95,14 @@ function ScrshotPublicCreateForm() {
   const textFields = (
     <div className="text-center">
       <Form.Group>
-        <Form.Label ><Badge variant="light"><span className={styles.Labels}>Screenshot Name</span></Badge></Form.Label>
+        <Form.Label ><Badge variant="light"><span className={styles.Labels}>Category name</span></Badge></Form.Label>
 
         <Form.Control
           className={`${styles.Input} ${styles.InputText}`}
           type="text"
           name="title"
+          maxLength={12}
           value={title}
-          maxLength={25}
           onChange={handleChange}
         />
       </Form.Group>
@@ -88,14 +114,13 @@ function ScrshotPublicCreateForm() {
         <Form.Control
           className={`${styles.Input} ${styles.InputTextarea}`}
           as="textarea"
-          rows={6}
-          name="content"
-          maxLength={1024}
-          value={content}
+          rows={10}
+          name="description"
+          value={description}
           onChange={handleChange}
         />
       </Form.Group>
-      {errors?.content?.map((message, idx) => (
+      {errors?.description?.map((message, idx) => (
         <div key={idx} className={styles.bgwarning}>{message}</div>
       ))}
 
@@ -103,11 +128,11 @@ function ScrshotPublicCreateForm() {
         className={`${btnStyles.Button} ${btnStyles.PurpleStyle}`}
         onClick={() => history.goBack()}
       >
-        Cancel
+        CANCEL
       </Button>
       <Button variant="light"
         className={`${btnStyles.Button} ${btnStyles.PurpleStyle}`} type="submit">
-        Publish
+        ADD
       </Button>
     </div>
   );
@@ -119,7 +144,7 @@ function ScrshotPublicCreateForm() {
           <Container
             className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
           >
-            <Badge variant="light"><span className={styles.Labels}>Public Screenshot Area</span></Badge><hr />
+            <Badge variant="light"><span className={styles.Labels}>New Category Area</span></Badge>
             <Form.Group className="text-center">
               {image ? (
                 <>
@@ -142,7 +167,7 @@ function ScrshotPublicCreateForm() {
                 >
                   <Asset
                     src={Upload}
-                    message="Click to upload a Screenshot!"
+                    message="Click to upload an Image for this Category"
                   />
                 </Form.Label>
               )}
@@ -168,4 +193,4 @@ function ScrshotPublicCreateForm() {
   );
 }
 
-export default ScrshotPublicCreateForm;
+export default CategoryEditForm;

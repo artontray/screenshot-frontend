@@ -57,6 +57,7 @@ function CategoryEditForm() {
   };
 
   const handleChangeImage = (event) => {
+
     if (event.target.files.length) {
       URL.revokeObjectURL(image);
       setCategoryData({
@@ -72,9 +73,14 @@ function CategoryEditForm() {
 
     formData.append("title", title);
     formData.append("description", description);
-    formData.append("image", imageInput.current.files[0]);
+    if (imageInput?.current?.files[0]) {
+      //not existing image selection
+      formData.append("image", imageInput.current.files[0]);
+    }
+
 
     try {
+
 
       await axiosReq.put(`/category/${id}/`, formData);
       history.push(`/category/${id}`);
@@ -122,11 +128,11 @@ function CategoryEditForm() {
         className={`${btnStyles.Button} ${btnStyles.PurpleStyle}`}
         onClick={() => history.goBack()}
       >
-        CANCEL
+        Cancel
       </Button>
       <Button variant="light"
         className={`${btnStyles.Button} ${btnStyles.PurpleStyle}`} type="submit">
-        ADD
+        Save
       </Button>
     </div>
   );
@@ -138,7 +144,8 @@ function CategoryEditForm() {
           <Container
             className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
           >
-            <Badge variant="light"><span className={styles.Labels}>New Category Area</span></Badge>
+            <Badge variant="light"><span className={styles.Labels}>Edit Category Area</span></Badge>
+            <hr />
             <Form.Group className="text-center">
               {image ? (
                 <>

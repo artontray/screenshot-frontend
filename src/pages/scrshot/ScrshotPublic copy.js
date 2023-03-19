@@ -8,7 +8,7 @@ import { axiosRes } from "../../api/axiosDefaults";
 import { useHistory } from "react-router-dom";
 import { MoreDropdown } from "../../components/MoreDropdown";
 
-import { useEffect, useState } from "react";
+
 
 
 
@@ -26,15 +26,13 @@ const ScrshotPublic = (props) => {
     content,
     image,
     updated_at,
-    setProfileData,
+
     setScrshots,
-    setProfileInfo,
   } = props;
 
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
   const [profileScrshots, setProfileScrshots] = useState({ results: [] });
-
   const history = useHistory();
 
   const handleEdit = () => {
@@ -53,13 +51,16 @@ const ScrshotPublic = (props) => {
       /*history.push("/");*/
       /*history.goBack();*/
 
-      /*console.log(setProfileData.results.results);*/
+      pageProfile((prevScrshot) => ({
+        results: [
+          {
+            ...prevScrshot.results[0],
+            nb_screenshots_public: prevScrshot.results[0]?.nb_screenshots_public - 1,
+          },
+        ],
+      }));
 
-      setProfileInfo((prevCat) => ({
-        
-            ...prevCat,
-            nb_screenshots_public: prevCat.nb_screenshots_public - 1,
-              }));
+
       setScrshots((prevScrshot) => ({
         ...prevScrshot,
         results: prevScrshot.results.filter((scrshotpublic) => scrshotpublic.id !== id),

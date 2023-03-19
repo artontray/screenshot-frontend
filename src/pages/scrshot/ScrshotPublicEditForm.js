@@ -108,6 +108,7 @@ function ScrshotPublicEditForm() {
         as="textarea"
         rows={6}
         name="content"
+        maxLength={1024}
         value={content}
         onChange={handleChange}
       />
@@ -120,11 +121,11 @@ function ScrshotPublicEditForm() {
       className={`${btnStyles.Button} ${btnStyles.PurpleStyle}`}
       onClick={() => history.goBack()}
     >
-      CANCEL
+      Cancel
     </Button>
     <Button variant="light"
       className={`${btnStyles.Button} ${btnStyles.PurpleStyle}`} type="submit">
-      SAVE
+      Save
     </Button>
   </div>
   );

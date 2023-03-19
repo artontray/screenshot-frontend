@@ -28,7 +28,7 @@ import { ProfileEditDropdown } from "../../components/MoreDropdown";
 function ProfilePage() {
   const [hasLoaded, setHasLoaded] = useState(false);
   const [profileScrshots, setProfileScrshots] = useState({ results: [] });
-  const [ProfileInfo, setProfileInfo] = useState({ results: [] });
+  const [pageProfile, setProfileInfo] = useState({ results: [] });
   const currentUser = useCurrentUser();
   const { id } = useParams();
 
@@ -39,42 +39,26 @@ function ProfilePage() {
   const is_owner = currentUser?.username === profile?.owner;
 
   useEffect(() => {
-    let isMounted = true;
-    const handleMount = async () => {
+    const fetchData = async () => {
       try {
-        if(isMounted) {
-          const [{ data: pageProfile }, { data: profileScrshots }] =
+        const [{ data: pageProfile }, { data: profileScrshots }] =
           await Promise.all([
             axiosReq.get(`/profiles/${id}/`),
             axiosReq.get(`/public-scrshot/?owner__profile=${id}`),
-
-            
           ]);
         setProfileData((prevState) => ({
           ...prevState,
           pageProfile: { results: [pageProfile] },
         }));
         setProfileScrshots(profileScrshots);
-        
-        
-        
+        setProfileInfo(pageProfile);
         setHasLoaded(true);
-      }
-       
       } catch (err) {
         console.log(err);
       }
     };
-    handleMount();
-    return () => {
-      isMounted = false;
-
-  }
-  }, [id,setProfileData,ProfileInfo]);
-
-
-
-
+    fetchData();
+  }, [id, setProfileData]);
 
   const mainProfile = (
     <>
@@ -141,7 +125,7 @@ function ProfilePage() {
       {profileScrshots.results.length ? (
         <InfiniteScroll
           children={profileScrshots.results.map((scrshot) => (
-            <ScrshotPublic key={scrshot.id} {...scrshot} setScrshots={setProfileScrshots} setProfileInfo={setProfileInfo} />
+            <ScrshotPublic key={scrshot.id} {...scrshot} setScrshots={setProfileScrshots}  setProfileData={setProfileData} setProfileInfo={setProfileInfo} />
           ))}
           dataLength={profileScrshots.results.length}
           loader={<Asset spinner />}

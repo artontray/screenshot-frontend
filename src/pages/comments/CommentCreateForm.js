@@ -57,6 +57,7 @@ function CommentCreateForm(props) {
             placeholder="my comment..."
             as="textarea"
             value={content}
+            maxLength={2048}
             onChange={handleChange}
             rows={3}
           />

@@ -8,7 +8,7 @@ import { Button } from "react-bootstrap";
 import Badge from "react-bootstrap/Badge";
 import { useSetProfileData } from "../../contexts/ProfileDataContext";
 const CategoryItems = (props) => {
-  const { category, mobile, imageSize = 55 } = props;
+  const { category, mobile, imageSize = 85 } = props;
   const { id, description, image, title } = category;
 
   const currentUser = useCurrentUser();

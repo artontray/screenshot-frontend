@@ -56,10 +56,13 @@ const ScrshotPublic = (props) => {
       /*console.log(setProfileData.results.results);*/
 
       setProfileInfo((prevCat) => ({
-        
+        results: [
+          {
             ...prevCat,
             nb_screenshots_public: prevCat.nb_screenshots_public - 1,
-              }));
+          },
+        ],
+      }));
       setScrshots((prevScrshot) => ({
         ...prevScrshot,
         results: prevScrshot.results.filter((scrshotpublic) => scrshotpublic.id !== id),

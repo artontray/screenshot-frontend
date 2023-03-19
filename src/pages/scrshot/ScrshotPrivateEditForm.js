@@ -134,6 +134,7 @@ function ScrshotPrivateCreateForm() {
           as="textarea"
           rows={6}
           name="content"
+          maxLength={2048}
           value={content}
           onChange={handleChange}
         />
@@ -154,11 +155,11 @@ function ScrshotPrivateCreateForm() {
         className={`${btnStyles.Button} ${btnStyles.PurpleStyle}`}
         onClick={() => history.goBack()}
       >
-        CANCEL
+        Cancel
       </Button>
       <Button variant="light"
         className={`${btnStyles.Button} ${btnStyles.PurpleStyle}`} type="submit">
-        PUBLISH
+        Save
       </Button>
     </div>
   );

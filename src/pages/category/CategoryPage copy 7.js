@@ -192,7 +192,7 @@ function CategoryPage(filter = "") {
             name="searchbar"
             id="searchbar"
             className="mr-sm-2"
-            placeholder="Screenshot"
+            placeholder="Search a Screenshot in this Category"
           />
 
         </Form>

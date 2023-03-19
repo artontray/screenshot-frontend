@@ -53,8 +53,9 @@ function CommentEditForm(props) {
           as="textarea"
           name="comment"
           value={formContent}
+          maxLength={2048}
           onChange={handleChange}
-          rows={2}
+          rows={3}
         />
       </Form.Group>
       {errors.comment?.map((message, idx) => (

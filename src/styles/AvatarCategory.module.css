@@ -11,3 +11,11 @@
   border: 10px solid rgb(200, 104, 238);
   border-radius: 50%;
   }
+
+  @media screen and (max-width: 991px) {
+    .CategoryPhotoDesign {
+      width:20px;
+      height:20px;
+      visibility:hidden;
+    }
+  }

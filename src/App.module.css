@@ -2,6 +2,8 @@
   font-family: "Ubuntu", sans-serif;
   background-color: #dab3ff;
   min-height: 100vh;
+  margin-left:4px;
+  margin-right:4px;
 }
 
 body {

@@ -89,6 +89,7 @@ function CategoryCreateForm() {
           className={`${styles.Input} ${styles.InputTextarea}`}
           as="textarea"
           rows={6}
+          maxLength={1024}
           name="description"
           value={description}
           onChange={handleChange}
@@ -102,11 +103,11 @@ function CategoryCreateForm() {
         className={`${btnStyles.Button} ${btnStyles.PurpleStyle}`}
         onClick={() => history.goBack()}
       >
-        CANCEL
+        Cancel
       </Button>
       <Button variant="light"
         className={`${btnStyles.Button} ${btnStyles.PurpleStyle}`} type="submit">
-        ADD
+        Create
       </Button>
     </div>
   );

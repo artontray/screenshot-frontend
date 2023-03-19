@@ -21,7 +21,7 @@ const Category = (props) => {
     id,
     owner,
     title,
-   
+
     image,
 
     private_screenshots_count,
@@ -89,14 +89,17 @@ const Category = (props) => {
 
             </Link>
           </div>
-          <div>
-          <Link to={`/category/${id}`}>
-            <i className="fa-solid fa-camera fa-3x"></i>
+          <span className="align-items-center justify-content-between">
+          <i className="fa-solid fa-camera fa-2x"></i>
             <h1>{private_screenshots_count} </h1>
+          
+          
+          <Link to={`/category/${id}`}>
+            
             <h4>{ShortTitle}</h4>
 
           </Link>
-          </div>
+          </span>
           <div className="d-flex ">
 
 
