@@ -5,6 +5,8 @@ import btnStyles from "../../styles/Button.module.css";
 import styles from "../../styles/CommentCreateEditForm.module.css";
 import { axiosRes } from "../../api/axiosDefaults";
 import Button from "react-bootstrap/Button";
+import { useHistory } from "react-router";
+
 function CommentCreateForm(props) {
   const { 
     public_screenshot, 
@@ -12,7 +14,7 @@ function CommentCreateForm(props) {
     setComments
 } = props;
   const [content, setContent] = useState("");
-
+  const history = useHistory();
   const handleChange = (event) => {
     setContent(event.target.value);
   };
@@ -58,13 +60,22 @@ function CommentCreateForm(props) {
           />
         </InputGroup>
       </Form.Group>
+      <div>
       <Button
-        className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.PurpleStyle} d-block ml-auto`}
+        className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.PurpleStyle} ${btnStyles.Aligncenter} mr-auto`}
+        onClick={() => history.goBack()}
+      >
+        Back
+      </Button>
+      
+      <Button
+        className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.PurpleStyle} ${btnStyles.Aligncenter}  mr-auto`}
         disabled={!content.trim()}
         type="submit"
       >
         Publish
       </Button>
+      </div>
     </Form>
   );
 }
