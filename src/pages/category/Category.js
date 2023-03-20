@@ -1,17 +1,16 @@
 import React from "react";
 import styles from "../../styles/ScrshotPublic.module.css";
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import { Card, Media, OverlayTrigger, Tooltip } from "react-bootstrap";
+import { Card, Media } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import AvatarCategory from "../../components/AvatarCategory";
 import { axiosRes } from "../../api/axiosDefaults";
 import { useHistory } from "react-router-dom";
-import { MoreDropdownCategory } from "../../components/MoreDropdown";
-import Badge from "react-bootstrap/Badge";
+
+
 import StylesAvatar from "../../styles/AvatarCategory.module.css";
 import { NavLink } from "react-router-dom";
 import appStyles from "../../App.module.css";
-import  { useRef, useState } from "react";
+import  { useState } from "react";
 import Alert from 'react-bootstrap/Alert'
 
 const Category = (props) => {
@@ -19,18 +18,13 @@ const Category = (props) => {
 
   const {
     id,
-    owner,
     title,
-
     image,
-
     private_screenshots_count,
     setCategory,
  
   } = props;
   const [errors, setErrors] = useState({});
-  const currentUser = useCurrentUser();
-  const is_owner = currentUser?.username === owner;
   var ShortTitle
   if (title.length > 21) {
     ShortTitle = title.toString().replace(/^(.{20}[^\s]*).*/, "$1") + "...";
@@ -65,7 +59,7 @@ const Category = (props) => {
       
     } catch (err) {
       console.log(err);
-      if (err.response?.status == 403) {
+      if (err.response?.status === 403) {
         //alert('Keep at least one category, deleted aborted');
         setErrors(err.response?.data);
 

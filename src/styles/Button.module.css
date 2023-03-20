@@ -1,67 +1,69 @@
 .Button {
-    font-size: 0.8rem;
-    align-self: center;
-    border-radius: 100px;
-    border-color: transparent;
-    padding: 4px 10px;
-    margin-left: 2px;
-    margin-right: 2px;
-    min-width: 75px;
-    background-color: #6f00ff !important;
-  }
-  
-  .Follow{
-    
-    background-color: #ba89fb !important;
-    color : #000;
-  }
+  font-size: 0.8rem;
+  align-self: center;
+  border-radius: 100px;
+  border-color: transparent;
+  padding: 4px 10px;
+  margin-left: 2px;
+  margin-right: 2px;
+  min-width: 75px;
+  background-color: #6f00ff !important;
+}
 
-  .UnFollow{
-    background-color: #6f00ff !important;
-  }
-  .Basic{
-    background-color: #6f00ff !important;
-  }
+.Aligncenter {
 
-  .Button:hover {
-    opacity: 0.8;
-    border-color: transparent;
-    cursor: pointer;
-    background-color: #7e1bff !important;
-  }
-  
+  text-align: center;
+  align-items: center;
+}
 
+.Follow {
 
-  .Button:hover:active {
-    background-color: #a480ff !important;
-    
-  }
-  
-  .Button:active {
-    background-color: #6f00ff !important;
+  background-color: #ba89fb !important;
+  color: #000;
+}
 
-    
-  }
-  
-  .Button:focus {
-    background-color: #ba43ff;
-  }
-  
-  .Wide {
-    padding: 10px 5px;
+.UnFollow {
+  background-color: #6f00ff !important;
+}
 
-  }
-  
-  .PurpleStyle:hover {
-    color: #ffffff;
-  }
-  
-  .PurpleStyle {
-    background-color: #713dff;
-    color: #ffffff;
-  }
+.Basic {
+  background-color: #6f00ff !important;
+}
+
+.Button:hover {
+  opacity: 0.8;
+  border-color: transparent;
+  cursor: pointer;
+  background-color: #7e1bff !important;
+}
 
 
 
+.Button:hover:active {
+  background-color: #a480ff !important;
 
- 
+}
+
+.Button:active {
+  background-color: #6f00ff !important;
+
+
+}
+
+.Button:focus {
+  background-color: #ba43ff;
+}
+
+.Wide {
+  padding: 10px 5px;
+
+}
+
+.PurpleStyle:hover {
+  color: #ffffff;
+}
+
+.PurpleStyle {
+  background-color: #713dff;
+  color: #ffffff;
+}

@@ -1,28 +1,23 @@
-import React, { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
-
+import React from "react";
 import styles from "../../styles/SignInUpForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
-import logo from "../../assets/logo.png";
-import imageMain from "../../assets/screenshots-main.png";
 import {
-    Form,
     Button,
-    Image,
-    Col,
     Row,
     Container,
-    Alert,
+    Image,
+    Col
 } from "react-bootstrap";
-import axios from "axios";
-import { useRedirect } from "../../hooks/useRedirect";
+import imageMain from "../../assets/screenshots-main.png";
+
 
 
 const HomePage = () => {
 
-    const history = useHistory();
+
     return (
+
         <Row className={styles.Row}>
             <Col className="my-auto py-2 p-md-2" md={12} lg={6} sm={12}>
                 <Container className={`${appStyles.Content} p-4 `}>
@@ -71,13 +66,22 @@ const HomePage = () => {
 
             </Col>
             <Col
-                md={6} lg={6} 
+                md={6} lg={6}
                 className={`my-auto d-none d-lg-block d-md-none p-2`}
             >
+
                 <Image
                     className={`${appStyles.FillerImage}`}
                     src={imageMain}
                 />
+                <div className={btnStyles.Aligncenter}>
+                <Button href="/"
+                    className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.PurpleStyle}`}
+
+                >
+                    Enter Now
+                </Button>
+                </div>
             </Col>
         </Row>
     );

@@ -68,6 +68,19 @@ a {
 
 
 
+
+
+@keyframes AnimationMessage {
+  from {
+    transform: translateX(-100%);
+    filter: blur(10px);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
 a:hover {
 
   text-decoration: none;

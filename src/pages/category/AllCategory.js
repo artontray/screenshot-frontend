@@ -6,12 +6,8 @@ import styles from "../../styles/CategoryPage.module.css";
 import Asset from "../../components/Asset";
 import { useHistory } from "react-router-dom";
 import { SeeAllDropdown } from "../../components/MoreDropdown";
-import { Link } from "react-router-dom";
-import Avatar from "../../components/Avatar";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import { Card, Media, OverlayTrigger, Tooltip } from "react-bootstrap";
-import stylesIcon from "../../styles/MoreDropdown.module.css";
-import Badge from "react-bootstrap/Badge";
+import { Media } from "react-bootstrap";
 import {  useParams } from "react-router-dom";
 import CategoryItem from "./CategoryItem";
 import Col from "react-bootstrap/Col";
@@ -24,8 +20,6 @@ const AllCategory = ({ mobile }) => {
     popularCategory: { results: [] },
   });
   const { popularCategory } = categoryData;
-  const [category, setCategory] = useState({ results: [] });
-  const [scrshots, setScrshots] = useState({ results: [] });
   const currentUser = useCurrentUser();
   const history = useHistory();
   const handleSeeAllCategory = () => {

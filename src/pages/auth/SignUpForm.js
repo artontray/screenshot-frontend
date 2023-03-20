@@ -103,8 +103,8 @@ const SignUpForm = () => {
                 <div key={idx} className={styles.bgwarning}>{message}</div>
               
             ))}
-<div style={{display: 'flex',justifyContent:'center', alignItems:'center'}}>
-            <Button variant="light"
+<div className={btnStyles.Aligncenter}>
+            <Button 
               className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.PurpleStyle}`}
               type="submit"
             >

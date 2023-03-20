@@ -1,44 +1,29 @@
 import React, { useEffect, useState } from "react";
-import { useRedirect } from "../../hooks/useRedirect";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
-import Comment from "../comments/Comment";
+
 import Badge from "react-bootstrap/Badge";
 import appStyles from "../../App.module.css";
 import { useLocation } from "react-router";
-import { useHistory } from "react-router-dom";
 import styles from "../../styles/CategoryPage.module.css";
 import { useParams } from "react-router";
 import btnStyles from "../../styles/Button.module.css";
-
-import stylesSearch from "../../styles/ListScrshotPublicPage.module.css";
 import { axiosReq } from "../../api/axiosDefaults";
-import Category from "./Category";
 import { NavLink } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import NoResults from "../../assets/no-results.png";
 import ScrshotPrivate from "../scrshot/ScrshotPrivate";
-import { axiosRes } from "../../api/axiosDefaults";
 import AllCategory from "../category/AllCategory";
 import { Button, Image } from "react-bootstrap";
 import InfiniteScroll from "react-infinite-scroll-component";
-import CommentCreateForm from "../comments/CommentCreateForm";
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import Asset from "../../components/Asset";
-import {
-    useCategoryData,
-    useSetCategoryData,
-  } from "../../contexts/CategoryDataContext";
 import { fetchMoreData } from "../../utils/utils";
-import PopularProfiles from "../profiles/PopularProfiles";
-import { MoreDropdownEditCategory } from "../../components/MoreDropdown";
 function CategoryPage(filter = "") {
-  useRedirect("loggedOut");
+
+
   const { id } = useParams();
   const [category, setCategory] = useState({ results: [] });
-  const history = useHistory();
-  const currentUser = useCurrentUser();
   const [hasLoaded, setHasLoaded] = useState(false);
   const [scrshots, setScrshots] = useState({ results: [] });
   const [query, setQuery] = useState("");
@@ -73,26 +58,12 @@ function CategoryPage(filter = "") {
 
     
   }, [id,filter, query, pathname]);
-  const handleEdit = () => {
-    history.push(`/`);
-  };
 
 
 
 
 
 
-
-  const handleDelete = async () => {
-    try {
-      await axiosRes.delete(`/category/${id}/`);
-      history.push("/ListScrshotPrivatePage");
-      /*history.goBack();*/
-
-    } catch (err) {
-      console.log(err);
-    }
-  };
 
 
 

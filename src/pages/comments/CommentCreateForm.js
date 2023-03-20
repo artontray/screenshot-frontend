@@ -1,20 +1,15 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import btnStyles from "../../styles/Button.module.css";
 import styles from "../../styles/CommentCreateEditForm.module.css";
-import Avatar from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefaults";
 import Button from "react-bootstrap/Button";
 function CommentCreateForm(props) {
   const { 
     public_screenshot, 
     setScrshot, 
-    setComments, 
-    profileImage, 
-    profile_id 
+    setComments
 } = props;
   const [content, setContent] = useState("");
 

@@ -1,9 +1,9 @@
 import React from "react";
 import styles from "../../styles/ScrshotPrivate.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import { Card, Media, OverlayTrigger, Tooltip } from "react-bootstrap";
+import { Card, Media } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import Avatar from "../../components/Avatar";
+
 import { axiosRes } from "../../api/axiosDefaults";
 import { useHistory } from "react-router-dom";
 import { MoreDropdown } from "../../components/MoreDropdown";
@@ -17,8 +17,6 @@ const ScrshotPrivate = (props) => {
   const {
     id,
     owner,
-    profile_id,
-    profile_image,
     title,
     content,
     category_title,

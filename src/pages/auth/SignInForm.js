@@ -19,9 +19,9 @@ import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 import { useRedirect } from "../../hooks/useRedirect";
 import { setTokenTimestamp } from "../../utils/utils";
 function SignInForm() {
-
-    const setCurrentUser = useSetCurrentUser();
     useRedirect("loggedIn");
+    const setCurrentUser = useSetCurrentUser();
+    
     const [signInData, setSignInData] = useState({
         username: "",
         password: "",
@@ -88,7 +88,7 @@ function SignInForm() {
                         {errors.password?.map((message, idx) => (
                             <div key={idx} className={styles.bgwarning}>{message}</div>
                         ))}
-                        <div style={{display: 'flex',justifyContent:'center', alignItems:'center'}}>
+                        <div className={btnStyles.Aligncenter}>
                         <Button 
                             className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.PurpleStyle}`}
                             type="submit"

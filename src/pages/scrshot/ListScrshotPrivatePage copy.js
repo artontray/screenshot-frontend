@@ -18,7 +18,7 @@ import { useRedirect } from "../../hooks/useRedirect";
 import { Button } from "react-bootstrap";
 function ListScrshotPrivatePage({ message = "", filter = "" }) {
   useRedirect("loggedOut");
-  const [, setCategory] = useState({ results: [] });
+  const [category, setCategory] = useState({ results: [] });
     const [scrshots, setScrshots] = useState({ results: [] });
     const [hasLoaded, setHasLoaded] = useState(false);
     const { pathname } = useLocation();
@@ -32,13 +32,9 @@ function ListScrshotPrivatePage({ message = "", filter = "" }) {
             axiosReq.get(`/category/`),
             axiosReq.get(`/private-scrshot/?${filter}search=${query}`)
           ]);
-          
+          /*const { data } = await axiosReq.get(`/private-scrshot/?${filter}search=${query}`);*/
           setScrshots(scrshots);
-          
-          setCategory(category);
-
-          console.log(category);
-          console.log(scrshots.results.length);
+          setCategory({ results: [category] });
           setHasLoaded(true);
         } catch (err) {
           console.log(err);
@@ -47,7 +43,7 @@ function ListScrshotPrivatePage({ message = "", filter = "" }) {
       setHasLoaded(false);
       const timer = setTimeout(() => {
         fetchScrshots();
-      }, 2000);
+      }, 1000);
       return () => {
         clearTimeout(timer);
       };
@@ -90,10 +86,7 @@ function ListScrshotPrivatePage({ message = "", filter = "" }) {
   
           {hasLoaded ? (
             <>
-             <p className={appStyles.MessagesInfo}>{scrshots.results.length} Screenshot(s) found in total.</p>
-
               {scrshots.results.length ? (
-                
                 <InfiniteScroll
                   children={scrshots.results.map((scrshot) => (
                     <ScrshotPrivate key={scrshot.id} {...scrshot} setScrshots={setScrshots} setCategory={setCategory} />
@@ -112,7 +105,6 @@ function ListScrshotPrivatePage({ message = "", filter = "" }) {
           ) : (
             <Container className={appStyles.Content}>
               <Asset spinner />
-            
             </Container>
           )}
         </Col>

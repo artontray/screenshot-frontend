@@ -8,7 +8,6 @@ import SignInForm from "./pages/auth/SignInForm";
 import ScrshotPublicCreateForm from "./pages/scrshot/ScrshotPublicCreateForm";
 import ScrshotPrivateCreateForm from "./pages/scrshot/ScrshotPrivateCreateForm";
 import CategoryCreateForm from "./pages/category/CategoryCreateForm";
-
 import ScrshotPublicPage from "./pages/scrshot/ScrshotPublicPage";
 import ListScrshotPublicPage from "./pages/scrshot/ListScrshotPublicPage";
 import ListScrshotPrivatePage from "./pages/scrshot/ListScrshotPrivatePage";
@@ -25,9 +24,10 @@ import UserPasswordForm from "./pages/profiles/UserPasswordForm";
 import ProfileEditForm from "./pages/profiles/ProfileEditForm";
 import ListAllCategoryPage from "./pages/category/ListAllCategoryPage";
 import CategoryPage from "./pages/category/CategoryPage";
-import PopularProfiles from "./pages/profiles/PopularProfiles";
+
 import CategoryEditForm from "./pages/category/CategoryEditForm";
 import HomePage from "./pages/home/HomePage";
+
 function App() {
 
   const currentUser = useCurrentUser();
@@ -37,6 +37,7 @@ function App() {
 
     <div className={styles.App}>
       <NavBar />
+      
       <Container className={styles.Main}>
         <Switch>
           <Route

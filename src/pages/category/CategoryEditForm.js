@@ -83,7 +83,7 @@ function CategoryEditForm() {
 
 
       await axiosReq.put(`/category/${id}/`, formData);
-      history.push(`/category/${id}`);
+     history.push(`/category/${id}/`);
     } catch (err) {
       console.log(err);
       if (err.response?.status !== 401) {

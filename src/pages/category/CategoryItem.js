@@ -1,17 +1,12 @@
 import React from "react";
 import styles from "../../styles/Profile.module.css";
-import btnStyles from "../../styles/Button.module.css";
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { Link } from "react-router-dom";
 import Avatar from "../../components/Avatar";
-import { Button } from "react-bootstrap";
 import Badge from "react-bootstrap/Badge";
-import { useSetProfileData } from "../../contexts/ProfileDataContext";
 const CategoryItems = (props) => {
   const { category, mobile, imageSize = 85 } = props;
-  const { id, description, image, title } = category;
+  const {  image, title } = category;
 
-  const currentUser = useCurrentUser();
 
 
  

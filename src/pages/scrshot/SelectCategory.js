@@ -8,7 +8,7 @@ import styles from "../../styles/ScrShotCreateEditForm.module.css";
 
 function SelectCategory(props) {
   const [results] = useState([]);
-  const { ScrshotPrivateData, setScrshotPrivateData, category_id, category_title } = props;
+  const { setScrshotPrivateData, category_id, category_title } = props;
   useEffect(() => {
     const fetchData = async () => {
 

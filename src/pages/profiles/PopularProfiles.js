@@ -4,7 +4,6 @@ import appStyles from "../../App.module.css";
 import Asset from "../../components/Asset";
 import { useProfileData } from "../../contexts/ProfileDataContext";
 import Profile from "./Profile";
-import Badge from "react-bootstrap/Badge";
 const PopularProfiles = ({ mobile }) => {
   const { popularProfiles } = useProfileData();
 

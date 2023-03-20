@@ -8,7 +8,6 @@ import { axiosRes } from "../../api/axiosDefaults";
 import { useHistory } from "react-router-dom";
 import { MoreDropdown } from "../../components/MoreDropdown";
 
-import { useEffect, useState } from "react";
 
 
 
@@ -26,14 +25,12 @@ const ScrshotPublic = (props) => {
     content,
     image,
     updated_at,
-    setProfileData,
     setScrshots,
     setProfileInfo,
   } = props;
 
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
-  const [profileScrshots, setProfileScrshots] = useState({ results: [] });
 
   const history = useHistory();
 

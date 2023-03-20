@@ -1,12 +1,9 @@
 import React from "react";
 
-import { Navbar, Form, FormControl, Button, Nav } from "react-bootstrap";
+import { Navbar, Nav } from "react-bootstrap";
 import { Container } from "react-bootstrap";
 import styles from "../styles/NavBar.module.css";
 import { NavLink } from "react-router-dom";
-import Dropdown from 'react-bootstrap/Navbar'
-import NavDropdown from "react-bootstrap/Navbar";
-import logo from "../assets/logo.png";
 import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
 import { useSetCurrentUser } from "../contexts/CurrentUserContext";
 import {
@@ -55,26 +52,11 @@ const NavBar = () => {
       New
     </NavLink>
   );
-  const addCategoryIcon = (
-    <NavLink className={styles.NavLink} to="/category/create">
-      <i className="fa-solid fa-folder-plus fa-2x"></i>
-      Add Category
-    </NavLink>
-  );
 
-  const addPrivateScrshotIcon = (
-    <NavLink className={styles.NavLink} to="/scrshot_private/create">
-      <i className="fa-solid fa-circle-plus fa-2x"></i>
-      Private New
-    </NavLink>
-  );
 
-  const addPrivateDashboard = (
-    <NavLink className={styles.NavLink} to="/ListScrshotPrivatePage">
-      <i className="fa-solid fa-camera fa-2x"></i>
 
-    </NavLink>
-  );
+
+
   const addInspirationIcon = (
     <NavLink className={styles.NavLink} to="/ListFollowedUsersScrshot">
       <i className="fa-solid fa-people-group fa-2x"></i>
@@ -139,7 +121,7 @@ Sign In
   return (
 
 
-<Navbar className={styles.NavBar} expanded={expanded} expand="md" fixed="top" expand="lg">
+<Navbar className={styles.NavBar} expanded={expanded} expand="md" fixed="top">
 
 <Container>
 

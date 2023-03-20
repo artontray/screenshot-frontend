@@ -79,7 +79,9 @@ const ProfileEditForm = () => {
       history.goBack();
     } catch (err) {
       console.log(err);
-      
+      if (err.response?.status !== 401) {
+        setErrors(err.response?.data);
+      }
     }
   };
 
