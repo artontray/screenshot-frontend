@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
-
+import { useHistory} from "react-router-dom";
 import Badge from "react-bootstrap/Badge";
 import appStyles from "../../App.module.css";
 import { useLocation } from "react-router";
@@ -21,7 +21,7 @@ import Asset from "../../components/Asset";
 import { fetchMoreData } from "../../utils/utils";
 function CategoryPage(filter = "") {
 
-
+  const history = useHistory();
   const { id } = useParams();
   const [category, setCategory] = useState({ results: [] });
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -43,6 +43,19 @@ function CategoryPage(filter = "") {
         setHasLoaded(true);
       } catch (err) {
         console.log(err);
+        //Not authorized to display the selected content
+        //Unlogged User try to reach out a Category 
+        if (err.response?.status === 401) {
+          history.push("/Error");
+  
+        }
+        //Not authorized to display the selected content
+        //A Logged User try to reach category from an other User from URL. 
+        // Forbidden
+        if (err.response?.status === 403) {
+          history.push("/Error");
+  
+        }
       }
     };
     setHasLoaded(false);
@@ -57,7 +70,7 @@ function CategoryPage(filter = "") {
 
 
     
-  }, [id,filter, query, pathname]);
+  }, [id,filter, query, pathname,history]);
 
 
 

@@ -2,12 +2,13 @@ import React from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 import styles from "../styles/MoreDropdown.module.css";
 import { useHistory } from "react-router";
-// The forwardRef is important!!
-// Dropdown needs access to the DOM node in order to position the Menu
+
+// DropDown Component to get an quick access to different features
+
+//Component DropDown Style I
 const ThreeDots = React.forwardRef(({ onClick }, ref) => (
   <i
     className="fa-solid fa-circle-chevron-down fa-2x"
-
     ref={ref}
     onClick={(e) => {
       e.preventDefault();
@@ -16,11 +17,10 @@ const ThreeDots = React.forwardRef(({ onClick }, ref) => (
   />
 ));
 
-
+//Component DropDown Style II
 const ThreeDotsVersion2 = React.forwardRef(({ onClick }, ref) => (
   <i
     className="fa-solid fa-ellipsis fa-2x"
-
     ref={ref}
     onClick={(e) => {
       e.preventDefault();
@@ -29,11 +29,11 @@ const ThreeDotsVersion2 = React.forwardRef(({ onClick }, ref) => (
   />
 ));
 
+//Component DropDown for Category Page
 export const MoreDropdownCategory = ({ handleEdit, handleDeleteCategory }) => {
   return (
     <Dropdown className="mr-auto" drop="right">
       <Dropdown.Toggle as={ThreeDots} />
-
       <Dropdown.Menu
         className="text-center"
         popperConfig={{ strategy: "fixed" }}
@@ -56,6 +56,8 @@ export const MoreDropdownCategory = ({ handleEdit, handleDeleteCategory }) => {
     </Dropdown>
   );
 };
+
+//Component DropDown for Category Page only for Editing
 export const MoreDropdownEditCategory = ({ handleEdit }) => {
   return (
     <Dropdown className="mr-auto" drop="left">
