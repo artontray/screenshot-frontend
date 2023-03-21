@@ -24,7 +24,7 @@ import UserPasswordForm from "./pages/profiles/UserPasswordForm";
 import ProfileEditForm from "./pages/profiles/ProfileEditForm";
 import ListAllCategoryPage from "./pages/category/ListAllCategoryPage";
 import CategoryPage from "./pages/category/CategoryPage";
-
+import Error404 from "./pages/errors/error404";
 import CategoryEditForm from "./pages/category/CategoryEditForm";
 import HomePage from "./pages/home/HomePage";
 
@@ -100,7 +100,7 @@ function App() {
             render={() => <ProfileEditForm />}
           />
 
-          <Route render={() => <p>Page not found!</p>} />
+          <Route render={() => <Error404 />} />
         </Switch>
       </Container>
       

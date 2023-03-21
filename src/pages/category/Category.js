@@ -84,7 +84,7 @@ const Category = (props) => {
             </Link>
           </div>
           <span className="align-items-center justify-content-between">
-          <i className="fa-solid fa-camera fa-2x"></i>
+          <i className="fa-solid fa-camera fa-3x"></i>
             <h1>{private_screenshots_count} </h1>
           
           

@@ -130,6 +130,12 @@ color : #ff0000;
   
 }
 
+.Image404{
+  text-align: center;
+  align-items: center;
+  width: 50%;
+}
+
 .SearchIcon {
   position: absolute;
   font-size: 1.2rem;
