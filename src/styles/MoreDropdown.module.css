@@ -1,20 +1,40 @@
 .DropdownItem {
-    display: inline-block;
-    max-width: 50%;
-    padding: 0px;
-  }
-  
-  .Absolute {
-    position: absolute;
-    right: 0;
-    z-index: 99;
-  }
+  display: inline-block;
+  max-width: 50%;
+  padding: 0px;
+}
 
-  .DropdownItemOnList {
-    display: flex;
-    max-width: 100%;
-    padding: 5px;
-  }
+.Absolute {
+  position: absolute;
+  right: 0;
+  z-index: 99;
+}
+
+.DropdownItemOnList {
+  display: flex;
+  max-width: 100%;
+  padding: 5px;
+}
+
+.MyDropDown>div>a:hover
+{
+  background-color: rgb(148, 61, 255) !important;
+  border-radius: 20px;
+  color: #FFF;
+}
+
+
+.MyDropDown>div{
+border: 1px solid #6600ff;
+background-color: #d695ff;
+border-radius: 20px;
+}
 
 
 
+.Icons {
+color: rgb(101, 68, 219);
+font-size: 1.2rem;
+padding: 9px;
+padding-left: 15px;
+}
