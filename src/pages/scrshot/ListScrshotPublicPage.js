@@ -82,7 +82,7 @@ function ListScrshotPublicPage({ message, filter = "" }) {
               {scrshots.results.length ? (
                 <InfiniteScroll
                   children={scrshots.results.map((scrshot) => (
-                    <ScrshotPublic key={scrshot.id} {...scrshot} setScrshots={setScrshots} />
+                    <ScrshotPublic key={scrshot.id} {...scrshot} setScrshots={setScrshots} setProfileInfo="0"/>
                   ))}
                   dataLength={scrshots.results.length}
                   loader={<Asset spinner />}

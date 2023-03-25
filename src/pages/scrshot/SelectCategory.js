@@ -85,7 +85,7 @@ function SelectCategory(props) {
         <Form.Label><Badge variant="light"><span className={styles.Labels}>Category : </span></Badge></Form.Label>
        
      
-        <div className={styles.bgwarning}>{category_id && `Current : ${category_title}`}</div>
+        <div className={styles.bgwarning}>{category_id && `${category_title} (current selection)`}</div>
         <Form.Control as="select" id="category" name="category"
         onChange={handleChangeCategory}
         onClick={handleChangeCategory}

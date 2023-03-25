@@ -25,7 +25,7 @@ function DisplayPrivateScrtshot() {
         setImage(data.image);
       } catch (err) {
         console.log(err);
-        history.push("/");
+        history.push("/Error");
       }
     };
   

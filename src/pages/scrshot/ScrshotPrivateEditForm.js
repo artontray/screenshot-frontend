@@ -48,9 +48,10 @@ function ScrshotPrivateCreateForm() {
         const { data } = await axiosReq.get(`/private-scrshot/${id}/`);
         const { title, content, image, category, is_owner, category_title } = data;
 
-        is_owner ? setScrshotPrivateData({ title, content, image, category, category_title }) : history.push("/");
+        is_owner ? setScrshotPrivateData({ title, content, image, category, category_title }) : history.push("/Error");
       } catch (err) {
         console.log(err);
+        history.push("/Error");
       }
     };
 

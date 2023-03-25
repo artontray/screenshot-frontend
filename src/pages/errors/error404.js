@@ -28,6 +28,7 @@ function Error404() {
                         <Image
                             className={`${appStyles.Image404} `}
                             src={imagerror404}
+                            alt="Error 404"
                         /></div>
                     <div className={btnStyles.Aligncenter}>
                         <Button href="/"

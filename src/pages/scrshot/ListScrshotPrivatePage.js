@@ -16,6 +16,7 @@ import NoResults from "../../assets/no-results.png";
 import AllCategory  from "../category/AllCategory";
 import { useRedirect } from "../../hooks/useRedirect";
 import { Button } from "react-bootstrap";
+import { useHistory } from "react-router-dom";
 function ListScrshotPrivatePage({ message = "", filter = "" }) {
   useRedirect("loggedOut");
   const [, setCategory] = useState({ results: [] });
@@ -24,7 +25,7 @@ function ListScrshotPrivatePage({ message = "", filter = "" }) {
     const { pathname } = useLocation();
   
     const [query, setQuery] = useState("");
-    
+    const history = useHistory();
     useEffect(() => {
       const fetchScrshots = async () => {
         try {
@@ -42,6 +43,7 @@ function ListScrshotPrivatePage({ message = "", filter = "" }) {
           setHasLoaded(true);
         } catch (err) {
           console.log(err);
+          history.push("/Error");
         }
       };
       setHasLoaded(false);
@@ -51,7 +53,7 @@ function ListScrshotPrivatePage({ message = "", filter = "" }) {
       return () => {
         clearTimeout(timer);
       };
-    }, [filter, query, pathname]);
+    }, [filter, query, pathname, history]);
   
     return (
         <Row className="h-100">

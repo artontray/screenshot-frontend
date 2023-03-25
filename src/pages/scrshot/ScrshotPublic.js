@@ -48,19 +48,35 @@ const ScrshotPublic = (props) => {
     try {
       await axiosRes.delete(`/public-scrshot/${id}/`);
       /*history.push("/");*/
-      /*history.goBack();*/
+
 
       /*console.log(setProfileData.results.results);*/
 
-      setProfileInfo((prevCat) => ({
+      if (!setProfileInfo) {
+        /* delete a screenshot from a page like this scrshot_public/215 so goBack() is called*/
+
+        history.goBack();
+
+      } else if (setProfileInfo === "0") {
+        /* delete a screenshot from the page ListScrshotPublicPage so we undisplay the deleted screenshot only*/
+        setScrshots((prevScrshot) => ({
+          ...prevScrshot,
+          results: prevScrshot.results.filter((scrshotpublic) => scrshotpublic.id !== id),
+        }));
+      } else {
+  /* delete a screenshot from a page like this category/149 so category number of screenshot minus 1 and we undisplay the deleted screenshot*/
         
-            ...prevCat,
-            nb_screenshots_public: prevCat.nb_screenshots_public - 1,
-              }));
-      setScrshots((prevScrshot) => ({
-        ...prevScrshot,
-        results: prevScrshot.results.filter((scrshotpublic) => scrshotpublic.id !== id),
-      }));
+        setProfileInfo((prevCat) => ({
+
+          ...prevCat,
+          nb_screenshots_public: prevCat.nb_screenshots_public - 1,
+        }));
+        setScrshots((prevScrshot) => ({
+          ...prevScrshot,
+          results: prevScrshot.results.filter((scrshotpublic) => scrshotpublic.id !== id),
+        }));
+      }
+
     } catch (err) {
       console.log(err);
     }
@@ -104,7 +120,7 @@ const ScrshotPublic = (props) => {
 
 
     <Card className={styles.Screenshot}>
-      
+
       <Card.Body>
         <Media className="align-items-center justify-content-between">
           <Link to={`/profiles/${profile_id}`}>
@@ -114,7 +130,7 @@ const ScrshotPublic = (props) => {
           <div className="d-flex align-items-center">
             <span>{updated_at}</span>
             {/*if  take out && scrshotPage , we display the icon dropdown to listing also */}
-            {is_owner   && (
+            {is_owner && (
               <MoreDropdown
                 handleEdit={handleEdit}
                 handleDelete={handleDelete}
@@ -133,7 +149,7 @@ const ScrshotPublic = (props) => {
           {is_owner ? (
             <OverlayTrigger
               placement="top"
-              overlay={<Tooltip>You can't like your own post!</Tooltip>}
+              overlay={<Tooltip>You can't like your own screenshot!</Tooltip>}
             >
               <i className="far fa-heart" />
             </OverlayTrigger>
@@ -148,7 +164,7 @@ const ScrshotPublic = (props) => {
           ) : (
             <OverlayTrigger
               placement="top"
-              overlay={<Tooltip>Log in to like posts!</Tooltip>}
+              overlay={<Tooltip>Log in to like this screenshot!</Tooltip>}
             >
               <i className="far fa-heart" />
             </OverlayTrigger>
