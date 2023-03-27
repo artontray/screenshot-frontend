@@ -80,8 +80,8 @@ So, whether it's a funny meme, a touching message from a loved one, or an inspir
     * [Public Screenshot](<#public-screenshot>)
     * [Private Screenshot](<#private-screenshot>)
     * [Users of the app](<#users-of-the-app>)
-    * [Followers](<#followers>)
     * [Searching](<#searching>)
+    * [C.R.U.D functionality](<#C.R.U.D-functionality>)
 * [**Future Features of the app**](<#future-features-of-the-app>)
     * [A Zip](<#a-zip>)
     * [Screenshot Report](<#screenshot-report>)
@@ -560,4 +560,276 @@ To identify a Private screenshot, a Lock Icon is displayed on top-left on each P
 
 ## Users of the app
 
-This kind of app is dedicated to have thousands of users and there was no way to display them all in one page so a menu on the right side ahs been created to show off 10 (Pagination remember) most followed users.
+This kind of app is dedicated to have thousands of users and there was no way to display them all in one dedicated page so a menu on the right side has been created to show off 10 (Pagination setting remember?) most followed users.
+Of course, within the news button, a user can discover new users and follow them.
+
+![Followers](./src/assets/readme/follow01.png)
+
+![Followers](./src/assets/readme/follow02.png)
+
+[Back to top](<#contents>)
+
+## Searching
+
+My goal was to design a highly efficient tool for researching within the app. Users can enter keywords in a single input field, and by simply clicking on "Community," "News," or "Favorites," the search will be performed in the corresponding area. Additionally, a clear button is provided to allow users to initiate a new search.
+
+![Searching](./src/assets/readme/searching.gif)
+
+
+[Back to top](<#contents>)
+
+
+
+## C.R.U.D functionality
+
+In terms of CRUD functionality for this project, the following can be identified:
+
+* Create: Users can create new public and private screenshots, categories, follow other users, add comments to public screenshots, like screenshots, and save them to their favorites.
+* Read: Users can read all public screenshots when logged in, view comments on all public screenshots, and see the profile information of any displayed user, including their number of followers, followings, published private and public screenshots, and bio.
+* Update: Users can update all their personal information and published content, such as their profile, password, username, public and private screenshots, categories, and bio.
+* Delete: Users can delete all their published content, except for their profile, which cannot be deleted. Additionally, if a category is the only one available, it cannot be deleted.
+
+[Back to top](<#contents>)
+
+# Future Features of the app
+
+## A Zip
+
+One option available is to offer a zip file containing all the content within a particular category, which would allow users to create a secure backup of their private screenshots with just one click.
+
+## Screenshot Report
+
+Maintaining the integrity of the app is crucial for users, and the ability to interact with it is essential. In the event that a user publishes inappropriate content such as violence, racism, or sexual material, other users can report it, which would result in the image being hidden from the app until an administrator verifies the validity of the report.
+
+## Pre-selection of avatars
+
+In order to ensure that each category is easily identifiable to users, the app requires an image to be added as an avatar when a new category is created. I suggest implementing a pre-selection of avatars for common category names such as Work, Friends, Tickets, Bank, Conversations, Art, etc. This would allow users to easily choose the appropriate avatar from the pre-selection list rather than having to search for one on their own computer.
+
+## proof of activity
+
+To maintain the uniqueness of public screenshots, the app will verify whether the same image has already been published with a different user as the owner before a new public screenshot can be submitted. This is achieved by generating a proof of activity when a user submits a new public screenshot. By using the pixels of the image to create a hash, we can compare it with all the public screenshots on the app to ensure that no duplicates are being uploaded.
+
+## share your link
+
+The Private area is completely secure and inaccessible to any other users. Even if the owner were to share a link to a private screenshot, attempting to access it would result in a 404 error. However, we could offer users the option to share a private screenshot for a specified period of time, such as 1 hour, 1 day, or 1 week. Once the link is generated, any user with access to it would be able to view the image until the specified time period has elapsed.
+
+## share category
+
+Exactly as , we could offer a possibility to share one of the category to an other user with different right connected to it as Edit, Read, Delete, Create. The Shared Category will appear on the right side menu as other Users'scategory but with a different design to really identify it.
+This features will gives the possibility to a group or a team to work together around a project and get the same source of images as all other on the group.
+
+Similar to the functionality offered by the [DropBox app](https://www.dropbox.com/), we could provide users with the ability to share a category with another user while assigning specific access rights such as Edit, Read, Delete, or Create. The shared category would be displayed in the right-side menu alongside the users' categories, but with a distinct design to clearly differentiate it. This feature would enable groups or teams to collaborate on a project and have access to the same source of images as everyone else in the group.
+
+## Blur effect on screenshots
+
+Certain public screenshots may contain highly sensitive information such as email addresses, names, addresses, and bank account details. To address this, we could offer a Blur function that allows users to apply a blur effect to specific parts of the image. The blurred image would then be uploaded to the cloud, and the original image would be deleted to ensure that no sensitive information is visible.
+
+
+[Back to top](<#contents>)
+
+# Technologies
+
+## Languages
+- JavaScript
+- HTML
+- JSX
+- CSS
+
+
+## Frameworks and Software
+
+I have been using the following Frameworks and Software :
+
+- Balsamiq - wireframes creation. 
+- React.js - Dynamic behaviour of the App
+- React Bootstrap.js - library of components.
+- GitHub - hosting of the project folders.
+- GitPod - Workspace and coding space.
+- Heroku -  Assure the final Deployment 
+- [AmIResponsive](https://ui.dev/amiresponsive) - Display responsiveness of the App
+- [Favicon](https://favicon.io/) - Generate favicon icons.
+- [FontAwesome](https://fontawesome.com/) - Icons used everywhere on the App
+- [GoogleFonts](https://fonts.google.com/) -  To find. the perfect font for the App.
+
+
+# Testing
+
+## User Story Testing
+
+
+
+| Story | action required | Checked? |
+|:-------:|:--------|:--------|
+| As a Unlogged User | I can sign up to the App | &check; |
+
+When unlogged User click on Sign up button, it will be redirected to a sign up form to fill in.
+
+
+![UserStory](./src/assets/readme/story1.png)
+
+![UserStory](./src/assets/readme/story2.png)
+
+![UserStory](./src/assets/readme/story3.png)
+
+![UserStory](./src/assets/readme/story4.png)
+
+![UserStory](./src/assets/readme/story5.png)
+
+| Story | action required | Checked? |
+|:-------:|:--------|:--------|
+| As a Unlogged User | I can acces to home page where i can find informations about what is the app about | &check; |
+
+On clicking on the top menu button named "Home", a unlogged user will find :
+- concept about the app and the purpuse
+- Social media links which open in new tab if clicked
+- A button to Enter to the App
+
+
+
+![UserStory](./src/assets/readme/story6.png)
+
+| Story | action required | Checked? |
+|:-------:|:--------|:--------|
+| As a Unlogged User | I can have access to all new screenshot published by users from the app | &check; |
+
+
+On clicking on the top-menu button called "News", Unlogged user can have a view of all published Public screenshots of the app.
+
+| Story | action required | Checked? |
+|:-------:|:--------|:--------|
+| As a Site User | I can Register as a new user of the App. If already registered, I can log in and log out | &check; |
+
+On clicking on the top-menu button named "Sign In", an Unlogged user can sign in with username and password.
+When username and password are confirmed, the News page is loaded and the user can have full access of the app.
+
+
+![UserStory](./src/assets/readme/story7.png)
+
+![UserStory](./src/assets/readme/story8.png)
+
+![UserStory](./src/assets/readme/story9.png)
+
+![UserStory](./src/assets/readme/story10.png)
+
+
+| Story | action required | Checked? |
+|:-------:|:--------|:--------|
+| As a Site User | I can edit my profile as Avatar, Username or password | &check; |
+
+On clicking on my avatar on the top menu, User will display a profile details. A dropdown button will show up some options :
+- Edit Profile
+- Change Username
+- Change password
+
+
+![UserStory](./src/assets/readme/story11.png)
+
+![UserStory](./src/assets/readme/story12.png)
+
+![UserStory](./src/assets/readme/story13.png)
+
+![UserStory](./src/assets/readme/story14.png)
+
+![UserStory](./src/assets/readme/story15.png)
+
+![UserStory](./src/assets/readme/story16.png)
+
+![UserStory](./src/assets/readme/story17.png)
+
+![UserStory](./src/assets/readme/story18.png)
+
+| Story | action required | Checked? |
+|:-------:|:--------|:--------|
+| As a Site User | I can see other user's profiles | &check; |
+
+As a User, I can have a view of all users profiles registered on the app by just clicking on their avatar or username.
+
+![UserStory](./src/assets/readme/story19.png)
+
+![UserStory](./src/assets/readme/story20.png)
+
+| Story | action required | Checked? |
+|:-------:|:--------|:--------|
+| As a Site User | I can follow or Unfollow other Users | &check; |
+
+There is only 2 ways to follow or unfollow an other user. 
+- Clicking on the button follow/unfollow from the right-menu 
+
+![UserStory](./src/assets/readme/story21.png)
+
+- Clicking on the button follow/unfollow from the User Profile
+
+
+
+![UserStory](./src/assets/readme/story22.png)
+
+| Story | action required | Checked? |
+|:-------:|:--------|:--------|
+| As a Site User | I can see information about how many followers I have, how many Users I follow, how many Private and Public screenshot I published | &check; |
+
+As a USer, I can have a general view of my activity on the app within the profile area.
+
+
+![UserStory](./src/assets/readme/story23.png)
+
+
+![UserStory](./src/assets/readme/story22.png)
+
+| Story | action required | Checked? |
+|:-------:|:--------|:--------|
+| As a Site User | I can like or comment a screenshot from other users | &check; |
+
+it does not matter what page the user is visiting between News, Community or Favorites, The User can Like or Unlike any public screenshots by clicking on the Like Icon . 
+
+![UserStory](./src/assets/readme/story30.png)
+
+
+![UserStory](./src/assets/readme/story31.png)
+
+Of course, if User is the owner of the public screenshot, it will show up a message that it's not permitted!
+
+![UserStory](./src/assets/readme/story32.png)
+
+
+
+| Story | action required | Checked? |
+|:-------:|:--------|:--------|
+| As a Site User | I have a direct access to all the screenshots I liked from other Users | &check; |
+
+The top-menu button "Favorites" give access to all Liked screenshots by the User. This is a good way to keep track on screenshot that User want to use in a near future and find it easily.
+
+
+| Story | action required | Checked? |
+|:-------:|:--------|:--------|
+| As a Site User | I have direct access to all screenshots from all the followed Users I am following | &check; |
+
+The top-menu button "Community" give access to all screenshots from all followed Users of the App. That a good way to read only Users that you followed and selected as a quality User and only content from mthem will appears in this section.
+
+| Story | action required | Checked? |
+|:-------:|:--------|:--------|
+| As a Site User | I have a direct access to All the new Public screenshots published on the app organized by date | &check; |
+
+
+
+| As a Site User | I can search for a specific screenshot or a User with key words in 3 differents areas : My favorites screenshots, My favorites users and in New screenshots area| &check; |
+| As a Site User | I have a direct access to all most followed Users of the app | &check; |
+| As a Site User | I can Unlike a Public Screenshot from other User | &check; |
+| As a Site User | I cannot like one of my own Public Screenshot | &check; |
+| As a Site User | I can comment other Public screenshot and also my own Public screenshot.| &check; |
+| As a Site User | I can edit my comments at any time and the updated comment is published right away. | &check; |
+| As a Site User | I can delete a comment I made on a Public screenshot.| &check; |
+| As a Site User | I can have access to a page dedicated for adding new content : Public screenshot, Private screenshot or a new category | &check; |
+| As a Site User | I can add a new category, it's a folder-like feature to help organizing private screenshots | &check; |
+| As a Site User |  I can add a new Private screenshot, I can choose on same page into which category it will be added | &check; |
+| As a Site User | I can add a new Public screenshot and publish it so anybody on the app, even unlogged user can see it. | &check; |
+
+| As a Site User | I can have access to a Dashboard where i can see all my category folders, all my privateScreenshot | &check; |
+| As a Site User | I can add new category, update category and delete category. At least one category should remain for adding Screenshot as a requirement | &check; |
+| As a Site User | I can add new private screenshot, update it, delete it | &check; |
+| As a Site User | I can add a new Public Screenshot, update it and delete it. | &check; |
+| As a Site User | I can search to any key words into category, Private screenshot and description of both in the same searchBar | &check; |
+| As a Site User | I can access to a dedicated page to see all my category folder and see avatar of each and how much screenshots are published inside | &check; |
+| As a Site User | I have a fluent navigation within cancel button, Back button or dropdownMenu for quick selection | &check; |
+| As a Site User | I can see a dedicated page 404 when URL incoporated is wrong and I have access to a button to get me back safe to the app
+ | &check; |
+

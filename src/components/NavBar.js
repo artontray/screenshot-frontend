@@ -29,14 +29,6 @@ const NavBar = () => {
 
 
 
-
-
-
-
-
-
-
-
   const addLogoutIcon = (
     <NavLink className={styles.NavLink} to="/" onClick={handleSignOut}>
       <i className="fa-solid fa-power-off fa-2x"></i>
@@ -60,21 +52,21 @@ const NavBar = () => {
   const addInspirationIcon = (
     <NavLink className={styles.NavLink} to="/ListFollowedUsersScrshot">
       <i className="fa-solid fa-people-group fa-2x"></i>
-  Community
+      Community
 
     </NavLink>
   );
   const addLikedIcon = (
     <NavLink className={styles.NavLink} to="/ListLikedPublicScrshot">
       <i className="fa-solid fa-heart fa-2x"></i>
-Favorites
+      Favorites
     </NavLink>
   );
   const ProfileIcons = (
     <NavLink
       className={styles.NavLink} to={`/profiles/${currentUser?.profile_id}`} >
       <Navbar.Brand >
-      <Avatar src={currentUser?.profile_image} height={50} />
+        <Avatar src={currentUser?.profile_image} height={50} />
       </Navbar.Brand>
     </NavLink>
 
@@ -82,7 +74,7 @@ Favorites
   const addHomeIcon = (
     <NavLink className={styles.NavLink} to="/home">
       <i className="fas fa-home fa-2x"></i>
-Home
+      Home
     </NavLink>
   );
   const addNewsIcon = (
@@ -91,12 +83,12 @@ Home
       News
     </NavLink>
   );
-  
+
   const addSearchingIcon = (
     <NavLink className={styles.NavLink} to="/ListScrshotPrivatePage">
       <i className="fa-solid fa-screwdriver-wrench fa-2x"></i>
 
-Dashboard
+      Dashboard
     </NavLink>
   );
 
@@ -106,7 +98,7 @@ Dashboard
       <NavLink
         className={styles.NavLink} to="/signin">
         <i className="fa-solid fa-arrow-right-to-bracket fa-2x"></i>
-Sign In
+        Sign In
       </NavLink>
       <NavLink
         className={styles.NavLink} to="/signup">
@@ -121,41 +113,41 @@ Sign In
   return (
 
 
-<Navbar className={styles.NavBar} expanded={expanded} expand="md" fixed="top">
+    <Navbar className={styles.NavBar} expanded={expanded} expand="md" fixed="top">
 
-<Container>
+      <Container>
 
-  {currentUser && ProfileIcons}
-  <Navbar.Toggle
-    ref={ref}
-    onClick={() => setExpanded(!expanded)}
-    aria-controls="basic-navbar-nav"
-  />
-  <Navbar.Collapse id="basic-navbar-nav" >
-    <Nav className="mr-auto text-left">
-      {currentUser && addNewIcon}
-      {currentUser && addLikedIcon}
-      {currentUser && addInspirationIcon}
-      {currentUser && addSearchingIcon}
-      {addNewsIcon}
-      {addHomeIcon}
-      </Nav>
-      
-
-    
-
-
-      <Nav className="ml-auto text-left">
+        {currentUser && ProfileIcons}
+        <Navbar.Toggle
+          ref={ref}
+          onClick={() => setExpanded(!expanded)}
+          aria-controls="basic-navbar-nav"
+        />
+        <Navbar.Collapse id="basic-navbar-nav" >
+          <Nav className="mr-auto text-left">
+            {currentUser && addNewIcon}
+            {currentUser && addLikedIcon}
+            {currentUser && addInspirationIcon}
+            {currentUser && addSearchingIcon}
+            {addNewsIcon}
+            {addHomeIcon}
+          </Nav>
 
 
 
-      {currentUser ? addLogoutIcon : loggedInIcons}
-    </Nav>
-  </Navbar.Collapse>
-</Container>
-</Navbar>
 
- 
+
+          <Nav className="ml-auto text-left">
+
+
+
+            {currentUser ? addLogoutIcon : loggedInIcons}
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+
+
   );
 };
 

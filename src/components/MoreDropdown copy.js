@@ -80,6 +80,7 @@ export const MoreDropdownEditCategory = ({ handleEdit }) => {
   );
 };
 
+
 export const MoreDropdown = ({ handleEdit, handleDelete }) => {
   return (
     <Dropdown className="ml-auto" drop="left">
@@ -128,6 +129,8 @@ export const MoreDropdownPrivateScrshot = ({ handleDelete }) => {
     </Dropdown>
   );
 };
+
+
 export const SeeAllDropdown = ({handleSeeAllCategory, handleSeeLastPrivateScrshot, SearchCategory, handleDeleteCategory}) => {
   return (
     <Dropdown className="ml-auto" drop="left">

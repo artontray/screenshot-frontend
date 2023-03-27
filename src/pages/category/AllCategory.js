@@ -12,10 +12,11 @@ import {  useParams } from "react-router-dom";
 import CategoryItem from "./CategoryItem";
 import Col from "react-bootstrap/Col";
 import { NavLink } from "react-router-dom";
+
+
 const AllCategory = ({ mobile }) => {
 
   const [categoryData, setCategoryData] = useState({
-
     pageCategory: { results: [] },
     popularCategory: { results: [] },
   });

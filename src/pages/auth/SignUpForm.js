@@ -5,7 +5,6 @@ import styles from "../../styles/SignInUpForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
 import logo from "../../assets/logo.png";
-
 import { useRedirect } from "../../hooks/useRedirect";
 import {
   Form,
@@ -25,9 +24,7 @@ const SignUpForm = () => {
     password2: "",
   });
   const { username, password1, password2 } = signUpData;
-
   const [errors, setErrors] = useState({});
-
   const history = useHistory();
 
   const handleChange = (event) => {
@@ -38,6 +35,7 @@ const SignUpForm = () => {
   };
 
   const handleSubmit = async (event) => {
+    /** SignUp form submit */
     event.preventDefault();
     try {
       await axios.post("/dj-rest-auth/registration/", signUpData);
@@ -50,11 +48,10 @@ const SignUpForm = () => {
   return (
     <Row className={styles.Row}>
       <Col md={{ span: 8, offset: 2 }} className="my-auto p-0 p-md-2">
+
         <Container className={`${appStyles.Content} p-4 `}>
-          
           <h1 className={styles.Header}>Welcome to Screenshot Organizer</h1>
-          <p align="center"><img src={logo} alt="logo" height="90"/></p>
-          
+          <p align="center"><img src={logo} alt="logo" height="90" /></p>
           <Form onSubmit={handleSubmit}>
             <Form.Group controlId="username">
               <Form.Label className="d-none">username</Form.Label>
@@ -70,7 +67,6 @@ const SignUpForm = () => {
             {errors.username?.map((message, idx) => (
               <div key={idx} className={styles.bgwarning}>{message}</div>
             ))}
-
             <Form.Group controlId="password1">
               <Form.Label className="d-none">Password</Form.Label>
               <Form.Control
@@ -85,7 +81,6 @@ const SignUpForm = () => {
             {errors.password1?.map((message, idx) => (
               <div key={idx} className={styles.bgwarning}>{message}</div>
             ))}
-
             <Form.Group controlId="password2">
               <Form.Label className="d-none">Confirm password</Form.Label>
               <Form.Control
@@ -98,18 +93,15 @@ const SignUpForm = () => {
               />
             </Form.Group>
             {errors.password2?.map((message, idx) => (
-              
-
-                <div key={idx} className={styles.bgwarning}>{message}</div>
-              
+              <div key={idx} className={styles.bgwarning}>{message}</div>
             ))}
-<div className={btnStyles.Aligncenter}>
-            <Button 
-              className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.PurpleStyle}`}
-              type="submit"
-            >
-              Sign up
-            </Button>
+            <div className={btnStyles.Aligncenter}>
+              <Button
+                className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.PurpleStyle}`}
+                type="submit"
+              >
+                Sign up
+              </Button>
             </div>
             {errors.non_field_errors?.map((message, idx) => (
               <div key={idx} className={styles.bgwarning}>{message}</div>
@@ -119,12 +111,12 @@ const SignUpForm = () => {
 
         <Container className={`mt-3 ${appStyles.Content}`}>
           <Link className={styles.Link} to="/signin">
-            Already have an account? 
+            Already have an account?
             <Badge variant="light"><span>Sign in</span></Badge>
           </Link>
         </Container>
-      </Col>
 
+      </Col>
     </Row>
   );
 };

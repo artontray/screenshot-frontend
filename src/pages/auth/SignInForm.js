@@ -1,37 +1,39 @@
 import React, { useState } from "react";
 import axios from "axios";
-
 import Form from "react-bootstrap/Form";
-
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import logo from "../../assets/logo.png";
 import Container from "react-bootstrap/Container";
-
 import { Link, useHistory } from "react-router-dom";
-
 import styles from "../../styles/SignInUpForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
-
 import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 import { useRedirect } from "../../hooks/useRedirect";
 import { setTokenTimestamp } from "../../utils/utils";
+
+/**
+ * 
+ * 
+ * 
+ */
+
 function SignInForm() {
     useRedirect("loggedIn");
     const setCurrentUser = useSetCurrentUser();
-    
+
     const [signInData, setSignInData] = useState({
         username: "",
         password: "",
     });
     const { username, password } = signInData;
-
     const [errors, setErrors] = useState({});
-
     const history = useHistory();
+
     const handleSubmit = async (event) => {
+        /* Submit SingIn Form */
         event.preventDefault();
 
         try {
@@ -52,12 +54,12 @@ function SignInForm() {
     };
 
     return (
-       
+
         <Row className={styles.Row}>
-            <Col md={{ span: 8, offset: 2 }} className="my-auto p-0 p-md-2"> 
+            <Col md={{ span: 8, offset: 2 }} className="my-auto p-0 p-md-2">
                 <Container className={`${appStyles.Content} p-4 `}>
-                <h1 className={styles.Header}>Welcome to Screenshot Organizer</h1>
-          <p align="center"><img src={logo} alt="logo" height="90"/></p>
+                    <h1 className={styles.Header}>Welcome to Screenshot Organizer</h1>
+                    <p align="center"><img src={logo} alt="logo" height="90" /></p>
                     <Form onSubmit={handleSubmit}>
                         <Form.Group controlId="username">
                             <Form.Label className="d-none">Username</Form.Label>
@@ -89,12 +91,12 @@ function SignInForm() {
                             <div key={idx} className={styles.bgwarning}>{message}</div>
                         ))}
                         <div className={btnStyles.Aligncenter}>
-                        <Button 
-                            className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.PurpleStyle}`}
-                            type="submit"
-                        >
-                            Sign in
-                        </Button>
+                            <Button
+                                className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.PurpleStyle}`}
+                                type="submit"
+                            >
+                                Sign in
+                            </Button>
                         </div>
                         {errors.non_field_errors?.map((message, idx) => (
                             <div key={idx} className={styles.bgwarning}>{message}</div>
