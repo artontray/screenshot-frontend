@@ -146,7 +146,7 @@ this is the final result of the dashboard with category Menu :
 The App is divided in several parts :
 
 - Authentification and New user's registration
-- Public Area : All screenshots published are available for anybody connected or not of the app
+- Public Area : All screenshots published are available for anybody connected or not
 - A community aspect where every user can follow and be followed by others 
 - A likes and comments features to dynamize the app with user interactions
 - Private Area : The User will have access to a dedicated area where is possible to create Category (Folders) and private screenshots
@@ -270,7 +270,6 @@ The user stories for the project are listed below to clarify the significance of
 | As a Site User | I can add a new category, it's a folder-like feature to help organizing private screenshots | &check; |
 | As a Site User |  I can add a new Private screenshot, I can choose on same page into which category it will be added | &check; |
 | As a Site User | I can add a new Public screenshot and publish it so anybody on the app, even unlogged user can see it. | &check; |
-
 | As a Site User | I can have access to a Dashboard where i can see all my category folders, all my privateScreenshot | &check; |
 | As a Site User | I can add new category, update category and delete category. At least one category should remain for adding Screenshot as a requirement | &check; |
 | As a Site User | I can add new private screenshot, update it, delete it | &check; |
@@ -278,8 +277,7 @@ The user stories for the project are listed below to clarify the significance of
 | As a Site User | I can search to any key words into category, Private screenshot and description of both in the same searchBar | &check; |
 | As a Site User | I can access to a dedicated page to see all my category folder and see avatar of each and how much screenshots are published inside | &check; |
 | As a Site User | I have a fluent navigation within cancel button, Back button or dropdownMenu for quick selection | &check; |
-| As a Site User | I can see a dedicated page 404 when URL incoporated is wrong and I have access to a button to get me back safe to the app
- | &check; |
+| As a Site User | I can see a dedicated page 404 when URL incoporated is wrong and I have access to a button to get me back safe to the app| &check; |
 
 The completion of each User Story is made clear through the defined acceptance criteria :
 - Must have
@@ -615,8 +613,7 @@ The Private area is completely secure and inaccessible to any other users. Even 
 
 ## share category
 
-Exactly as , we could offer a possibility to share one of the category to an other user with different right connected to it as Edit, Read, Delete, Create. The Shared Category will appear on the right side menu as other Users'scategory but with a different design to really identify it.
-This features will gives the possibility to a group or a team to work together around a project and get the same source of images as all other on the group.
+
 
 Similar to the functionality offered by the [DropBox app](https://www.dropbox.com/), we could provide users with the ability to share a category with another user while assigning specific access rights such as Edit, Read, Delete, or Create. The shared category would be displayed in the right-side menu alongside the users' categories, but with a distinct design to clearly differentiate it. This feature would enable groups or teams to collaborate on a project and have access to the same source of images as everyone else in the group.
 
@@ -649,8 +646,8 @@ I have been using the following Frameworks and Software :
 - [AmIResponsive](https://ui.dev/amiresponsive) - Display responsiveness of the App
 - [Favicon](https://favicon.io/) - Generate favicon icons.
 - [FontAwesome](https://fontawesome.com/) - Icons used everywhere on the App
-- [GoogleFonts](https://fonts.google.com/) -  To find. the perfect font for the App.
-
+- [GoogleFonts](https://fonts.google.com/) -  To find the perfect font for the App.
+- [Veed.io](https://veed.io/) -  Generate Gif from short videos
 
 # Testing
 
@@ -809,19 +806,107 @@ The top-menu button "Community" give access to all screenshots from all followed
 |:-------:|:--------|:--------|
 | As a Site User | I have a direct access to All the new Public screenshots published on the app organized by date | &check; |
 
+The top-menu button "News" give access to all screenshots from all Users of the App organized by date, that's means the latest will appear first.
 
 
+| Story | action required | Checked? |
+|:-------:|:--------|:--------|
 | As a Site User | I can search for a specific screenshot or a User with key words in 3 differents areas : My favorites screenshots, My favorites users and in New screenshots area| &check; |
+
+![Searching](./src/assets/readme/searching.gif)
+
+
+| Story | action required | Checked? |
+|:-------:|:--------|:--------|
 | As a Site User | I have a direct access to all most followed Users of the app | &check; |
+
+The right menu is displaying the 10 most followed Users of the App. This menu is visible when User is interacting with Public area. 
+
+| Story | action required | Checked? |
+|:-------:|:--------|:--------|
 | As a Site User | I can Unlike a Public Screenshot from other User | &check; |
+
+Each Public screenshot have a dedicated area for Likes simbolized by a Heart icon. Clicking on it will have Like or Unlike the screenshot depending the previous status.
+
+![UserStory](./src/assets/readme/story40.png)
+
+![UserStory](./src/assets/readme/story41.png)
+
+| Story | action required | Checked? |
+|:-------:|:--------|:--------|
 | As a Site User | I cannot like one of my own Public Screenshot | &check; |
+
+
+![UserStory](./src/assets/readme/story42.png)
+
+```
+is_owner ? (
+  <OverlayTrigger
+    placement="top"
+    overlay={<Tooltip>You can't like your own screenshot!</Tooltip>}
+  >
+    <i className="far fa-heart" />
+  </OverlayTrigger>
+)
+```
+
+
+| Story | action required | Checked? |
+|:-------:|:--------|:--------|
 | As a Site User | I can comment other Public screenshot and also my own Public screenshot.| &check; |
+
+Adding a new comment to any Public screenshot is available as long as the User is connected. Each public screenshot have a dedicated area to add a new comment by clicking on the Comment icon.
+
+![UserStory](./src/assets/readme/story43.png)
+
+| Story | action required | Checked? |
+|:-------:|:--------|:--------|
 | As a Site User | I can edit my comments at any time and the updated comment is published right away. | &check; |
+
+![UserStory](./src/assets/readme/story44.png)
+
+![UserStory](./src/assets/readme/story45.png)
+
+| Story | action required | Checked? |
+|:-------:|:--------|:--------|
 | As a Site User | I can delete a comment I made on a Public screenshot.| &check; |
+
+![UserStory](./src/assets/readme/story46.png)
+
+
+| Story | action required | Checked? |
+|:-------:|:--------|:--------|
 | As a Site User | I can have access to a page dedicated for adding new content : Public screenshot, Private screenshot or a new category | &check; |
+
+My first idea was to have access from NavBar the following buttons :
+* Add aa Private Screenshot
+* Add a Public Screenshot
+* Add a New category
+
+But then it was to much icons on the navbar and it loook confusing.
+That's why I decided to create a dedicated page for that to also give an oportunity to add some text which explain the difference between all thoses 3 choices.
+
+Initially, I planned to include the "Add a Private Screenshot", "Add a Public Screenshot", and "Add a New Category" buttons in the NavBar. However, I found that this made the NavBar cluttered and confusing. To address this, I opted to create a separate page that allow adding some texts explaining the distinctions between these three options, while also reducing the number of icons on the NavBar.
+
+![UserStory](./src/assets/readme/story47.png)
+
+| Story | action required | Checked? |
+|:-------:|:--------|:--------|
 | As a Site User | I can add a new category, it's a folder-like feature to help organizing private screenshots | &check; |
+
+
+
+
+| Story | action required | Checked? |
+|:-------:|:--------|:--------|
 | As a Site User |  I can add a new Private screenshot, I can choose on same page into which category it will be added | &check; |
+
+
+| Story | action required | Checked? |
+|:-------:|:--------|:--------|
 | As a Site User | I can add a new Public screenshot and publish it so anybody on the app, even unlogged user can see it. | &check; |
+
+
 
 | As a Site User | I can have access to a Dashboard where i can see all my category folders, all my privateScreenshot | &check; |
 | As a Site User | I can add new category, update category and delete category. At least one category should remain for adding Screenshot as a requirement | &check; |
