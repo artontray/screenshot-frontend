@@ -662,7 +662,7 @@ I have been using the following Frameworks and Software :
 When unlogged User click on Sign up button, it will be redirected to a sign up form to fill in.
 
 
-![UserStory](./src/assets/readme/story1.png)
+
 
 ![UserStory](./src/assets/readme/story2.png)
 
@@ -683,7 +683,7 @@ On clicking on the top menu button named "Home", a unlogged user will find :
 
 
 
-![UserStory](./src/assets/readme/story6.png)
+![UserStory](./src/assets/readme/story7.png)
 
 | Story | action required | Checked? |
 |:-------:|:--------|:--------|
@@ -700,7 +700,6 @@ On clicking on the top-menu button named "Sign In", an Unlogged user can sign in
 When username and password are confirmed, the News page is loaded and the user can have full access of the app.
 
 
-![UserStory](./src/assets/readme/story7.png)
 
 ![UserStory](./src/assets/readme/story8.png)
 
@@ -719,7 +718,7 @@ On clicking on my avatar on the top menu, User will display a profile details. A
 - Change password
 
 
-![UserStory](./src/assets/readme/story11.png)
+
 
 ![UserStory](./src/assets/readme/story12.png)
 
@@ -741,7 +740,7 @@ On clicking on my avatar on the top menu, User will display a profile details. A
 
 As a User, I can have a view of all users profiles registered on the app by just clicking on their avatar or username.
 
-![UserStory](./src/assets/readme/story19.png)
+
 
 ![UserStory](./src/assets/readme/story20.png)
 
@@ -752,25 +751,24 @@ As a User, I can have a view of all users profiles registered on the app by just
 There is only 2 ways to follow or unfollow an other user. 
 - Clicking on the button follow/unfollow from the right-menu 
 
-![UserStory](./src/assets/readme/story21.png)
+![UserStory](./src/assets/readme/story22.png)
 
 - Clicking on the button follow/unfollow from the User Profile
 
 
 
-![UserStory](./src/assets/readme/story22.png)
+![UserStory](./src/assets/readme/story21.png)
 
 | Story | action required | Checked? |
 |:-------:|:--------|:--------|
 | As a Site User | I can see information about how many followers I have, how many Users I follow, how many Private and Public screenshot I published | &check; |
 
-As a USer, I can have a general view of my activity on the app within the profile area.
+As a User, I can have a general view of my activity on the app within the profile area.
 
 
 ![UserStory](./src/assets/readme/story23.png)
 
 
-![UserStory](./src/assets/readme/story22.png)
 
 | Story | action required | Checked? |
 |:-------:|:--------|:--------|
@@ -778,16 +776,25 @@ As a USer, I can have a general view of my activity on the app within the profil
 
 it does not matter what page the user is visiting between News, Community or Favorites, The User can Like or Unlike any public screenshots by clicking on the Like Icon . 
 
-![UserStory](./src/assets/readme/story30.png)
+![UserStory](./src/assets/readme/story40.png)
 
 
-![UserStory](./src/assets/readme/story31.png)
+![UserStory](./src/assets/readme/story41.png)
 
 Of course, if User is the owner of the public screenshot, it will show up a message that it's not permitted!
 
-![UserStory](./src/assets/readme/story32.png)
+![UserStory](./src/assets/readme/story42.png)
 
-
+```
+is_owner ? (
+  <OverlayTrigger
+    placement="top"
+    overlay={<Tooltip>You can't like your own screenshot!</Tooltip>}
+  >
+    <i className="far fa-heart" />
+  </OverlayTrigger>
+)
+```
 
 | Story | action required | Checked? |
 |:-------:|:--------|:--------|
@@ -811,7 +818,7 @@ The top-menu button "News" give access to all screenshots from all Users of the 
 
 | Story | action required | Checked? |
 |:-------:|:--------|:--------|
-| As a Site User | I can search for a specific screenshot or a User with key words in 3 differents areas : My favorites screenshots, My favorites users and in New screenshots area| &check; |
+| As a Site User | I can search for a specific screenshot or a User in 3 differents areas : favorites, Community and News| &check; |
 
 ![Searching](./src/assets/readme/searching.gif)
 
@@ -832,23 +839,7 @@ Each Public screenshot have a dedicated area for Likes simbolized by a Heart ico
 
 ![UserStory](./src/assets/readme/story41.png)
 
-| Story | action required | Checked? |
-|:-------:|:--------|:--------|
-| As a Site User | I cannot like one of my own Public Screenshot | &check; |
 
-
-![UserStory](./src/assets/readme/story42.png)
-
-```
-is_owner ? (
-  <OverlayTrigger
-    placement="top"
-    overlay={<Tooltip>You can't like your own screenshot!</Tooltip>}
-  >
-    <i className="far fa-heart" />
-  </OverlayTrigger>
-)
-```
 
 
 | Story | action required | Checked? |

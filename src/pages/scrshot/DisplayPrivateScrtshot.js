@@ -20,7 +20,7 @@ function DisplayPrivateScrtshot() {
     const handleMount = async () => {
       console.log(id);
       try {
-        const {data} = await axiosReq.get(`/private-scrshot/${id}`);
+        const { data } = await axiosReq.get(`/private-scrshot/${id}`);
         console.log(data.image);
         setImage(data.image);
       } catch (err) {
@@ -28,39 +28,25 @@ function DisplayPrivateScrtshot() {
         history.push("/Error");
       }
     };
-  
+
     handleMount();
-  }, [results,id ,history]);
+  }, [results, id, history]);
 
 
-    
+
   return (
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={12}>
-
-
-  
-      <Card>
-
-   <Card.Img src={Image} alt={Image} height="80%" width="80%"/>
-
-
-       
-
-
-
-            
-      
-
-   
-      </Card>
+        <Card>
+          <Card.Img src={Image} alt={Image} height="80%" width="80%" />
+        </Card>
         <hr />
-      <Button
-        className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Basic}`}
-        onClick={() => history.goBack()}
-      >
-        BACK
-      </Button>
+        <Button
+          className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Basic}`}
+          onClick={() => history.goBack()}
+        >
+          BACK
+        </Button>
       </Col>
 
     </Row>
