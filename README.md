@@ -929,7 +929,7 @@ To add a Private screenshot, it's required to select the category it will be con
 
 ![UserStory](./src/assets/readme/story56.png)
 
-I created this <SELECT> list of category as an external component from the Private screenshot creation page. So in the future it will be possible to display this list somewhere else on the app if needed.
+I created this ```<SELECT>``` list of category as an external component from the Private screenshot creation page. So in the future it will be possible to display this list somewhere else on the app if needed.
 
 
 
@@ -1152,6 +1152,7 @@ Let's explore how to navigate the App and gain a comprehensive understanding of 
 | Button "Sign up" | Click | Redirect to Sign up Page  | &check; |
 | Button "Sign up" | Click | Redirect to Sign up Page  | &check; |
 | Button "News" | Click | Redirect to News section where all public screenshots are displayed   | &check; |
+| Button "Social media" | Click | Open a new tab with the selected social media website  | &check; |
 
 * SIGN IN
 
@@ -1178,4 +1179,212 @@ Let's explore how to navigate the App and gain a comprehensive understanding of 
 | Button "category" | Click | Redirect to category creation page | &check; |
 
 
+* Favorites, Community and News
+
+| Element | Action | Result | Checked? |
+|:-------:|:--------|:--------|:--------|
+| Button "Unfollow" if active | Click | Will unfollow the selected user | &check; |
+| Button "Follow" if active | Click | Will follow the selected user | &check; |
+| Button "comment" from a displayed screenshot | Click | Redirect to comment page | &check; |
+| Button "Likes" from a displayed screenshot | Click | Will add 1 Likes to selected screenshot (if owner of the screenshot, no action will be executed) | &check; |
+| Button "Clear" from the search input | Click | If search input is empty nothing happpen, if not, will be erase and page is reloading | &check; |
+
+* Dashboard
+
+| Element | Action | Result | Checked? |
+|:-------:|:--------|:--------|:--------|
+| Button "Add a new category" from right-side menu | Click | Redirect to add category page | &check; |
+| Button "..." from right-side menu | Click | Will open a dropdown Menu with some options around category and screenshots | &check; |
+| Button "Clear" from the search input | Click | If search input is empty nothing happpen, if not, will be erase and page is reloading | &check; |
+
+* Category Listing Page
+
+| Element | Action | Result | Checked? |
+|:-------:|:--------|:--------|:--------|
+| Button "Add a new category" from top menu | Click | Redirect to add category page | &check; |
+| Button "Clear" from the search input | Click | If search input is empty nothing happpen, if not, will be erase and page is reloading | &check; |
+| Button Icon "Folder" from a category | Click | redirect to the selected category page | &check; |
+| Button Icon "Trash" from a category | Click | Will delete the selected Category | &check; |
+| Button Icon "Edit" from a category | Click | Will redirect to selected Category edition page | &check; |
+
+* Selected Category Page
+
+| Element | Action | Result | Checked? |
+|:-------:|:--------|:--------|:--------|
+| Button "Add a new screenshot" from top left menu | Click | Redirect to add screenshot private page | &check; |
+| Button "Clear" from the search input | Click | If search input is empty nothing happpen, if not, will be erase and page is reloading | &check; |
+| Button Icon "Edit" from a category | Click | Will redirect to selected Category edition page | &check; |
+
+
+* New Category Page
+
+| Element | Action | Result | Checked? |
+|:-------:|:--------|:--------|:--------|
+| Button "Cancel"  | Click | Redirect to the last page visited | &check; |
+| Button "Create"  | Click | If Form is filled correctly it willl redirect to Category section displaying the fresh category just created | &check; |
+
+
+* New Private screenshot Page
+
+| Element | Action | Result | Checked? |
+|:-------:|:--------|:--------|:--------|
+| Button "Cancel"  | Click | Redirect to the last page visited | &check; |
+| Button "Publish"  | Click | If Form is filled correctly it willl redirect to Private Screenshot section | &check; |
+
+* New Public screenshot Page
+
+| Element | Action | Result | Checked? |
+|:-------:|:--------|:--------|:--------|
+| Button "Cancel"  | Click | Redirect to the last page visited | &check; |
+| Button "Publish"  | Click | If Form is filled correctly it willl redirect to News section | &check; |
+
+* User Profile Page
+
+| Element | Action | Result | Checked? |
+|:-------:|:--------|:--------|:--------|
+| Button "DropDownMenu" from top-right  | Click | Will show up 3 choices : change username, edit profile and change password | &check; |
+
+
+* Additional buttons
+
+| Element | Action | Result | Checked? |
+|:-------:|:--------|:--------|:--------|
+| Button "Logout"  | Click | Redirect to News section of the app and the User will be disconnect from the App | &check; |
+
+
+
+
 [Back to top](<#contents>)
+
+
+## Manual Testing
+
+In order to maintain the coherence of the application and prevent scenarios where disconnected or regular users are able to carry out unauthorized actions, I conduct a comprehensive manual testing of the entire app.
+
+**As a Not connected User**
+
+| Action | Result  | Checked? |
+|:-------:|:--------|:--------|
+| Type incorrect URL on the browser | Typing an incorrect URL on the browser will result a 404 error | &check; |
+| Type users URL to access User profile profiles/3 | Display the selected profile but with no access to edition menu | &check; |
+| Type users URL to access Dashboard /ListScrshotPrivatePage |  Redirected to News Page | &check; |
+| Type users URL to access category details /category/149 |  Redirected to error page 404 | &check; |
+| Type users URL to access private screenshots details /scrshot_private/213 |  Redirected to error page 404 | &check; |
+| Type users URL to access All category Page /ListAllCategoryPage |  Redirected to error page 404 | &check; |
+| Type users URL to access the form to create a new screenshot private /scrshot_private/create |  Redirected to error page 404 | &check; |
+| Type users URL to access orm to create a new public screenshot /scrshot_public/create |  Redirected to News Page | &check; |
+| Type users URL to access orm to create a new Category /category/create |  Redirected to News Page | &check; |
+
+**As a connected User but not owner of the content**
+
+| Type users URL to access User profile profiles/3 | Display the selected profile but with no access to edition menu | &check; |
+| Type users URL to access category details /category/149 |  Redirected to error page 404 | &check; |
+| Type users URL to access private screenshots details /scrshot_private/213 |  Redirected to error page 404 | &check; |
+
+
+
+
+[Back to top](<#contents>)
+
+
+## Form Validation
+
+**About the New Category Form**
+
+To be able to create a new Category, we only need 1 required input to be valid :
+* The Category avatar image
+
+if only avatar image is given then the new category will have the title as "Main" with no description. User can edit it at anytime.
+
+All scenarios where one of thoses inputs are not valid have been tested :
+- only blank space introduced : may not be blank
+- one blank spance introduce + legit character : blank space will be deleted automatically
+- Javascript tag introduced into input like <script>alert('bomb')</script> : script will not be executed on the app when displayed
+
+Note: The same test have been executed to Edit Category Form.
+
+**About the New Private Screenshot Form**
+
+To be able to create a new Private screenshot, we only need 3 required input to be valid :
+* The Screenshot image
+* The Name of the screenshot
+* The category 
+
+
+All scenarios where one of thoses inputs are not valid have been tested :
+- only blank space introduced : may not be blank
+- one blank spance introduce + legit character : blank space will be deleted automatically
+- Javascript tag introduced into input like <script>alert('bomb')</script> : script will not be executed on the app when displayed
+
+Note: The same test have been executed to Edit Private screenshot Form.
+
+**About the New Public Screenshot Form**
+
+To be able to create a new Public screenshot, we only need 2 required input to be valid :
+* The Screenshot image
+* The Name of the screenshot
+
+
+
+All scenarios where one of thoses inputs are not valid have been tested :
+- only blank space introduced : may not be blank
+- one blank spance introduce + legit character : blank space will be deleted automatically
+- Javascript tag introduced into input like <script>alert('bomb')</script> : script will not be executed on the app when displayed
+
+Note: The same test have been executed to Edit Public screenshot Form.
+
+
+
+
+[Back to top](<#contents>)
+
+## Error pages
+
+Custom Error Pages were designed to enhance the user's experience by providing them with additional details about the error encountered and offering helpful buttons to navigate them back to the website.
+
+For security purpose, All errors have been treated as a 404 error when is about displaying the error to the User. In fact, an 403 Access forbiden can give a critical details to the user meaning that it confirm that the data is existing but with no access, thats means the user can try to reach this data within an other way. Displaying 404 all errors are treated as not existing which give no extra information to the user.
+
+
+```
+try {
+const [{ data: category }, { data: scrshots }] = await Promise.all([
+  axiosReq.get(`/category/`),
+  axiosReq.get(`/private-scrshot/?${filter}search=${query}`)
+]);
+} catch (err) {
+history.push("/Error");
+}
+```
+
+The page /Error is not existing on the App so it will automatically display the 404 errors :-D
+
+
+
+[Back to top](<#contents>)
+
+
+## Bugs
+
+### Fixed Bugs
+
+Selection of which category :
+When 
+
+[Back to top](<#contents>)
+
+
+### UnFixed Bugs
+
+I don't known if this is an unfixed bug but i didn't known where to put the following :
+
+some days before I submit my project, i got an email :
+
+![GitGuardian](static/assets/images/readme-images/email1.png)
+
+![GitGuardian](static/assets/images/readme-images/email2.png)
+
+![GitGuardian](static/assets/images/readme-images/email3.png)
+
+I don't understand because i didn't touch or update or remove or edit this file since very first initial deployment as I known how important the first commit with this sensitive file. So, been asking on Slack and Gitguardian showing no secrets incident on the main dashboard of my profile make me feel safe, but still, i would like to understand...
+
+Execpt that, there is no unfixed bugs

@@ -15,14 +15,14 @@ import { fetchMoreData } from "../../utils/utils";
 import NoResults from "../../assets/no-results.png";
 import btnStyles from "../../styles/Button.module.css";
 import { NavLink } from "react-router-dom";
-
+import { useHistory } from "react-router-dom";
 function ListAllCategoryPage({ message = "", filter = "" }) {
 
 
   const [category, setCategory] = useState({ results: [] });
   const [hasLoaded, setHasLoaded] = useState(false);
   const { pathname } = useLocation();
-
+  const history = useHistory();
   const [query, setQuery] = useState("");
 
   useEffect(() => {
@@ -33,6 +33,7 @@ function ListAllCategoryPage({ message = "", filter = "" }) {
         setHasLoaded(true);
       } catch (err) {
         console.log(err);
+        history.push("/Error");
       }
     };
     setHasLoaded(false);
@@ -42,7 +43,7 @@ function ListAllCategoryPage({ message = "", filter = "" }) {
     return () => {
       clearTimeout(timer);
     };
-  }, [filter, query, pathname]);
+  }, [filter, query, pathname, history]);
 
  
 

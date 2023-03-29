@@ -38,8 +38,8 @@ function ListScrshotPrivatePage({ message = "", filter = "" }) {
           
           setCategory(category);
 
-          console.log(category);
-          console.log(scrshots.results.length);
+          
+         
           setHasLoaded(true);
         } catch (err) {
           console.log(err);
