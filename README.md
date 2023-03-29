@@ -44,6 +44,8 @@ some ability to :
 
 [Back-End : Readme File](https://github.com/artontray/screenshot-backend/blob/main/README.md)
 
+* 31 issues have been created for this project : [Check it out](https://github.com/users/artontray/projects/6)
+
 
 # Screenshot Organizer
 
@@ -90,6 +92,7 @@ So, whether it's a funny meme, a touching message from a loved one, or an inspir
     * [share your link](<#share-your-link>)
     * [share category](<#share-category>)
     * [Blur effect on screenshots](<#blur-effect-on-screenshots>)
+    * [Are you human?](<#are-you-human?>)
 * [**Technologies**](<#technologies>)
     * [Languages](<#languages>)
     * [Frameworks and Software](<#frameworks-and-software>)
@@ -100,7 +103,6 @@ So, whether it's a funny meme, a touching message from a loved one, or an inspir
     * [Validator HTML CSS JAVASCRIPT](#validator-html-css-javascript)
       * [HTML](#html)
       * [CSS](#css)
-      * [javascript](#javascript)
     * [Lighthouse](#lighthouse)
     * [Color Contrast Accessibility Validator](#color-contrast-accessibility-validator)
     * [Browser Testing](#browser-testing)
@@ -268,13 +270,13 @@ The user stories for the project are listed below to clarify the significance of
 | As a Site User | I can delete a comment I made on a Public screenshot.| &check; |
 | As a Site User | I can have access to a page dedicated for adding new content : Public screenshot, Private screenshot or a new category | &check; |
 | As a Site User | I can add a new category, it's a folder-like feature to help organizing private screenshots | &check; |
-| As a Site User |  I can add a new Private screenshot, I can choose on same page into which category it will be added | &check; |
+| As a Site User | I can add a new Private screenshot, I can choose on same page into which category it will be added | &check; |
 | As a Site User | I can add a new Public screenshot and publish it so anybody on the app, even unlogged user can see it. | &check; |
-| As a Site User | I can have access to a Dashboard where i can see all my category folders, all my privateScreenshot | &check; |
+| As a Site User | I can have access to a Dashboard where i can see all my category folders and all my private Screenshots | &check; |
 | As a Site User | I can add new category, update category and delete category. At least one category should remain for adding Screenshot as a requirement | &check; |
 | As a Site User | I can add new private screenshot, update it, delete it | &check; |
 | As a Site User | I can add a new Public Screenshot, update it and delete it. | &check; |
-| As a Site User | I can search to any key words into category, Private screenshot and description of both in the same searchBar | &check; |
+| As a Site User | I can search to any key words into category and Private screenshot | &check; |
 | As a Site User | I can access to a dedicated page to see all my category folder and see avatar of each and how much screenshots are published inside | &check; |
 | As a Site User | I have a fluent navigation within cancel button, Back button or dropdownMenu for quick selection | &check; |
 | As a Site User | I can see a dedicated page 404 when URL incoporated is wrong and I have access to a button to get me back safe to the app| &check; |
@@ -621,6 +623,11 @@ Similar to the functionality offered by the [DropBox app](https://www.dropbox.co
 
 Certain public screenshots may contain highly sensitive information such as email addresses, names, addresses, and bank account details. To address this, we could offer a Blur function that allows users to apply a blur effect to specific parts of the image. The blurred image would then be uploaded to the cloud, and the original image would be deleted to ensure that no sensitive information is visible.
 
+## Are you human?
+
+To avoid robot adding thousands of images to spam the cloud, we could implement a "Are you a human" box. on the screenshot publishing pages.
+
+
 
 [Back to top](<#contents>)
 
@@ -632,6 +639,8 @@ Certain public screenshots may contain highly sensitive information such as emai
 - JSX
 - CSS
 
+
+[Back to top](<#contents>)
 
 ## Frameworks and Software
 
@@ -648,6 +657,15 @@ I have been using the following Frameworks and Software :
 - [FontAwesome](https://fontawesome.com/) - Icons used everywhere on the App
 - [GoogleFonts](https://fonts.google.com/) -  To find the perfect font for the App.
 - [Veed.io](https://veed.io/) -  Generate Gif from short videos
+- [AmIResponsive](https://ui.dev/amiresponsive) -  Responsive display of the app
+- [HTML Validator](https://validator.w3.org/) -  HTML Validator
+- [CSS Validator](https://jigsaw.w3.org/css-validator/) -  CSS Validator
+- [Lighthouse Testing](https://pagespeed.web.dev/) -  Lighthouse testing
+- [Color and contrast testing](https://color.a11y.com/Contrast/) -  Color and contrast testing
+
+
+
+[Back to top](<#contents>)
 
 # Testing
 
@@ -885,27 +903,279 @@ Initially, I planned to include the "Add a Private Screenshot", "Add a Public Sc
 |:-------:|:--------|:--------|
 | As a Site User | I can add a new category, it's a folder-like feature to help organizing private screenshots | &check; |
 
+![UserStory](./src/assets/readme/story50.png)
 
+![UserStory](./src/assets/readme/story51.png)
+
+
+Users have the ability to create multiple categories at their discretion. If the user only fills in the avatar field when creating a new category, a category called "Main" with an empty description will be created. Both the category name and description can be edited at any time after creation.
+
+![UserStory](./src/assets/readme/story52.png)
+
+It is important to consider future updates to the app during development. For example, in the future, it may be possible for a user to share one of their categories (including its contents) with another user (see [share category](<#share-category>)). To anticipate this feature, I have allowed the possibility of a user sharing a folder named "WORK" with another user who also has a category named "WORK". To avoid issues in the future, I have decided not to enforce a unique category name requirement. Instead, it will be the user's responsibility to differentiate between categories using their respective avatars. Additionally, users can rename their categories as many times as they wish.
+
+![UserStory](./src/assets/readme/story53.png)
+
+![UserStory](./src/assets/readme/story54.png)
 
 
 | Story | action required | Checked? |
 |:-------:|:--------|:--------|
 | As a Site User |  I can add a new Private screenshot, I can choose on same page into which category it will be added | &check; |
 
+To add a Private screenshot, it's required to select the category it will be connected to. This is part of the concept of this app, so User define category name and description and can add new private screenshot into it. User can add as much screenshots as they want to into each category. No limits.
+
+![UserStory](./src/assets/readme/story55.png)
+
+![UserStory](./src/assets/readme/story56.png)
+
+I created this <SELECT> list of category as an external component from the Private screenshot creation page. So in the future it will be possible to display this list somewhere else on the app if needed.
+
+
 
 | Story | action required | Checked? |
 |:-------:|:--------|:--------|
 | As a Site User | I can add a new Public screenshot and publish it so anybody on the app, even unlogged user can see it. | &check; |
 
+As a Logged User, I can create a new Public screenshot. I just need to fill up the form with an image, a name and a description, That's all!
+
+![UserStory](./src/assets/readme/story57.png)
+
+![UserStory](./src/assets/readme/story58.png)
+
+After submitting User will be redirected to the published screenshots where he can :
+- Delete it
+- Edit it
+- Add a comment
+
+| Story | action required | Checked? |
+|:-------:|:--------|:--------|
+| As a Site User | I can have access to a Dashboard where i can see all my category folders and all my private Screenshot | &check; |
+
+On clicking of thisNavbar button called Dashboard, User directly access to all Private screenshots published on the app ordered by date (newest is first to display). 
+On the right side, a new menu appears, its the list of the 10 most used category from the user. To see all the category created by the user, there is a dropdown Menu on the top right of the category window which allow user to :
+- See all category
+- See all private screenshots
+- Search category
+- Delete category
+
+![UserStory](./src/assets/readme/story59.png)
 
 
-| As a Site User | I can have access to a Dashboard where i can see all my category folders, all my privateScreenshot | &check; |
+| Story | action required | Checked? |
+|:-------:|:--------|:--------|
 | As a Site User | I can add new category, update category and delete category. At least one category should remain for adding Screenshot as a requirement | &check; |
-| As a Site User | I can add new private screenshot, update it, delete it | &check; |
-| As a Site User | I can add a new Public Screenshot, update it and delete it. | &check; |
-| As a Site User | I can search to any key words into category, Private screenshot and description of both in the same searchBar | &check; |
-| As a Site User | I can access to a dedicated page to see all my category folder and see avatar of each and how much screenshots are published inside | &check; |
-| As a Site User | I have a fluent navigation within cancel button, Back button or dropdownMenu for quick selection | &check; |
-| As a Site User | I can see a dedicated page 404 when URL incoporated is wrong and I have access to a button to get me back safe to the app
- | &check; |
 
+The process of adding a new category should be easily accessible and straightforward, with the option available from multiple locations within the app. One way to access the category creation feature is by clicking the "New" button on the Navbar, which leads to a dedicated page for selecting and adding a new category. However, there are other ways to access this feature as well, such as through buttons integrated into the dashboard or the category listing page, which enable users to create a new category with just one click.
+
+![UserStory](./src/assets/readme/story60.png)
+
+![UserStory](./src/assets/readme/story61.png)
+
+![UserStory](./src/assets/readme/story62.png)
+
+
+Once created, a category can be edited with a new title and description or a new avatar. 
+Also, a category can be deleted at any moment. Be careful! All screenshots inside the category will be deleted also. 
+
+
+| Story | action required | Checked? |
+|:-------:|:--------|:--------|
+| As a Site User | I can add new private screenshot, update it, delete it | &check; |
+
+As a registered user, I have multiple options to add a new private screenshot. Firstly, I can click on the "New" button located on the navbar menu, which will redirect me to a page where I can choose to upload a new private screenshot. Additionally, if I enter a specific category from the right menu, it will display all the private screenshots in that category, along with an option to add a new private screenshot accessible via a button on the top-left.
+
+![UserStory](./src/assets/readme/story63.png)
+
+![UserStory](./src/assets/readme/story64.png)
+
+
+
+
+Once into the new private screenshot creation page, User need to fill in : 
+- an image
+- a name
+- a description
+- selected category
+
+![UserStory](./src/assets/readme/story65.png)
+
+Once created, a private screenshot can be deleted or edited by clicking on the appropriate button as following :
+
+![UserStory](./src/assets/readme/story66.png)
+
+
+![UserStory](./src/assets/readme/deletedscreenshotprivate.gif)
+
+
+| Story | action required | Checked? |
+|:-------:|:--------|:--------|
+| As a Site User | I can add a new Public Screenshot, update it and delete it. | &check; |
+
+As a registered user, I can click on the "New" button located on the navbar menu, which will redirect me to a page where I can choose to upload a new public screenshot.
+
+Once created, a public screenshot can be deleted or edited by clicking on the appropriate button as following :
+
+![UserStory](./src/assets/readme/story67.png)
+
+
+| Story | action required | Checked? |
+|:-------:|:--------|:--------|
+| As a Site User | I can search to any key words into category and Private screenshot| &check; |
+
+The user has the ability to search for a particular screenshot by entering keywords found in the title or description. To search within a specific category, the user can select the desired category from the menu on the right-hand side, which will then prompt a search bar to appear for conducting a search within that category. If the user selects the option to display all private screenshots by clicking on the dashboard button, the search will encompass all private screenshots registered by that user.
+
+![UserStory](./src/assets/readme/story68.png)
+
+![UserStory](./src/assets/readme/story69.png)
+
+| Story | action required | Checked? |
+|:-------:|:--------|:--------|
+| As a Site User | I can access to a dedicated page to see all my category folder and see avatar of each and how much screenshots are published inside | &check; |
+
+Each category have a dedicated page to display all information about this category, description, avatar, title name but also number of screenshots inside this category
+
+![UserStory](./src/assets/readme/story70.png)
+
+
+| Story | action required | Checked? |
+|:-------:|:--------|:--------|
+| As a Site User | I have a fluent navigation within cancel button, Back button or dropdownMenu for quick selection | &check; |
+
+The user's navigation experience should be seamless and uninterrupted, with no frustrating moments that require them to use the web browser's back button. To achieve this, I have implemented a logical strategy that always presents the user with a double choice: they can continue with their current action or cancel it and go back. Additionally, a NavBar is always present at the top of the website, providing easy access to the main parts of the application. Dropdown menus have also been included to allow users to choose from various alternatives related to a specific point as category or profile.
+
+
+| Story | action required | Checked? |
+|:-------:|:--------|:--------|
+| As a Site User | I can see a dedicated page 404 when URL incoporated is wrong and I have access to a button to get me back safe to the app| &check; |
+
+![UserStory](./src/assets/readme/story71.png)
+
+
+[Back to top](<#contents>)
+
+
+## Validator HTML CSS JAVASCRIPT
+
+  ### HTML
+
+  The [HTML Validator](https://validator.w3.org/) result is the following :
+
+
+![Validator](./src/assets/readme/validator01.png)
+
+  ### CSS
+
+
+  The [CSS Validator](https://jigsaw.w3.org/css-validator/) result is the following:
+
+![Validator](./src/assets/readme/validator02.png)
+
+
+
+## Lighthouse
+
+the  [Lighthouse Testing](https://pagespeed.web.dev/)  gives the following results :
+
+![Validator](./src/assets/readme/lighthouse02.png)
+
+![Validator](./src/assets/readme/lighthouse01.png)
+
+The Lighthouse report for my app indicates that achieving optimal performance is a challenge (specially on mobile phone devices), as the app primarily deals with displaying images.
+
+## Color Contrast Accessibility Validator
+
+The [Color and contrast testing](https://color.a11y.com/Contrast/) website gives the following result :
+
+![Validator](./src/assets/readme/colortesting.png)
+
+
+## Browser Testing
+
+To ensure that the website was responsive across various screen sizes in both portrait and landscape mode, it was viewed on a range of devices including desktops, laptops, iPhone 12 pro, iPhone XR, and iPads. The website performed as intended and its responsiveness was confirmed using Chrome developer tools on multiple devices.
+
+### Responsiveness Test
+
+The responsive design tests have been tested manually with [Google Chrome DevTools](https://developer.chrome.com/).
+
+| Desktop| Display <1280px | Display >1280px | landscape mode | portrait |
+|:-------:|:--------|:--------|:--------|:--------|
+| Display | &check; | &check; | &check; | &check; |
+
+
+| Tablet | Surface Pro 7 | Nest Hub | iPAD Mini | iPad Air | landscape mode | portrait |
+|:-------:|:--------|:--------|:--------|:--------|:--------|:--------|
+| Display | &check; | &check; | &check; | &check; |&check; | &check; |
+
+| Phone | Galaxy Galaxy S8+ | Iphone 12 Pro | Iphone SE | Iphone XR |
+|:-------:|:--------|:--------|:--------|:--------|
+| Display | &check; | &check; | &check; | &check; |
+
+[Back to top](<#contents>)
+
+The NavBar is also responsive to different screen size :
+
+1. On small devices :
+
+![NavBar](./src/assets/readme/navbar01.png)
+
+2. Big screen devices
+
+![NavBar](./src/assets/readme/navbar02.png)
+
+
+[Back to top](<#contents>)
+
+
+### Browser Compatibility
+
+* Google Chrome Version
+* Mozilla Firefox 
+* Opera Crypto
+
+[Back to top](<#contents>)
+
+
+### Manual Testing
+
+
+## Site Navigation
+
+Let's explore how to navigate the App and gain a comprehensive understanding of the available buttons, potential actions, and additional features.
+
+* HOME PAGE 
+
+| Element | Action | Result | Checked? |
+|:-------:|:--------|:--------|:--------|
+| Button "Enter Now" | Click | Redirect to News section where all public screenshots are displayed  | &check; |
+| Button "Sign In" | Click | Redirect to Sign In Page  | &check; |
+| Button "Sign up" | Click | Redirect to Sign up Page  | &check; |
+| Button "Sign up" | Click | Redirect to Sign up Page  | &check; |
+| Button "News" | Click | Redirect to News section where all public screenshots are displayed   | &check; |
+
+* SIGN IN
+
+| Element | Action | Result | Checked? |
+|:-------:|:--------|:--------|:--------|
+| Button "Sign in" | Click | If form filled correctly, redirection to News section but with full acess menu  | &check; |
+| Button "Sign up Now" | Click | Redirect to Sign Up Page  | &check; |
+
+
+* SIGN UP
+
+| Element | Action | Result | Checked? |
+|:-------:|:--------|:--------|:--------|
+| Button "Sign up" | Click | If form filled correctly, redirection to Sign in Page | &check; |
+| Button "Already have an account? sign in" | Click | Redirect to Sign In Page  | &check; |
+
+
+* + NEW
+
+| Element | Action | Result | Checked? |
+|:-------:|:--------|:--------|:--------|
+| Button "Private" | Click | Redirect to Private screenshot creation page | &check; |
+| Button "Public" | Click | Redirect to Public screenshot creation page | &check; |
+| Button "category" | Click | Redirect to category creation page | &check; |
+
+
+[Back to top](<#contents>)

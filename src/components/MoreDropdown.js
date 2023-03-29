@@ -80,7 +80,7 @@ export const MoreDropdownEditCategory = ({ handleEdit }) => {
 
 export const MoreDropdown = ({ handleEdit, handleDelete }) => {
   return (
-    <Dropdown className="ml-auto" drop="left">
+    <Dropdown className={`ml-auto  ${styles.MyDropDown} ${styles.Absolute}`} drop="left">
       <Dropdown.Toggle as={ThreeDots} />
 
       <Dropdown.Menu
@@ -105,27 +105,7 @@ export const MoreDropdown = ({ handleEdit, handleDelete }) => {
     </Dropdown>
   );
 };
-export const MoreDropdownPrivateScrshot = ({ handleDelete }) => {
-  return (
-    <Dropdown className="ml-auto" drop="left">
-      <Dropdown.Toggle as={ThreeDots} />
 
-      <Dropdown.Menu
-        className="text-center"
-        popperConfig={{ strategy: "fixed" }}
-      >
-
-        <Dropdown.Item
-          className={styles.DropdownItem}
-          onClick={handleDelete}
-          aria-label="delete"
-        >
-          <i className="fas fa-trash-alt" />
-        </Dropdown.Item>
-      </Dropdown.Menu>
-    </Dropdown>
-  );
-};
 export const SeeAllDropdown = ({handleSeeAllCategory, handleSeeLastPrivateScrshot, SearchCategory, handleDeleteCategory}) => {
   return (
     <Dropdown className={`${styles.MyDropDown} ml-auto`} drop="left">

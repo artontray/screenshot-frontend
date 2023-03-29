@@ -21,7 +21,7 @@ function DisplayPrivateScrtshot() {
       console.log(id);
       try {
         const { data } = await axiosReq.get(`/private-scrshot/${id}`);
-        console.log(data.image);
+
         setImage(data.image);
       } catch (err) {
         console.log(err);
@@ -41,6 +41,7 @@ function DisplayPrivateScrtshot() {
           <Card.Img src={Image} alt={Image} height="80%" width="80%" />
         </Card>
         <hr />
+ 
         <Button
           className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Basic}`}
           onClick={() => history.goBack()}

@@ -128,7 +128,7 @@ const ScrshotPublic = (props) => {
             {owner}
           </Link>
           <div className="d-flex align-items-center">
-            <span>{updated_at}</span>
+            
             {/*if  take out && scrshotPage , we display the icon dropdown to listing also */}
             {is_owner && (
               <MoreDropdown
@@ -144,6 +144,7 @@ const ScrshotPublic = (props) => {
       </Link>
       <Card.Body>
         {title && <Card.Title className="text-center">{title}</Card.Title>}
+        <hr /><span>{updated_at}</span><hr />
         {content && <Card.Text>{content}</Card.Text>}
         <div className={styles.ScreenshotBar}>
           {is_owner ? (

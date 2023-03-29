@@ -81,7 +81,7 @@ const ScrshotPrivate = (props) => {
             
           </Link>
           <div className="d-flex align-items-center">
-            <span>{updated_at}</span>
+            
   
             {is_owner   && (
               <MoreDropdown
@@ -97,7 +97,8 @@ const ScrshotPrivate = (props) => {
       </Link>
       <Card.Body>
         
-        {title && <Card.Title className="text-center">{title} {id}</Card.Title>}
+        {title && <Card.Title className="text-center">{title} </Card.Title>}
+        <hr /><span>{updated_at}</span><hr />
         {content && <Card.Text>{content}</Card.Text>}
  
       </Card.Body>
