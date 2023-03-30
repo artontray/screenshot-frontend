@@ -36,7 +36,6 @@ const AllCategory = ({ mobile }) => {
   };
   const { id } = useParams();
   useEffect(() => {
-    console.log(id);
     const handleMount = async () => {
       try {
         const { data } = await axiosReq.get(

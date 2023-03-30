@@ -59,10 +59,7 @@ function ScrshotPrivateCreateForm() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(event.target[0].value)
-    console.log(event.target[1].value)
-    console.log(event.target[2].value)
-    console.log(event.target[3].value)
+
 
     const formData = new FormData();
 
@@ -78,7 +75,6 @@ function ScrshotPrivateCreateForm() {
     try {
 
       const { data } = await axiosReq.post("/private-scrshot/", formData);
-      console.log(data)
       history.push(`/category/${category}`);
      /* history.push(`/ListScrshotPrivatePage`);*/
 

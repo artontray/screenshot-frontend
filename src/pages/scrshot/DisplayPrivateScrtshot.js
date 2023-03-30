@@ -18,7 +18,7 @@ function DisplayPrivateScrtshot() {
   const history = useHistory();
   useEffect(() => {
     const handleMount = async () => {
-      console.log(id);
+
       try {
         const { data } = await axiosReq.get(`/private-scrshot/${id}`);
 

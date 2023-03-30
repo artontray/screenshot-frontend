@@ -656,7 +656,6 @@ I have been using the following Frameworks and Software :
 - [Favicon](https://favicon.io/) - Generate favicon icons.
 - [FontAwesome](https://fontawesome.com/) - Icons used everywhere on the App
 - [GoogleFonts](https://fonts.google.com/) -  To find the perfect font for the App.
-- [Veed.io](https://veed.io/) -  Generate Gif from short videos
 - [AmIResponsive](https://ui.dev/amiresponsive) -  Responsive display of the app
 - [HTML Validator](https://validator.w3.org/) -  HTML Validator
 - [CSS Validator](https://jigsaw.w3.org/css-validator/) -  CSS Validator
@@ -1277,6 +1276,9 @@ In order to maintain the coherence of the application and prevent scenarios wher
 
 **As a connected User but not owner of the content**
 
+
+| Action | Result  | Checked? |
+|:-------:|:--------|:--------|
 | Type users URL to access User profile profiles/3 | Display the selected profile but with no access to edition menu | &check; |
 | Type users URL to access category details /category/149 |  Redirected to error page 404 | &check; |
 | Type users URL to access private screenshots details /scrshot_private/213 |  Redirected to error page 404 | &check; |
@@ -1356,8 +1358,10 @@ history.push("/Error");
 }
 ```
 
-The page /Error is not existing on the App so it will automatically display the 404 errors :-D
+The page /Error is not existing on the App so it will automatically display the 404 error Page :-D
 
+
+![Validator](./src/assets/readme/error.png)
 
 
 [Back to top](<#contents>)
@@ -1367,24 +1371,165 @@ The page /Error is not existing on the App so it will automatically display the 
 
 ### Fixed Bugs
 
-Selection of which category :
-When 
+During Private screenshot creation :
+
+To publish a screenshot on the App, the user is required to indicate the corresponding category. In order to display all the categories created by the user, I need to receive a request. However, due to pagination, I am only able to display 10 results at a time. To overcome this limitation and show all the results, I had to devise a workaround specifically for this exception. After trying various techniques, I found that the most effective method was to access the pagination URL links and push result into a tab.
+
+```
+const data  = await axiosReq.get(`/category/`);
+
+if (data.data.count > data.data.results.length){
+    var categoryTotal = data.data.count;
+    var TotalDisplayed = data.data.results.length
+    var page = 1;
+    data.data.results.map((value) => (
+      results.push({
+      key: value.title,
+        value: value.id,
+      })
+));
+    while(TotalDisplayed < categoryTotal){
+      page++;
+      const requete  = await axiosReq.get(`/category/?page=${page}`);
+      TotalDisplayed = TotalDisplayed + requete.data.results.length
+      requete.data.results.map((value) => (
+        results.push({
+        key: value.title,
+          value: value.id,
+        })
+  ));
+    }
+```
+
+At the end all category will end up into a tab called results, we can display it into a select field.
+
+```
+ <option key="0" value="none">
+  Select Category
+    </option>
+{results && results.map((option) => {
+  return (
+    <option key={option.value} value={option.value}>
+      {option.key}
+    </option>
+  
+  );
+})}
+```
+
 
 [Back to top](<#contents>)
 
 
 ### UnFixed Bugs
 
-I don't known if this is an unfixed bug but i didn't known where to put the following :
+- When user is unlogged and want to access to sign in page or sign up page, a console message error show a 401 error showing this link /dj-rest-auth/token/refresh/.
+User not connected, I guess no connection token created so it looks normal, i don't think there is anything to do with it.
 
-some days before I submit my project, i got an email :
+[Back to top](<#contents>)
 
-![GitGuardian](static/assets/images/readme-images/email1.png)
+# Deployment
 
-![GitGuardian](static/assets/images/readme-images/email2.png)
 
-![GitGuardian](static/assets/images/readme-images/email3.png)
+The site was deployed to [Heroku](https://www.heroku.com) cloud Platform. To be able to run your python program on the web, you need Heroku Cloud platform to host it and deploy. There are severals steps to proceed, please , follow carefully every steps :
 
-I don't understand because i didn't touch or update or remove or edit this file since very first initial deployment as I known how important the first commit with this sensitive file. So, been asking on Slack and Gitguardian showing no secrets incident on the main dashboard of my profile make me feel safe, but still, i would like to understand...
+1 - Create a new repo on github : no templates needed
+2 - Launch gitpod
+3 - Create a new app : npx create-react-app . --template git+https://github.com/Code-Institute-Org/cra-template-moments.git --use-npm
+press Y
+4 - npm start
+5 - Add Commit push combination for an initial commit
+``` 
+git add .
+git commit -m "Initial commit"
+git push
+```
 
-Execpt that, there is no unfixed bugs
+
+6 - Go to heroku and create a new instance
+7 - Connect Heroku to Your github repository and deploy
+
+8 - Install Bootstrap : npm install react-bootstrap@1.6.3 bootstrap@4.6.0
+9 - Go and grab some component codes from here if needed : https://react-bootstrap.github.io/getting-started/introduction
+
+MAKE SURE YOU HAVE THE BOOTSTRAP VERSION 4 SELECTED on the top right of the website
+
+
+10 - To avoid refreshibng the page each time you click on a link from navbar
+we use react-router, install it!
+```
+npm install react-router-dom@5.3.0
+```
+
+11 - To connect both Back end and front end, we need to specify the client URL
+on back end project:
+go to heroku back end project, and add some new CONFIG VARS
+
+ADD CONFIG VARS:
+CLIENT_ORIGIN https://YOUR-LINK.herokuapp.com
+
+DONT PUT a / at the end of the URL !!!!!!!
+
+CLIENT_ORIGIN_DEV
+
+https://3000-artontray-screenshotfro-1ud1udm5afm.ws-eu90.gitpod.io
+
+THis is the url when you do npm start on gitpod
+this adress can change later with time so update it if you see problem to send data to back end
+
+
+12 - To connect with the API back end we need axios :
+```
+npm install axios
+```
+
+now you can start importing from axios and connect to database to make requests :
+
+import axios from "axios";
+
+
+13 - Install ```npm install jwt-decode```
+
+14 - One last thing 
+
+Take out the  <React.StrictMode> tag from index.js
+
+
+# Credits
+### Content and Media
+
+
+* The Text of the App is provided by me
+* The favicon came from [Favicon](https://favicon.io/)
+* The Public part of the App is directly inspired by The Code Institute's Moments walkthrough project.
+* The images on the App has been created with [Bitmoji](https://www.bitmoji.com/)
+* The Gif in this readme file have been created with [Veed.io](https://veed.io/)
+
+
+## Best part of this project
+
+To be honest, best parts of my learning progress in this project are the following :
+- Learning ReactJs
+- Learning about useState() Hook
+- Learning JSX
+
+
+[Back to top](<#contents>)
+
+# Personal Development
+
+ReactJs is a complex technology that can require a considerable amount of time to comprehend. Therefore, I had to gradually build my confidence before commencing work on my own projects. Initially, I aimed to recreate the functionalities of a walkthrough project in order to bolster my confidence, and then moved on to develop my own components. I am delighted with the outcome, as it reflects my original intentions. While I acknowledge that my ReactJs skills could be improved further, the prospect of offering this project as an online service motivates me to continue refining and optimizing it. In fact, I plan on utilizing this tool on a daily basis and intend to add more functionalities to it in the future.
+
+[Back to top](<#contents>)
+
+# Acknowledgements
+This App was completed as a Portfolio 5 Project for the Full Stack Software Developer Diploma at the [Code Institute](https://codeinstitute.net/).
+As such I would like to thank Internet for beeing such a nice library, the Slack community for the good vibes and my mentor **Martina** for the support.
+
+This material has been prepared for educational purposes only.
+
+Damien B.
+
+[Back to top](<#contents>)
+
+

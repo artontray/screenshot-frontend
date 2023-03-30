@@ -20,7 +20,6 @@ function SelectCategory(props) {
       */ 
 
       if (data.data.count > data.data.results.length){
-        console.log("True");
           var categoryTotal = data.data.count;
           var TotalDisplayed = data.data.results.length
           var page = 1;
@@ -51,10 +50,9 @@ function SelectCategory(props) {
       }
 
 
-      console.log(data.data);
 
-      // Store results in the results array
-      
+
+      // Store results in the results array
 
 
 
