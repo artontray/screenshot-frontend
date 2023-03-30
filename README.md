@@ -33,6 +33,7 @@ some ability to :
 - understand API
 - build an App with Back-End and Front-end developpement
 - code with ReactJS
+- Learn JSX
 
 
 ![Final result](./src/assets/readme/amiresponsive.png)
@@ -200,12 +201,19 @@ Once components created, they need to comunicate each other and display a Live R
 
 I used the fantastic website of  [React bootstrap](https://react-bootstrap.netlify.app/) to get the code i needed to create the structure of the app and each components skeleton. 
 
-I used also this page [This page](https://react-bootstrap.netlify.app/components/alerts/)  to grab components skeleton i needed.
 
 
 About the font : 
 
 I tried Bebas Neue, Delius, EB Garamond, and Playfair Display, but [Ubuntu](https://fonts.google.com/specimen/Ubuntu) font caught my attention the most.
+
+```
+<link
+    href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@500;700&display=swap"
+    rel="stylesheet"
+  />
+```
+
 
 ### Colour Scheme
 
@@ -234,7 +242,7 @@ The following colors have been used in the App :
 
 ### User stories
 
-
+The user stories for the project are listed below to clarify the significance of specific features.
 
 First Time Visitor Goals :
 | Story | action required | Checked? |
@@ -243,7 +251,7 @@ First Time Visitor Goals :
 | As a first time visit | I want to understand how to register and how to connect to the app | &check; |
 
 
-The user stories for the project are listed below to clarify the significance of specific features.
+
 
 ### Site User
 | Story | action required | Checked? |
@@ -286,9 +294,9 @@ The completion of each User Story is made clear through the defined acceptance c
 - Should have
 - Wont have
 
-I used Github to manage the different user stories tasks :
+I used Github to manage the different user stories tasks [here](https://github.com/users/artontray/projects/6)
 
-2. milestones :
+2 milestones have been created :
 - current sprint
 - Future Features sprint
 
@@ -348,7 +356,7 @@ When a User decide to Register to the app, it will happen the following :
 
 
 
-When registered, User will have access to one catgegory already created :
+When registered, User will have access to one category already created named "Main" :
 
 ![Profile created](./src/assets/readme/pre_registered_profile.png)
 
@@ -375,7 +383,7 @@ When a User click on Logout button, User will be disconnect to the App and it wi
 
 ## Edit Profile
 
-User can Edit Profile anytime and as many time as User wants.
+User can Edit their Profile anytime and as many time as Users wants.
 
 For that, click on the button top-right of profile box to make appears an DropDown Box with "Edit profile" ,"Change username" and "Change password" :
 
@@ -560,7 +568,7 @@ To identify a Private screenshot, a Lock Icon is displayed on top-left on each P
 
 ## Users of the app
 
-This kind of app is dedicated to have thousands of users and there was no way to display them all in one dedicated page so a menu on the right side has been created to show off 10 (Pagination setting remember?) most followed users.
+This kind of app is dedicated to have thousands of users and there was no way to display them all in one dedicated page so a menu on the right side has been created to show up the 10 (Pagination setting remember?) most followed users.
 Of course, within the news button, a user can discover new users and follow them.
 
 ![Followers](./src/assets/readme/follow01.png)
@@ -824,7 +832,7 @@ The top-menu button "Favorites" give access to all Liked screenshots by the User
 |:-------:|:--------|:--------|
 | As a Site User | I have direct access to all screenshots from all the followed Users I am following | &check; |
 
-The top-menu button "Community" give access to all screenshots from all followed Users of the App. That a good way to read only Users that you followed and selected as a quality User and only content from mthem will appears in this section.
+The top-menu button "Community" give access to all screenshots from all followed Users of the App. That a good way to read only Users that you followed and selected as a quality User and only content from them will appears in this section.
 
 | Story | action required | Checked? |
 |:-------:|:--------|:--------|
@@ -850,7 +858,7 @@ The right menu is displaying the 10 most followed Users of the App. This menu is
 |:-------:|:--------|:--------|
 | As a Site User | I can Unlike a Public Screenshot from other User | &check; |
 
-Each Public screenshot have a dedicated area for Likes simbolized by a Heart icon. Clicking on it will have Like or Unlike the screenshot depending the previous status.
+There is a specific section designated for Likes on every public screenshot, which is represented by a Heart icon. By clicking on the Heart icon, you can either add a Like to the screenshot or remove a previously added Like, depending on its current status.
 
 ![UserStory](./src/assets/readme/story40.png)
 
@@ -886,13 +894,6 @@ Adding a new comment to any Public screenshot is available as long as the User i
 |:-------:|:--------|:--------|
 | As a Site User | I can have access to a page dedicated for adding new content : Public screenshot, Private screenshot or a new category | &check; |
 
-My first idea was to have access from NavBar the following buttons :
-* Add aa Private Screenshot
-* Add a Public Screenshot
-* Add a New category
-
-But then it was to much icons on the navbar and it loook confusing.
-That's why I decided to create a dedicated page for that to also give an oportunity to add some text which explain the difference between all thoses 3 choices.
 
 Initially, I planned to include the "Add a Private Screenshot", "Add a Public Screenshot", and "Add a New Category" buttons in the NavBar. However, I found that this made the NavBar cluttered and confusing. To address this, I opted to create a separate page that allow adding some texts explaining the distinctions between these three options, while also reducing the number of icons on the NavBar.
 
@@ -930,7 +931,7 @@ To add a Private screenshot, it's required to select the category it will be con
 
 I created this ```<SELECT>``` list of category as an external component from the Private screenshot creation page. So in the future it will be possible to display this list somewhere else on the app if needed.
 
-
+Furthermore, after creating a new private screenshot, the user will be automatically directed to the Selected Category Page that was chosen during the creation process. This allows the user to view all the content within that category, including the new screenshot that was just added.
 
 | Story | action required | Checked? |
 |:-------:|:--------|:--------|
@@ -1149,7 +1150,6 @@ Let's explore how to navigate the App and gain a comprehensive understanding of 
 | Button "Enter Now" | Click | Redirect to News section where all public screenshots are displayed  | &check; |
 | Button "Sign In" | Click | Redirect to Sign In Page  | &check; |
 | Button "Sign up" | Click | Redirect to Sign up Page  | &check; |
-| Button "Sign up" | Click | Redirect to Sign up Page  | &check; |
 | Button "News" | Click | Redirect to News section where all public screenshots are displayed   | &check; |
 | Button "Social media" | Click | Open a new tab with the selected social media website  | &check; |
 
@@ -1342,9 +1342,9 @@ Note: The same test have been executed to Edit Public screenshot Form.
 
 ## Error pages
 
-Custom Error Pages were designed to enhance the user's experience by providing them with additional details about the error encountered and offering helpful buttons to navigate them back to the website.
+Custom Error Pages were designed to enhance the user's experience by providing them a button to navigate them back to the website.
 
-For security purpose, All errors have been treated as a 404 error when is about displaying the error to the User. In fact, an 403 Access forbiden can give a critical details to the user meaning that it confirm that the data is existing but with no access, thats means the user can try to reach this data within an other way. Displaying 404 all errors are treated as not existing which give no extra information to the user.
+To ensure the security of the system, all errors are handled as a 404 error when they are displayed to the user. This means that even if the error is actually a 403 Access Forbidden error, it will still be displayed as a 404 error. This is because displaying a 403 error could provide critical information to the user, confirming the existence of data that they do not have access to. By displaying all errors as 404 errors, no additional information is provided to the user, making the system more secure.
 
 
 ```
@@ -1423,8 +1423,7 @@ At the end all category will end up into a tab called results, we can display it
 
 ### UnFixed Bugs
 
-- When user is unlogged and want to access to sign in page or sign up page, a console message error show a 401 error showing this link /dj-rest-auth/token/refresh/.
-User not connected, I guess no connection token created so it looks normal, i don't think there is anything to do with it.
+If a user who is not logged in attempts to access the sign-in or sign-up page, a console message error will appear, displaying a 401 error and a link to /dj-rest-auth/token/refresh/. This is expected behavior, as a connection token is only created for authenticated users. Therefore, there is no action needed for this error and it is not related to any issue with the system.
 
 [Back to top](<#contents>)
 
@@ -1434,11 +1433,16 @@ User not connected, I guess no connection token created so it looks normal, i do
 The site was deployed to [Heroku](https://www.heroku.com) cloud Platform. To be able to run your python program on the web, you need Heroku Cloud platform to host it and deploy. There are severals steps to proceed, please , follow carefully every steps :
 
 1 - Create a new repo on github : no templates needed
+
 2 - Launch gitpod
+
 3 - Create a new app : npx create-react-app . --template git+https://github.com/Code-Institute-Org/cra-template-moments.git --use-npm
 press Y
+
 4 - npm start
+
 5 - Add Commit push combination for an initial commit
+
 ``` 
 git add .
 git commit -m "Initial commit"
@@ -1447,21 +1451,25 @@ git push
 
 
 6 - Go to heroku and create a new instance
+
 7 - Connect Heroku to Your github repository and deploy
 
 8 - Install Bootstrap : npm install react-bootstrap@1.6.3 bootstrap@4.6.0
+
 9 - Go and grab some component codes from here if needed : https://react-bootstrap.github.io/getting-started/introduction
 
 MAKE SURE YOU HAVE THE BOOTSTRAP VERSION 4 SELECTED on the top right of the website
 
 
 10 - To avoid refreshibng the page each time you click on a link from navbar
+
 we use react-router, install it!
 ```
 npm install react-router-dom@5.3.0
 ```
 
 11 - To connect both Back end and front end, we need to specify the client URL
+
 on back end project:
 go to heroku back end project, and add some new CONFIG VARS
 
@@ -1479,6 +1487,7 @@ this adress can change later with time so update it if you see problem to send d
 
 
 12 - To connect with the API back end we need axios :
+
 ```
 npm install axios
 ```
