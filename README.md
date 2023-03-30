@@ -1461,7 +1461,7 @@ git push
 MAKE SURE YOU HAVE THE BOOTSTRAP VERSION 4 SELECTED on the top right of the website
 
 
-10 - To avoid refreshibng the page each time you click on a link from navbar
+10 - To avoid refreshing the page each time you click on a link from navbar
 
 we use react-router, install it!
 ```
@@ -1527,7 +1527,7 @@ To be honest, best parts of my learning progress in this project are the followi
 
 # Personal Development
 
-ReactJs is a complex technology that can require a considerable amount of time to comprehend. Therefore, I had to gradually build my confidence before commencing work on my own projects. Initially, I aimed to recreate the functionalities of a walkthrough project in order to bolster my confidence, and then moved on to develop my own components. I am delighted with the outcome, as it reflects my original intentions. While I acknowledge that my ReactJs skills could be improved further, the prospect of offering this project as an online service motivates me to continue refining and optimizing it. In fact, I plan on utilizing this tool on a daily basis and intend to add more functionalities to it in the future.
+ReactJs is a complex technology that can require a considerable amount of time to comprehend. Therefore, I had to gradually build my confidence before commencing work on my own projects. Initially, I aimed to recreate the functionalities of the walkthrough project "Moments" in order to bolster my confidence, and then moved on to develop my own components. I am delighted with the outcome, as it reflects my original intentions. While I acknowledge that my ReactJs skills could be improved further, the prospect of offering this project as an online service motivates me to continue refining and optimizing it. In fact, I plan on utilizing this tool on a daily basis and intend to add more functionalities to it in the future.
 
 [Back to top](<#contents>)
 

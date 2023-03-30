@@ -1,5 +1,4 @@
 import React from "react";
-
 import { Navbar, Nav } from "react-bootstrap";
 import { Container } from "react-bootstrap";
 import styles from "../styles/NavBar.module.css";
@@ -12,10 +11,18 @@ import {
 import axios from "axios";
 import Avatar from "./Avatar";
 
+/**
+ * 
+ * NavBar component is used to display a NavBar menu always on top of the App
+ * The NavBar will be displaying differents icons according the User status (connected or not)
+ */
+
+
 const NavBar = () => {
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
   const { expanded, setExpanded, ref } = useClickOutsideToggle();
+
 
   const handleSignOut = async () => {
     try {
@@ -36,18 +43,12 @@ const NavBar = () => {
     </NavLink>
   );
 
-
-
   const addNewIcon = (
     <NavLink className={styles.NavLink} to="/SelectNewWhat">
       <i className="fa-solid fa-plus fa-2x"></i>
       New
     </NavLink>
   );
-
-
-
-
 
   const addInspirationIcon = (
     <NavLink className={styles.NavLink} to="/ListFollowedUsersScrshot">
@@ -56,12 +57,14 @@ const NavBar = () => {
 
     </NavLink>
   );
+
   const addLikedIcon = (
     <NavLink className={styles.NavLink} to="/ListLikedPublicScrshot">
       <i className="fa-solid fa-heart fa-2x"></i>
       Favorites
     </NavLink>
   );
+
   const ProfileIcons = (
     <NavLink
       className={styles.NavLink} to={`/profiles/${currentUser?.profile_id}`} >
@@ -69,14 +72,15 @@ const NavBar = () => {
         <Avatar src={currentUser?.profile_image} height={50} />
       </Navbar.Brand>
     </NavLink>
-
   );
+
   const addHomeIcon = (
     <NavLink className={styles.NavLink} to="/home">
       <i className="fas fa-home fa-2x"></i>
       Home
     </NavLink>
   );
+
   const addNewsIcon = (
     <NavLink className={styles.NavLink} to="/">
       <i className="fa-solid fa-camera fa-2x"></i>
@@ -91,7 +95,6 @@ const NavBar = () => {
       Dashboard
     </NavLink>
   );
-
 
   const loggedInIcons = (
     <>
@@ -111,12 +114,8 @@ const NavBar = () => {
 
 
   return (
-
-
     <Navbar className={styles.NavBar} expanded={expanded} expand="md" fixed="top">
-
       <Container>
-
         {currentUser && ProfileIcons}
         <Navbar.Toggle
           ref={ref}
@@ -132,22 +131,12 @@ const NavBar = () => {
             {addNewsIcon}
             {addHomeIcon}
           </Nav>
-
-
-
-
-
           <Nav className="ml-auto text-left">
-
-
-
             {currentUser ? addLogoutIcon : loggedInIcons}
           </Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>
-
-
   );
 };
 

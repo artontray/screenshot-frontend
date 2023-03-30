@@ -15,7 +15,11 @@ import {
 } from "react-bootstrap";
 import axios from "axios";
 
-
+/**
+ * 
+ * SignUpForm function is used for Sign Up new Users
+ * 
+ */
 const SignUpForm = () => {
   useRedirect("loggedIn");
   const [signUpData, setSignUpData] = useState({

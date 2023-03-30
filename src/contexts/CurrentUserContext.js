@@ -5,9 +5,14 @@ import { useHistory } from "react-router";
 import { removeTokenTimestamp, shouldRefreshToken } from "../utils/utils";
 export const CurrentUserContext = createContext();
 export const SetCurrentUserContext = createContext();
-
 export const useCurrentUser = () => useContext(CurrentUserContext);
 export const useSetCurrentUser = () => useContext(SetCurrentUserContext);
+/**
+ * 
+ * CurrentUserProvider  context is used to share the Current 
+ * User status connexion info with all other component of the app
+ * 
+ */
 
 export const CurrentUserProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
@@ -23,6 +28,7 @@ export const CurrentUserProvider = ({ children }) => {
     }
   };
 
+  
   useEffect(() => {
     handleMount();
   }, []);

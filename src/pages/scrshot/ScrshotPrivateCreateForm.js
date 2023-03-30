@@ -74,7 +74,7 @@ function ScrshotPrivateCreateForm() {
 
     try {
 
-      const { data } = await axiosReq.post("/private-scrshot/", formData);
+      await axiosReq.post("/private-scrshot/", formData);
       history.push(`/category/${category}`);
      /* history.push(`/ListScrshotPrivatePage`);*/
 

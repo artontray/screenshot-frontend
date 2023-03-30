@@ -1,6 +1,11 @@
 import React from "react";
 import styles from "../styles/AvatarCategory.module.css";
 
+/**
+ * 
+ * AvatarCategory component is used to display an image as avatar for Category
+ * 
+ */
 const AvatarCategory = ({ src, height = "100%", text }) => {
   return (
     <span>

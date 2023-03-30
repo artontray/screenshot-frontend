@@ -3,9 +3,15 @@ import { axiosReq, axiosRes } from "../api/axiosDefaults";
 import { useCurrentUser } from "../contexts/CurrentUserContext";
 import { followHelper, unfollowHelper } from "../utils/utils";
 
+/**
+ * 
+ * ProfileDataProvider context is used to share the profiles 
+ * info with all other component of the app
+ * 
+ */
+
 const ProfileDataContext = createContext();
 const SetProfileDataContext = createContext();
-
 export const useProfileData = () => useContext(ProfileDataContext);
 export const useSetProfileData = () => useContext(SetProfileDataContext);
 

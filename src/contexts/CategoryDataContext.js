@@ -2,12 +2,17 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { axiosReq } from "../api/axiosDefaults";
 import { useCurrentUser } from "./CurrentUserContext";
 
-
 const CategoryDataContext = createContext();
 const SetCategoryDataContext = createContext();
-
 export const useCategoryData = () => useContext(CategoryDataContext);
 export const useSetCategoryData = () => useContext(SetCategoryDataContext);
+
+/**
+ * 
+ * CategoryDataProvider  context is used to share the User's Category info
+ *  with all other component of the app
+ * 
+ */
 
 export const CategoryDataProvider = ({ children }) => {
   const [CategoryData, setCategoryData] = useState({
@@ -17,11 +22,6 @@ export const CategoryDataProvider = ({ children }) => {
   });
 
   const currentUser = useCurrentUser();
-
-
-
-
-
 
   useEffect(() => {
     const handleMount = async () => {

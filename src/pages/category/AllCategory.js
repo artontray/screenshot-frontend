@@ -8,12 +8,17 @@ import { useHistory } from "react-router-dom";
 import { SeeAllDropdown } from "../../components/MoreDropdown";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { Media } from "react-bootstrap";
-import {  useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import CategoryItem from "./CategoryItem";
 import Col from "react-bootstrap/Col";
 import { NavLink } from "react-router-dom";
 
-
+/**
+ * 
+ * AllCategory component is used to display a 
+ * right-menu with the 10 most used category of the connected User
+ * 
+ */
 const AllCategory = ({ mobile }) => {
 
   const [categoryData, setCategoryData] = useState({
@@ -23,6 +28,8 @@ const AllCategory = ({ mobile }) => {
   const { popularCategory } = categoryData;
   const currentUser = useCurrentUser();
   const history = useHistory();
+  const { id } = useParams();
+
   const handleSeeAllCategory = () => {
     history.push(`/ListAllCategoryPage`);
   };
@@ -34,7 +41,9 @@ const AllCategory = ({ mobile }) => {
   const SearchCategory = () => {
     history.push(`/ListAllCategoryPage`);
   };
-  const { id } = useParams();
+
+
+
   useEffect(() => {
     const handleMount = async () => {
       try {
@@ -59,79 +68,36 @@ const AllCategory = ({ mobile }) => {
     <Container
       className={`${appStyles.Content} ${mobile && "d-lg-none text-center mb-3"
         }`}
-    >
+      >
       {popularCategory.results.length ? (
         <>
-
-
-
-
           <Media className="align-items-center justify-content-between">
-
-            
-<p><NavLink className={styles.NavLink} to={`/category/create`} >
-
-<i className="fa-solid fa-circle-plus fa-2x"></i>
-
-</NavLink></p>
-
-
-              {
-                
-                <SeeAllDropdown
+            <p>
+              <NavLink className={styles.NavLink} to={`/category/create`} >
+                <i className="fa-solid fa-circle-plus fa-2x"></i>
+              </NavLink>
+            </p>
+            {
+              <SeeAllDropdown
                 handleSeeAllCategory={handleSeeAllCategory}
-                  handleSeeLastPrivateScrshot={handleSeeLastPrivateScrshot}
-                  SearchCategory={SearchCategory}
-                  DeleteCategory={SearchCategory}
-                />
-              }
-           
+                handleSeeLastPrivateScrshot={handleSeeLastPrivateScrshot}
+                SearchCategory={SearchCategory}
+                DeleteCategory={SearchCategory}
+              />
+            }
           </Media>
-
-
-
-
-
-
           {mobile ? (
             <div className="d-flex justify-content-around">
-            {popularCategory.results.slice(0, 3).map((category) => (
-              
-              <CategoryItem key={category.id} category={category} mobile />
-                
-              
+              {popularCategory.results.slice(0, 3).map((category) => (
+                <CategoryItem key={category.id} category={category} mobile />
               ))}
-             </div>
+            </div>
           ) : (
-
-
-
-
-<Col md={4} className="d-none d-lg-block p-0 " lg={2}>
-            {popularCategory.results.map((category) => (
-
-
-
-
-              
-              
-                  
-                 
-              
-              <CategoryItem key={category.id} category={category} />
-            
-             
-                 
-             
-
-           
-
-
-
-
-
-            ))}  </Col>
-
+            <Col md={4} className="d-none d-lg-block p-0 " lg={2}>
+              {popularCategory.results.map((category) => (
+                <CategoryItem key={category.id} category={category} />
+              ))}
+            </Col>
           )}
         </>
       ) : (

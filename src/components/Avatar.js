@@ -1,6 +1,11 @@
 import React from "react";
 import styles from "../styles/Avatar.module.css";
 
+/**
+ * 
+ * Avatar component is used to display an image as avatar
+ * 
+ */
 const Avatar = ({ src, height = 45, text }) => {
   return (
     <span>
