@@ -1,7 +1,5 @@
 import React, { useRef, useState } from "react";
-
 import Form from "react-bootstrap/Form";
-
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -18,12 +16,16 @@ import { useRedirect } from "../../hooks/useRedirect";
 import SelectCategory from "./SelectCategory";
 import { useEffect } from "react";
 import stylesIcon from "../../styles/MoreDropdown.module.css";
+
+/**
+ * ScrshotPrivateCreateForm function is displaying 
+ * a Form for User to edit a Private Screenshot
+ * */
+
+
 function ScrshotPrivateCreateForm() {
   useRedirect("loggedOut");
   const [errors, setErrors] = useState({});
-
-
-
 
   const [ScrshotPrivateData, setScrshotPrivateData] = useState({
     title: "",
@@ -33,15 +35,13 @@ function ScrshotPrivateCreateForm() {
     category_title: "",
   });
   const { title, content, category, image, category_title } = ScrshotPrivateData;
-
-
-
-
   const imageInput = useRef(null);
   const history = useHistory();
   const { id } = useParams();
 
-
+  /**
+    * Populate Form fields with previously inserted data.
+    */
   useEffect(() => {
     const handleMount = async () => {
       try {
@@ -77,27 +77,17 @@ function ScrshotPrivateCreateForm() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
     const formData = new FormData();
-
     formData.append("title", title);
     formData.append("content", content);
     formData.append("category", category);
     if (imageInput?.current?.files[0]) {
-        formData.append("image", imageInput.current.files[0]);
-      }
-
-
-
-
+      formData.append("image", imageInput.current.files[0]);
+    }
 
     try {
-
       await axiosReq.put(`/private-scrshot/${id}/`, formData);
-      
-      /*history.push(`/private_scrshot/${data.id}`);*/
       history.push(`/ListScrshotPrivatePage`);
-
     } catch (err) {
       console.log(err);
       if (err.response?.status !== 401) {
@@ -137,14 +127,7 @@ function ScrshotPrivateCreateForm() {
       {errors?.content?.map((message, idx) => (
         <div key={idx} className={styles.bgwarning}>{message}</div>
       ))}
-
-
-
-
-
-
-
-<SelectCategory ScrshotPrivateData={ScrshotPrivateData} setScrshotPrivateData={setScrshotPrivateData} category_id={category} category_title={category_title}  />
+      <SelectCategory ScrshotPrivateData={ScrshotPrivateData} setScrshotPrivateData={setScrshotPrivateData} category_id={category} category_title={category_title} />
 
       <Button variant="light"
         className={`${btnStyles.Button} ${btnStyles.PurpleStyle}`}
@@ -168,23 +151,18 @@ function ScrshotPrivateCreateForm() {
           >
             <p className={stylesIcon.DropdownItem}><i className="fa-solid fa-lock fa-2x"></i></p>
             <Form.Group className="text-center justify-content-center">
-              
-                  <figure>
-                    <Image className={appStyles.Image} src={image} rounded />
-                  </figure>
-                  <div>
-                    <Form.Label
-                      className={`${btnStyles.Button} ${btnStyles.PurpleStyle} btn`}
-                      htmlFor="image-upload"
-                    >
-                      CHANGE THE IMAGE
-                    </Form.Label>
-                  </div>
-                
-             
-              
-              
 
+              <figure>
+                <Image className={appStyles.Image} src={image} rounded />
+              </figure>
+              <div>
+                <Form.Label
+                  className={`${btnStyles.Button} ${btnStyles.PurpleStyle} btn`}
+                  htmlFor="image-upload"
+                >
+                  CHANGE THE IMAGE
+                </Form.Label>
+              </div>
               <Form.File
                 id="image-upload"
                 accept="image/*"
@@ -200,7 +178,7 @@ function ScrshotPrivateCreateForm() {
         </Col>
         <Col md={5} lg={4} className="d-none d-md-block p-0 p-md-2">
           <Container className={appStyles.Content}>{textFields}</Container>
-          
+
         </Col>
       </Row>
     </Form>

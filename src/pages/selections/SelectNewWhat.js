@@ -12,11 +12,15 @@ import appStyles from "../../App.module.css";
 
 import { useRedirect } from "../../hooks/useRedirect";
 
-
+/**
+ * SelectNewWhat component is displaying 
+ * a list of choices : 
+ * - Add a new private screenshot
+ * - Add a new Public screenshot
+ * - Add a New category
+ * */
 function SelectNewWhat() {
     useRedirect("loggedOut");
-
-
     return (
         <>
             <Row className={styles.Row}>
@@ -38,7 +42,6 @@ function SelectNewWhat() {
                             To create a category, you'll need to provide a name, an avatar, and a description.
                             Once you've created a category, you can add new <Badge variant="light"><span className={styles.Labels}>private</span></Badge> screenshots to it by selecting
                             the appropriate category. Your dashboard will give you a view of all your Private screenshots, Check it out!
-
 
                         </p>
                     </Container>

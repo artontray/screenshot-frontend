@@ -1,12 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
-
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Image from "react-bootstrap/Image";
-
 import styles from "../../styles/ScrshotPublicEditForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
@@ -15,21 +13,27 @@ import { useHistory, useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 import { useRedirect } from "../../hooks/useRedirect";
 
+/**
+ * ScrshotPublicEditForm function is displaying 
+ * a Form for User to edit a Public Screenshot
+ * */
+
 function ScrshotPublicEditForm() {
   useRedirect("loggedOut");
   const [errors, setErrors] = useState({});
-
   const [ScrshotPublicData, setScrshotPublicData] = useState({
     title: "",
     content: "",
     image: "",
   });
   const { title, content, image } = ScrshotPublicData;
-
   const imageInput = useRef(null);
   const history = useHistory();
   const { id } = useParams();
 
+    /**
+   * Populate the Form fields with previously inserted data.
+   */
   useEffect(() => {
     const handleMount = async () => {
       try {
@@ -87,7 +91,9 @@ function ScrshotPublicEditForm() {
   const textFields = (
     <div className="text-center">
     <Form.Group>
-      <Form.Label ><Badge variant="light"><span className={styles.Labels}>Screenshot Name</span></Badge></Form.Label>
+      <Form.Label >
+        <Badge variant="light"><span className={styles.Labels}>Screenshot Name</span></Badge>
+        </Form.Label>
 
       <Form.Control
         className={`${styles.Input} ${styles.InputText}`}
@@ -145,7 +151,7 @@ function ScrshotPublicEditForm() {
                   className={`${btnStyles.Button} ${btnStyles.PurpleStyle} btn`}
                   htmlFor="image-upload"
                 >
-                  CHANGE THE IMAGE
+                  Change the image
                 </Form.Label>
               </div>
 

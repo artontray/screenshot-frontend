@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-
-
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -10,9 +8,13 @@ import styles from "../../styles/UserPasswordForm.module.css";
 import { useHistory, useParams } from "react-router-dom";
 import { axiosRes } from "../../api/axiosDefaults";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
+
+/**
+ * UserPasswordForm  Component is displaying a simple form to edit user's password
+ * */
+
 
 const UserPasswordForm = () => {
   const history = useHistory();
@@ -24,9 +26,7 @@ const UserPasswordForm = () => {
     new_password2: "",
   });
   const { new_password1, new_password2 } = userData;
-
   const [errors, setErrors] = useState({});
-
   const handleChange = (event) => {
     setUserData({
       ...userData,
@@ -36,7 +36,7 @@ const UserPasswordForm = () => {
 
   useEffect(() => {
     if (currentUser?.profile_id?.toString() !== id) {
-      // redirect user if they are not the owner of this profile
+      // redirect user if not the owner of this profile
       history.push("/");
     }
   }, [currentUser, history, id]);
@@ -68,9 +68,9 @@ const UserPasswordForm = () => {
               />
             </Form.Group>
 
-             {errors.new_password1?.map((message, idx) => (
-                            <div key={idx} className={styles.bgwarning}>{message}</div>
-                        ))}
+            {errors.new_password1?.map((message, idx) => (
+              <div key={idx} className={styles.bgwarning}>{message}</div>
+            ))}
             <Form.Group>
               <Form.Label>Confirm password</Form.Label>
               <Form.Control
@@ -82,9 +82,9 @@ const UserPasswordForm = () => {
               />
             </Form.Group>
 
-             {errors.new_password2?.map((message, idx) => (
-                            <div key={idx} className={styles.bgwarning}>{message}</div>
-                        ))}
+            {errors.new_password2?.map((message, idx) => (
+              <div key={idx} className={styles.bgwarning}>{message}</div>
+            ))}
             <Button
               className={`${btnStyles.Button} ${btnStyles.Blue}`}
               onClick={() => history.goBack()}

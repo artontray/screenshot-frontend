@@ -11,7 +11,10 @@ import {
 } from "react-bootstrap";
 import imageMain from "../../assets/screenshots-main.png";
 
-
+/**
+ * HomePage is displaying the basic information of the app
+ * Links for social media
+ */
 
 const HomePage = () => {
 
@@ -21,7 +24,7 @@ const HomePage = () => {
             <Row className={styles.Row}>
                 <Col className="my-auto py-2 p-md-2" md={12} lg={8} sm={12}>
                     <Container className={`${appStyles.Content} p-4 `}>
-                        
+
                         <h1 className={styles.Header}>Welcome to Screenshot Organizer</h1>
                         <hr />
                         <center>
@@ -50,8 +53,6 @@ const HomePage = () => {
                             >
                                 <i className="fa-brands fa-twitter fa-2x" />
                             </a>
-
-
                         </center>
                         <hr />
                         <h2>Screenshots are a fascinating phenomenon in the current digital age.</h2>
@@ -88,12 +89,7 @@ const HomePage = () => {
                             connect and express ourselves.
 
                         </p>
-
-
-
                     </Container>
-
-
                 </Col>
                 <Col
                     md={6} lg={4}
@@ -114,8 +110,6 @@ const HomePage = () => {
                     </div>
                 </Col>
             </Row>
-
-
         </>
     );
 };

@@ -11,12 +11,10 @@ import CategoryCreateForm from "./pages/category/CategoryCreateForm";
 import ScrshotPublicPage from "./pages/scrshot/ScrshotPublicPage";
 import ListScrshotPublicPage from "./pages/scrshot/ListScrshotPublicPage";
 import ListScrshotPrivatePage from "./pages/scrshot/ListScrshotPrivatePage";
-
 import ScrshotPrivateEditForm from "./pages/scrshot/ScrshotPrivateEditForm";
 import { useCurrentUser } from "./contexts/CurrentUserContext";
 import ScrshotPublicEditForm from "./pages/scrshot/ScrshotPublicEditForm";
 import ProfilePage from "./pages/profiles/ProfilePage";
-
 import SelectNewWhat from "./pages/selections/SelectNewWhat";
 import DisplayPrivateScrtshot from "./pages/scrshot/DisplayPrivateScrtshot";
 import UsernameForm from "./pages/profiles/UsernameForm";
@@ -29,15 +27,12 @@ import CategoryEditForm from "./pages/category/CategoryEditForm";
 import HomePage from "./pages/home/HomePage";
 
 function App() {
-
   const currentUser = useCurrentUser();
   const profile_id = currentUser?.profile_id || "";
 
   return (
-
     <div className={styles.App}>
       <NavBar />
-      
       <Container className={styles.Main}>
         <Switch>
           <Route
@@ -74,7 +69,6 @@ function App() {
           <Route exact path="/scrshot_public/:id" render={() => <ScrshotPublicPage />} />
           <Route exact path="/scrshot_public/:id/edit" render={() => <ScrshotPublicEditForm />} />
           <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
-
           <Route exact path="/scrshot_private/:id/edit" render={() => <ScrshotPrivateEditForm />} />
           <Route exact path="/category/create" render={() => <CategoryCreateForm />} />
           <Route exact path="/ListScrshotPrivatePage" render={() => <ListScrshotPrivatePage message="No results found. Adjust the search keyword!"/>} />

@@ -7,12 +7,18 @@ import { axiosRes } from "../../api/axiosDefaults";
 import Button from "react-bootstrap/Button";
 import { useHistory } from "react-router";
 
+/**
+ * 
+ * CommentCreateForm component is use to generate
+ * a form to add a new comment to a selected screenshot
+ */
+
 function CommentCreateForm(props) {
-  const { 
-    public_screenshot, 
-    setScrshot, 
+  const {
+    public_screenshot,
+    setScrshot,
     setComments
-} = props;
+  } = props;
   const [content, setContent] = useState("");
   const history = useHistory();
   const handleChange = (event) => {
@@ -48,7 +54,6 @@ function CommentCreateForm(props) {
     <Form className="mt-2" onSubmit={handleSubmit}>
       <Form.Group>
         <InputGroup>
-
           <Form.Control
             className={`${styles.Input} ${styles.InputTextarea}`}
             placeholder="write a comment..."
@@ -61,20 +66,20 @@ function CommentCreateForm(props) {
         </InputGroup>
       </Form.Group>
       <div>
-      <Button
-        className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.PurpleStyle} ${btnStyles.Aligncenter} mr-auto`}
-        onClick={() => history.goBack()}
-      >
-        Back
-      </Button>
-      
-      <Button
-        className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.PurpleStyle} ${btnStyles.Aligncenter}  mr-auto`}
-        disabled={!content.trim()}
-        type="submit"
-      >
-        Publish
-      </Button>
+        <Button
+          className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.PurpleStyle} ${btnStyles.Aligncenter} mr-auto`}
+          onClick={() => history.goBack()}
+        >
+          Back
+        </Button>
+
+        <Button
+          className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.PurpleStyle} ${btnStyles.Aligncenter}  mr-auto`}
+          disabled={!content.trim()}
+          type="submit"
+        >
+          Publish
+        </Button>
       </div>
     </Form>
   );

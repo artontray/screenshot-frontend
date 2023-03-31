@@ -1,5 +1,4 @@
 import React, { useRef, useState } from "react";
-
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
@@ -7,7 +6,6 @@ import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Badge from "react-bootstrap/Badge";
 import Upload from "../../assets/upload.png";
-
 import styles from "../../styles/ScrShotCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
@@ -16,17 +14,21 @@ import Asset from "../../components/Asset";
 import { useHistory } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 import { useRedirect } from "../../hooks/useRedirect";
+/**
+ * ScrshotPublicCreateForm function is displaying 
+ * a Form for User to add a new Public Screenshot
+ * */
+
+
 function ScrshotPublicCreateForm() {
   useRedirect("loggedOut");
   const [errors, setErrors] = useState({});
-
   const [ScrshotPublicData, setScrshotPublicData] = useState({
     title: "",
     content: "",
     image: "",
   });
   const { title, content, image } = ScrshotPublicData;
-
   const imageInput = useRef(null);
   const history = useHistory();
 
@@ -50,7 +52,6 @@ function ScrshotPublicCreateForm() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
-
     formData.append("title", title);
     formData.append("content", content);
     formData.append("image", imageInput.current.files[0]);
@@ -84,7 +85,9 @@ function ScrshotPublicCreateForm() {
         <div key={idx} className={styles.bgwarning}>{message}</div>
       ))}
       <Form.Group>
-        <Form.Label><Badge variant="light"><span className={styles.Labels}>Describe it!</span></Badge></Form.Label>
+        <Form.Label>
+          <Badge variant="light"><span className={styles.Labels}>Describe it!</span></Badge>
+        </Form.Label>
         <Form.Control
           className={`${styles.Input} ${styles.InputTextarea}`}
           as="textarea"

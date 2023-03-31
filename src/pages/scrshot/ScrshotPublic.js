@@ -9,7 +9,10 @@ import { useHistory } from "react-router-dom";
 import { MoreDropdown } from "../../components/MoreDropdown";
 
 
-
+/**
+ * ScrshotPublic  Component is displaying 
+ * the information about a selected Public screenshot
+ * */
 
 const ScrshotPublic = (props) => {
 
@@ -38,25 +41,13 @@ const ScrshotPublic = (props) => {
     history.push(`/scrshot_public/${id}/edit`);
   };
 
-
-
-
-
-
-
   const handleDelete = async () => {
     try {
       await axiosRes.delete(`/public-scrshot/${id}/`);
-      /*history.push("/");*/
-
-
-      /*console.log(setProfileData.results.results);*/
 
       if (!setProfileInfo) {
         /* delete a screenshot from a page like this scrshot_public/215 so goBack() is called*/
-
         history.goBack();
-
       } else if (setProfileInfo === "0") {
         /* delete a screenshot from the page ListScrshotPublicPage so we undisplay the deleted screenshot only*/
         setScrshots((prevScrshot) => ({
@@ -64,8 +55,7 @@ const ScrshotPublic = (props) => {
           results: prevScrshot.results.filter((scrshotpublic) => scrshotpublic.id !== id),
         }));
       } else {
-  /* delete a screenshot from a page like this category/149 so category number of screenshot minus 1 and we undisplay the deleted screenshot*/
-        
+        /* delete a screenshot from a page like this category/149 so category number of screenshot minus 1 and we undisplay the deleted screenshot*/
         setProfileInfo((prevCat) => ({
 
           ...prevCat,
@@ -115,12 +105,8 @@ const ScrshotPublic = (props) => {
     }
   };
 
-
   return (
-
-
     <Card className={styles.Screenshot}>
-
       <Card.Body>
         <Media className="align-items-center justify-content-between">
           <Link to={`/profiles/${profile_id}`}>
@@ -128,7 +114,7 @@ const ScrshotPublic = (props) => {
             {owner}
           </Link>
           <div className="d-flex align-items-center">
-            
+
             {/*if  take out && scrshotPage , we display the icon dropdown to listing also */}
             {is_owner && (
               <MoreDropdown

@@ -10,16 +10,3 @@
     display: none;
 }
 
-
-.box1 {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    zIndex: 999; 
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-    border-top-right-radius: 20px;
-    max-width: 300px;
-    max-height: 60px;
-}

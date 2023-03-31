@@ -9,8 +9,16 @@ import { axiosRes } from "../../api/axiosDefaults";
 import { useState } from "react";
 import CommentEditForm from "./CommentEditForm";
 
+/**
+ * 
+ * Comment component displaying comments
+ * If current User is the owner, a dropdownMenu will appears
+ * If setShowEditForm(true) a form is displaying to edit the comment
+ * if handleDelete is called , commment will be deleted
+ */
+
 const Comment = (props) => {
-  const { 
+  const {
     profile_id,
     profile_image,
     owner,
@@ -19,37 +27,37 @@ const Comment = (props) => {
     id,
     setScrshot,
     setComments,
-} = props;
+  } = props;
 
-const [showEditForm, setShowEditForm] = useState(false);
+  const [showEditForm, setShowEditForm] = useState(false);
 
-const currentUser = useCurrentUser();
-const is_owner = currentUser?.username === owner;
+  const currentUser = useCurrentUser();
+  const is_owner = currentUser?.username === owner;
 
-const handleDelete = async () => {
-  try {
-    await axiosRes.delete(`/comments/${id}/`);
-    setScrshot((prevScrshot) => ({
-      results: [
-        {
-          ...prevScrshot.results[0],
-          comments_count: prevScrshot.results[0].comments_count - 1,
-        },
-      ],
-    }));
+  const handleDelete = async () => {
+    try {
+      await axiosRes.delete(`/comments/${id}/`);
+      setScrshot((prevScrshot) => ({
+        results: [
+          {
+            ...prevScrshot.results[0],
+            comments_count: prevScrshot.results[0].comments_count - 1,
+          },
+        ],
+      }));
 
-    setComments((prevComments) => ({
-      ...prevComments,
-      results: prevComments.results.filter((comment) => comment.id !== id),
-    }));
-  } catch (err) {
-    console.log(err);
-  }
-};
+      setComments((prevComments) => ({
+        ...prevComments,
+        results: prevComments.results.filter((comment) => comment.id !== id),
+      }));
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
 
 
-return (
+  return (
     <>
       <hr />
       <Media>
@@ -68,9 +76,9 @@ return (
               setComments={setComments}
               setShowEditForm={setShowEditForm}
             />
-            ) : (
-                <p>{content}</p>
-              )}
+          ) : (
+            <p>{content}</p>
+          )}
         </Media.Body>
         {is_owner && !showEditForm && (
           <MoreDropdown
@@ -80,7 +88,7 @@ return (
         )}
       </Media>
     </>
-      );
-    };
+  );
+};
 
 export default Comment;

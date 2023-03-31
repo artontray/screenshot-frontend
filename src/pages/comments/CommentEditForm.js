@@ -1,10 +1,17 @@
 import React, { useState } from "react";
-
 import Form from "react-bootstrap/Form";
 import { axiosRes } from "../../api/axiosDefaults";
 import Button from "react-bootstrap/Button";
 import styles from "../../styles/CommentCreateEditForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
+
+/**
+ * 
+ * CommentEditForm component is use to generate
+ * a form to edit comment to a selected screenshot
+ */
+
+
 function CommentEditForm(props) {
   const { 
     id, 
@@ -76,9 +83,6 @@ function CommentEditForm(props) {
         >
           Save
         </Button>
-
-
-
       </div>
     </Form>
   );

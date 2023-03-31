@@ -1,6 +1,5 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
-
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
 import imagerror404 from "../../assets/error404.png";
@@ -11,14 +10,12 @@ import {
     Col
 } from "react-bootstrap";
 /**
- * Display error graphic for non-existent pages.
+ * Display error 404  with a button "Come Back home" for non-existent pages.
  */
 function Error404() {
     return (
         <Container>
-
             <Row>
-
                 <Col
                     md={12} lg={12}
                     className={` d-lg-block  p-2`}
@@ -29,20 +26,17 @@ function Error404() {
                             className={`${appStyles.Image404} `}
                             src={imagerror404}
                             alt="Error 404"
-                        /></div>
+                        />
+                    </div>
                     <div className={btnStyles.Aligncenter}>
                         <Button href="/"
                             className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.PurpleStyle}`}
-
                         >
                             Go Back Home
                         </Button>
                     </div>
                 </Col>
             </Row>
-
-
-
         </Container>
     );
 }

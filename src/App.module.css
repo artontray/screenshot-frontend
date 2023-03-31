@@ -2,8 +2,8 @@
   font-family: "Ubuntu", sans-serif;
   background-color: #dab3ff;
   min-height: 100vh;
-  margin-left:4px;
-  margin-right:4px;
+  margin-left: 4px;
+  margin-right: 4px;
 }
 
 body {
@@ -22,14 +22,14 @@ body {
 
 }
 
-.MessagesInfo{
+.MessagesInfo {
 
-    background: transparent;
-    color: #5a1eff;
-    text-align: center;
+  background: transparent;
+  color: #5a1eff;
+  text-align: center;
 
-    padding-bottom: 15px;
-  
+  padding-bottom: 15px;
+
 }
 
 .ContentProfile {
@@ -97,7 +97,7 @@ i {
   vertical-align: middle;
 }
 
-.AlignCenter{
+.AlignCenter {
   text-align: center;
 }
 
@@ -108,8 +108,8 @@ i {
 
 
 
-.AbortedAlert{
-color : #ff0000;
+.AbortedAlert {
+  color: #ff0000;
 }
 
 .SearchBar input {
@@ -127,10 +127,9 @@ color : #ff0000;
 
   color: #5f0cfa;
 
-  
 }
 
-.Image404{
+.Image404 {
   text-align: center;
   align-items: center;
   width: 50%;
@@ -152,12 +151,15 @@ color : #ff0000;
 *::-webkit-scrollbar {
   width: 5px;
 }
+
 *::-webkit-scrollbar-track {
   background: #a15dff;
 }
+
 *::-webkit-scrollbar-thumb {
   background: #622eff;
 }
+
 *::-webkit-scrollbar-thumb:hover {
   background: #9e59ff;
 }

@@ -4,6 +4,11 @@ import appStyles from "../../App.module.css";
 import Asset from "../../components/Asset";
 import { useProfileData } from "../../contexts/ProfileDataContext";
 import Profile from "./Profile";
+
+/**
+ * PopularProfiles component is displaying the 10 most followed Users of the app
+ */
+
 const PopularProfiles = ({ mobile }) => {
   const { popularProfiles } = useProfileData();
 
@@ -15,8 +20,6 @@ const PopularProfiles = ({ mobile }) => {
     >
       {popularProfiles.results.length ? (
         <>
-          
-
           {mobile ? (
             <div className="d-flex justify-content-around">
               {popularProfiles.results.slice(0, 3).map((profile) => (

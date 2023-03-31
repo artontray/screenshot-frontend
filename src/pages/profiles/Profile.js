@@ -6,13 +6,18 @@ import { Link } from "react-router-dom";
 import Avatar from "../../components/Avatar";
 import { Button } from "react-bootstrap";
 import { useSetProfileData } from "../../contexts/ProfileDataContext";
+
+/**
+ * Profile component is displaying only one profile
+ * If mobile version is not active, it will show up a button 
+ * on the side of the profile name called follow/unfollow
+ */
+
 const Profile = (props) => {
   const { profile, mobile, imageSize = 55 } = props;
   const { id, following_id, image, owner } = profile;
-
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
-
   const { handleFollow, handleUnfollow } = useSetProfileData();
 
   return (

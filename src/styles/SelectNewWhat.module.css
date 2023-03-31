@@ -1,35 +1,35 @@
 .Row {
-padding-bottom : 5px;
-    
-  }
- 
+  padding-bottom: 5px;
 
-  .Header {
-    font-style: normal;
-    font-weight: bold;
-    font-size: 16px;
-    line-height: 19px;
-    text-align: center;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: #5a1eff;
-  }
-  
-  .Link:hover{
-    color: #7a194b;
-  }
-  .Link {
-    text-decoration: none;
-    text-align: center;
-    display: block;
-    margin: auto;
-  }
-  
-  .Link span {
-    color: #8000ff;
-  }
-  
-  .Container {
-    padding: 30px 10px;
-  }
-  
+}
+
+
+.Header {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #5a1eff;
+}
+
+.Link:hover {
+  color: #7a194b;
+}
+
+.Link {
+  text-decoration: none;
+  text-align: center;
+  display: block;
+  margin: auto;
+}
+
+.Link span {
+  color: #8000ff;
+}
+
+.Container {
+  padding: 30px 10px;
+}

@@ -1,7 +1,6 @@
 .Screenshot {
     background-color: #ffffff;
     border: 2px solid #974cff;
-
     margin-bottom: 16px;
     text-align: center;
     border-top-left-radius: 20px;
@@ -29,6 +28,6 @@
   .ScreenshotBar{
     color: rgb(82, 73, 255);
   }
-  LikeResult{
+  .LikeResult{
     color: rgb(82, 73, 255);
   }

@@ -1,14 +1,11 @@
 import React, { useRef, useState } from "react";
-
 import Form from "react-bootstrap/Form";
-
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Badge from "react-bootstrap/Badge";
 import Upload from "../../assets/upload.png";
-
 import styles from "../../styles/ScrShotCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
@@ -18,13 +15,13 @@ import { useHistory } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 import { useRedirect } from "../../hooks/useRedirect";
 import SelectCategory from "./SelectCategory";
-
+/**
+ * ScrshotPrivateCreateForm function is displaying 
+ * a Form for User to add a new Private Screenshot
+ * */
 function ScrshotPrivateCreateForm() {
   useRedirect("loggedOut");
   const [errors, setErrors] = useState({});
-
-
-
 
   const [ScrshotPrivateData, setScrshotPrivateData] = useState({
     title: "",
@@ -33,10 +30,6 @@ function ScrshotPrivateCreateForm() {
     image: "",
   });
   const { title, content, category, image } = ScrshotPrivateData;
-
-
-
-
   const imageInput = useRef(null);
   const history = useHistory();
 
@@ -57,27 +50,22 @@ function ScrshotPrivateCreateForm() {
     }
   };
 
+  /**
+ * Submit the form and creation of a new private screenshot
+ * */
   const handleSubmit = async (event) => {
     event.preventDefault();
 
 
     const formData = new FormData();
-
     formData.append("title", title);
     formData.append("content", content);
     formData.append("category", category);
     formData.append("image", imageInput.current.files[0]);
 
-
-
-
-
     try {
-
       await axiosReq.post("/private-scrshot/", formData);
       history.push(`/category/${category}`);
-     /* history.push(`/ListScrshotPrivatePage`);*/
-
     } catch (err) {
       console.log(err);
       if (err.response?.status !== 401) {
@@ -93,7 +81,6 @@ function ScrshotPrivateCreateForm() {
     <div className="text-center">
       <Form.Group>
         <Form.Label ><Badge variant="light"><span className={styles.Labels}>Screenshot Name</span></Badge></Form.Label>
-
         <Form.Control
           className={`${styles.Input} ${styles.InputText}`}
           type="text"
@@ -116,7 +103,7 @@ function ScrshotPrivateCreateForm() {
           name="content"
           value={content}
           onChange={handleChange}
-          
+
         />
       </Form.Group>
       {errors?.content?.map((message, idx) => (
@@ -124,13 +111,8 @@ function ScrshotPrivateCreateForm() {
       ))}
 
 
-
-
-
-
-
-<SelectCategory ScrshotPrivateData={ScrshotPrivateData} setScrshotPrivateData={setScrshotPrivateData} />
-{errors?.category?.map((message, idx) => (
+      <SelectCategory ScrshotPrivateData={ScrshotPrivateData} setScrshotPrivateData={setScrshotPrivateData} />
+      {errors?.category?.map((message, idx) => (
         <div key={idx} className={styles.bgwarning}>{message}</div>
       ))}
       <Button variant="light"
@@ -153,7 +135,7 @@ function ScrshotPrivateCreateForm() {
           <Container
             className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
           >
-                        <Badge variant="light"><span className={styles.Labels}>New Private Screenshot Area</span></Badge>
+            <Badge variant="light"><span className={styles.Labels}>New Private Screenshot Area</span></Badge>
             <hr />
             <Form.Group className="text-center">
               {image ? (
@@ -197,7 +179,6 @@ function ScrshotPrivateCreateForm() {
         </Col>
         <Col md={5} lg={4} className="d-none d-md-block p-0 p-md-2">
           <Container className={appStyles.Content}>{textFields}</Container>
-          
         </Col>
       </Row>
     </Form>
