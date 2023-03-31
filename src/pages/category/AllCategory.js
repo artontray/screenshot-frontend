@@ -68,7 +68,7 @@ const AllCategory = ({ mobile }) => {
     <Container
       className={`${appStyles.Content} ${mobile && "d-lg-none text-center mb-3"
         }`}
-      >
+    >
       {popularCategory.results.length ? (
         <>
           <Media className="align-items-center justify-content-between">

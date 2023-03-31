@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
@@ -16,8 +15,14 @@ import NoResults from "../../assets/no-results.png";
 import btnStyles from "../../styles/Button.module.css";
 import { NavLink } from "react-router-dom";
 import { useHistory } from "react-router-dom";
-function ListAllCategoryPage({ message = "", filter = "" }) {
 
+/**
+* 
+* ListAllCategoryPage component is used to Display 
+* all category from the current logged User
+* 
+*/
+function ListAllCategoryPage({ message = "", filter = "" }) {
 
   const [category, setCategory] = useState({ results: [] });
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -45,46 +50,43 @@ function ListAllCategoryPage({ message = "", filter = "" }) {
     };
   }, [filter, query, pathname, history]);
 
- 
+
 
   return (
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={12}>
-      <Row>
-        <Col sm={6} xs={6} lg={9}>
-      <i className={`fas fa-search ${appStyles.SearchIcon}`} />
-        <Form
-          className={appStyles.SearchBar}
-          onSubmit={(event) => event.preventDefault()}
-        >
-          
-          <Form.Control
-            value={query}
-            onChange={(event) => setQuery(event.target.value)}
-            type="text"
-            name="searchbar"
-            id="searchbar"
-            className="mr-sm-2"
-            placeholder="Category"
-          />
+        <Row>
+          <Col sm={6} xs={6} lg={9}>
+            <i className={`fas fa-search ${appStyles.SearchIcon}`} />
+            <Form
+              className={appStyles.SearchBar}
+              onSubmit={(event) => event.preventDefault()}
+            >
+              <Form.Control
+                value={query}
+                onChange={(event) => setQuery(event.target.value)}
+                type="text"
+                name="searchbar"
+                id="searchbar"
+                className="mr-sm-2"
+                placeholder="Category"
+              />
+            </Form>
+          </Col>
 
-        </Form>
-        </Col>
-        
-      <Col lg={1} sm={3} xs={3} className="sm-py-2 d-lg-block"><Button
-        className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Basic}`}
-        onClick={() => setQuery("")}
-      >
-        Clear
-      </Button></Col>{  }
-        <Col lg={2} sm={3} xs={3} className="xs-py-2 d-lg-block">
-        
-        <NavLink className="align-items-center justify-content-between" to={`/category/create`} >
-
-        <i className="fa-solid fa-circle-plus fa-2x"></i>
-
-</NavLink>
-</Col>
+          <Col lg={1} sm={3} xs={3} className="sm-py-2 d-lg-block">
+            <Button
+              className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Basic}`}
+              onClick={() => setQuery("")}
+            >
+              Clear
+            </Button>
+          </Col>{ }
+          <Col lg={2} sm={3} xs={3} className="xs-py-2 d-lg-block">
+            <NavLink className="align-items-center justify-content-between" to={`/category/create`} >
+              <i className="fa-solid fa-circle-plus fa-2x"></i>
+            </NavLink>
+          </Col>
         </Row>
 
 

@@ -65,6 +65,7 @@ So, whether it's a funny meme, a touching message from a loved one, or an inspir
     * [Wireframes](<#wireframes>)
     * [Structure of the app](<#structure-of-the-app>)
     * [Programming Structure](<#programming-structure>)
+    * [Database](<#database>)
     * [Design Choices](<#design-choices>)
       -   [Typography](<#typography>)
       -   [Colour Scheme](<#colour-scheme>)
@@ -193,6 +194,13 @@ Once components created, they need to comunicate each other and display a Live R
 ![components](./src/assets/readme/components04.gif)
 
 [Back to top](<#contents>)
+
+
+## Database
+
+Please, refer to [Back-End : Readme File](https://github.com/artontray/screenshot-backend/blob/main/README.md) to get all the information about the 
+database structure of this project.
+
 
 
 ## Design Choices
@@ -1301,7 +1309,7 @@ if only avatar image is given then the new category will have the title as "Main
 All scenarios where one of thoses inputs are not valid have been tested :
 - only blank space introduced : may not be blank
 - one blank spance introduce + legit character : blank space will be deleted automatically
-- Javascript tag introduced into input like <script>alert('bomb')</script> : script will not be executed on the app when displayed
+- Javascript tag introduced into input like <script>alert('bomb');</script> : script will not be executed on the app when displayed
 
 Note: The same test have been executed to Edit Category Form.
 
@@ -1316,7 +1324,7 @@ To be able to create a new Private screenshot, we only need 3 required input to 
 All scenarios where one of thoses inputs are not valid have been tested :
 - only blank space introduced : may not be blank
 - one blank spance introduce + legit character : blank space will be deleted automatically
-- Javascript tag introduced into input like <script>alert('bomb')</script> : script will not be executed on the app when displayed
+- Javascript tag introduced into input like <script>alert('bomb');</script> : script will not be executed on the app when displayed
 
 Note: The same test have been executed to Edit Private screenshot Form.
 
@@ -1331,7 +1339,7 @@ To be able to create a new Public screenshot, we only need 2 required input to b
 All scenarios where one of thoses inputs are not valid have been tested :
 - only blank space introduced : may not be blank
 - one blank spance introduce + legit character : blank space will be deleted automatically
-- Javascript tag introduced into input like <script>alert('bomb')</script> : script will not be executed on the app when displayed
+- Javascript tag introduced into input like <script>alert('bomb');</script> : script will not be executed on the app when displayed
 
 Note: The same test have been executed to Edit Public screenshot Form.
 
@@ -1511,6 +1519,15 @@ Take out the  <React.StrictMode> tag from index.js
 * The Text of the App is provided by me
 * The favicon came from [Favicon](https://favicon.io/)
 * The Public part of the App is directly inspired by The Code Institute's Moments walkthrough project.
+Some very usefull components have been used in this project as :
+  - utils.js (all about the TokenTimestamp functionalities)
+  - Profile Context (Share the Profile data with all other component of the app)
+  - Asset.js (providing the loading image)
+  - axiosDefault.js ( Provide the connection with back-end API)
+  - useRedirect.js (enable the prevention of access to certain pages for authenticated users or unauthenticated users.)
+  - CurrentUserContext.js (Provide the status of the current user to display the apropriate content)
+  - useClickOutsideToggle.js (manage the behavior of the Menu when it is opened with burger icons : small screens )
+
 * The images on the App has been created with [Bitmoji](https://www.bitmoji.com/)
 * The Gif in this readme file have been created with [Veed.io](https://veed.io/)
 

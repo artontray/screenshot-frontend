@@ -3,13 +3,17 @@ import styles from "../../styles/Profile.module.css";
 import { Link } from "react-router-dom";
 import Avatar from "../../components/Avatar";
 import Badge from "react-bootstrap/Badge";
+
+/**
+* 
+* CategoryItems component is used to Display 
+* Category as Item with the avatar and title
+*/
+
+
 const CategoryItems = (props) => {
   const { category, mobile, imageSize = 85 } = props;
-  const {  image, title } = category;
-
-
-
- 
+  const { image, title } = category;
 
   return (
     <div
@@ -17,11 +21,11 @@ const CategoryItems = (props) => {
     >
       <div>
         <Link className="align-self-center" to={`/category/${category.id}`}>
-        <Avatar   src={image} height={imageSize} />
+          <Avatar src={image} height={imageSize} />
         </Link>
       </div>
       <div className={`mx-2 ${styles.WordBreak}`}>
-      <Badge variant="light" className="text-center"><span>{title}</span></Badge>
+        <Badge variant="light" className="text-center"><span>{title}</span></Badge>
       </div>
 
     </div>

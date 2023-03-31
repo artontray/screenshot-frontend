@@ -1,5 +1,4 @@
 import React, { useRef, useState } from "react";
-
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
@@ -7,7 +6,6 @@ import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Badge from "react-bootstrap/Badge";
 import Upload from "../../assets/upload.png";
-
 import styles from "../../styles/CategoryCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
@@ -16,6 +14,12 @@ import Asset from "../../components/Asset";
 import { useHistory } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 import { useRedirect } from "../../hooks/useRedirect";
+
+/**
+ * 
+ * CategoryCreateForm component is used to create a new category
+ * 
+ */
 function CategoryCreateForm() {
   useRedirect("loggedOut");
   const [errors, setErrors] = useState({});
@@ -47,6 +51,12 @@ function CategoryCreateForm() {
     }
   };
 
+  /**
+ * 
+ * Submit the form with new data
+ * After submitting, redirection to /category/id
+ */
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
@@ -70,7 +80,6 @@ function CategoryCreateForm() {
     <div className="text-center">
       <Form.Group>
         <Form.Label ><Badge variant="light"><span className={styles.Labels}>Category name</span></Badge></Form.Label>
-
         <Form.Control
           className={`${styles.Input} ${styles.InputText}`}
           type="text"

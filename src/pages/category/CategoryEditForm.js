@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
@@ -7,7 +6,6 @@ import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Badge from "react-bootstrap/Badge";
 import Upload from "../../assets/upload.png";
-
 import styles from "../../styles/CategoryCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
@@ -16,7 +14,13 @@ import Asset from "../../components/Asset";
 import { useHistory } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 import { useRedirect } from "../../hooks/useRedirect";
-import {  useParams } from "react-router";
+import { useParams } from "react-router";
+
+/**
+ * 
+ * CategoryEditForm component is used to edit a category
+ * 
+ */
 
 function CategoryEditForm() {
   useRedirect("loggedOut");
@@ -32,6 +36,12 @@ function CategoryEditForm() {
   const imageInput = useRef(null);
   const history = useHistory();
   const { id } = useParams();
+
+  /**
+   * 
+   * Populate form fields with previously inserted data.
+   * 
+   */
   useEffect(() => {
     const handleMount = async () => {
       try {
@@ -67,6 +77,12 @@ function CategoryEditForm() {
     }
   };
 
+  /**
+ * 
+ * Submit the form with edited data
+ * After submitting, redirection to /category/id
+ */
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
@@ -80,10 +96,8 @@ function CategoryEditForm() {
 
 
     try {
-
-
       await axiosReq.put(`/category/${id}/`, formData);
-     history.push(`/category/${id}/`);
+      history.push(`/category/${id}/`);
     } catch (err) {
       console.log(err);
       if (err.response?.status !== 401) {
