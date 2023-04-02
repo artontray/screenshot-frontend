@@ -160,7 +160,7 @@ function ScrshotPrivateCreateForm() {
                   className={`${btnStyles.Button} ${btnStyles.PurpleStyle} btn`}
                   htmlFor="image-upload"
                 >
-                  CHANGE THE IMAGE
+                  Change the image
                 </Form.Label>
               </div>
               <Form.File

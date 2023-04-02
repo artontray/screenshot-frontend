@@ -15,6 +15,7 @@ import Avatar from "./Avatar";
  * 
  * NavBar component is used to display a NavBar menu always on top of the App
  * The NavBar will be displaying differents icons according the User status (connected or not)
+ * If screen become too small, the NavBar will be converted to Burger Icon
  */
 
 

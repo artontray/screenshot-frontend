@@ -7,7 +7,7 @@ import { useHistory } from "react-router";
 /**
  * 
  * MoreDropdown component is used to display a quick menu 
- * 
+ * available with just a click on an icon.
  */
 
 const ThreeDots = React.forwardRef(({ onClick }, ref) => (
@@ -20,7 +20,6 @@ const ThreeDots = React.forwardRef(({ onClick }, ref) => (
     }}
   />
 ));
-
 
 const ThreeDotsVersion2 = React.forwardRef(({ onClick }, ref) => (
   <i
@@ -35,6 +34,14 @@ const ThreeDotsVersion2 = React.forwardRef(({ onClick }, ref) => (
 
 
 
+
+/**
+ * 
+ * Used for several situations : 
+ * - Edit or delete a comment
+ * - Edit or delete a screenshot
+ * 
+ */
 
 
 export const MoreDropdown = ({ handleEdit, handleDelete }) => {
@@ -66,7 +73,15 @@ export const MoreDropdown = ({ handleEdit, handleDelete }) => {
 };
 
 
-
+/**
+ * 
+ * Used as Category Quick menu so User can :
+ * - See All category Page
+ * - See All private Screenshot Page
+ * - Search category Page
+ * - Delete Category Page 
+ * 
+ */
 export const SeeAllDropdown = ({ handleSeeAllCategory, handleSeeLastPrivateScrshot, SearchCategory, handleDeleteCategory }) => {
   return (
     <Dropdown className={`${styles.MyDropDown} ml-auto`} drop="left">
@@ -109,7 +124,14 @@ export const SeeAllDropdown = ({ handleSeeAllCategory, handleSeeLastPrivateScrsh
 };
 
 
-
+/**
+ * 
+ * Used for Profile Edition Quick Menu so User can :
+ * - Change Username
+ * - Edit profile
+ * - Change password
+ * 
+ */
 export const ProfileEditDropdown = ({ id }) => {
   const history = useHistory();
   return (

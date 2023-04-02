@@ -105,6 +105,7 @@ So, whether it's a funny meme, a touching message from a loved one, or an inspir
     * [Validator HTML CSS JAVASCRIPT](#validator-html-css-javascript)
       * [HTML](#html)
       * [CSS](#css)
+      * [JSX](#JSX)
     * [Lighthouse](#lighthouse)
     * [Color Contrast Accessibility Validator](#color-contrast-accessibility-validator)
     * [Browser Testing](#browser-testing)
@@ -1080,6 +1081,12 @@ The user's navigation experience should be seamless and uninterrupted, with no f
 ![Validator](./src/assets/readme/validator02.png)
 
 
+  ### JSX
+
+  The [Eslint](https://eslint.org/docs/latest/use/getting-started) Library have been used to detect error :
+
+![Validator](./src/assets/readme/jsxerror.png)
+
 
 ## Lighthouse
 
@@ -1145,6 +1152,8 @@ The NavBar is also responsive to different screen size :
 
 
 ### Manual Testing
+
+
 
 
 ## Site Navigation
@@ -1292,6 +1301,27 @@ In order to maintain the coherence of the application and prevent scenarios wher
 | Type users URL to access private screenshots details /scrshot_private/213 |  Redirected to error page 404 | &check; |
 
 
+Also, to be sure everything is working correctly, I have been going within the app with an Inspect console window open on the side.
+The following actions have been conducted :
+- Register a new User
+- Log in of this new user
+- Added 19 new category
+- Added 12 private screenshots in different Category
+- Added 10 Public screenshots
+- Updated name and description of 3 Public screenshots
+- Updated name and description of 3 Private screenshots
+- Deleted 10 Public screenshots
+- Deleted 12 private screenshots
+- Updated name and avatar to 6 category
+- Deleted 6 Category from the dashboard
+- Searched for a specific screenshots
+
+and the console was looking as following :
+
+![Console error](./src/assets/readme/console.png)
+
+This error appears between the sign up process and log in process. This error is mentioned on the Unfixed Bug section.
+Otherwise, no others errors displayed on the Console :-D
 
 
 [Back to top](<#contents>)
@@ -1425,6 +1455,17 @@ At the end all category will end up into a tab called results, we can display it
 })}
 ```
 
+To show some ability to reuse a component, this is where this component is called : file ScrshotPrivateCreateForm 
+
+```
+<SelectCategory ScrshotPrivateData={ScrshotPrivateData} setScrshotPrivateData={setScrshotPrivateData} />
+  {errors?.category?.map((message, idx) => (
+    <div key={idx} className={styles.bgwarning}>{message}</div>
+  ))}
+```
+
+If any errors connected to this field are detected during submit process, they will appears just below.
+
 
 [Back to top](<#contents>)
 
@@ -1519,13 +1560,15 @@ Take out the  <React.StrictMode> tag from index.js
 * The Text of the App is provided by me
 * The favicon came from [Favicon](https://favicon.io/)
 * The Public part of the App is directly inspired by The Code Institute's Moments walkthrough project.
-Some very usefull components have been used in this project as :
+Some very usefull components have been re-used in this project as :
   - utils.js (all about the TokenTimestamp functionalities)
   - Profile Context (Share the Profile data with all other component of the app)
   - Asset.js (providing the loading image)
   - axiosDefault.js ( Provide the connection with back-end API)
   - useRedirect.js (enable the prevention of access to certain pages for authenticated users or unauthenticated users.)
   - CurrentUserContext.js (Provide the status of the current user to display the apropriate content)
+  - Profiles Repository : (Provide all the component around profiles)
+  - comments Repository : (Provide all components around comments)
   - useClickOutsideToggle.js (manage the behavior of the Menu when it is opened with burger icons : small screens )
 
 * The images on the App has been created with [Bitmoji](https://www.bitmoji.com/)

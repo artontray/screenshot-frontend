@@ -10,7 +10,7 @@ import {
     Col
 } from "react-bootstrap";
 /**
- * Display error 404  with a button "Come Back home" for non-existent pages.
+ * Display error 404  with a button "Come Back home" for non-existent pages or other errors.
  */
 function Error404() {
     return (

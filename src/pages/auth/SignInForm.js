@@ -16,7 +16,7 @@ import { setTokenTimestamp } from "../../utils/utils";
 
 /**
  * 
- * SignInForm function is used for log in Users
+ * SignInForm function is used for log-in Users
  * 
  */
 
@@ -75,7 +75,6 @@ function SignInForm() {
                         {errors.username?.map((message, idx) => (
                             <div key={idx} className={styles.bgwarning}>{message}</div>
                         ))}
-
                         <Form.Group controlId="password">
                             <Form.Label className="d-none">Password</Form.Label>
                             <Form.Control

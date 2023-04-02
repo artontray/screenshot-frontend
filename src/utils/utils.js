@@ -1,6 +1,11 @@
 import { axiosReq } from "../api/axiosDefaults";
 import jwtDecode from "jwt-decode";
 
+/**
+ * fetchMoreData allow the component InfiniteScroll to reach all the results
+ * going within the pagination to extract results.
+ * */
+
 export const fetchMoreData = async (resource, setResource) => {
   try {
     const { data } = await axiosReq.get(resource.next);
